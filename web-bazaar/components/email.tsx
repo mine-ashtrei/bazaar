@@ -1,33 +1,14 @@
 "use client";
 import { useState } from "react";
-
-const API_URL = process.env.API_URL ?? "";
+import { saveEmail } from "../lib/api";
 
 export default function EmailForm() {
   const [email, setEmail] = useState<string>("");
-
   const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
-
     // Do nothing if no email is entered
     if (!email) return;
-
-    // Make a POST request with the form data
-    const response = await fetch(API_URL, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        email: email,
-      }),
-    });
-
-    if (response.ok) {
-      // If the response was successful, clear the email input
-      setEmail("");
-    } else {
-      // If there was an error, log it
-      console.error("Error:", response.status);
-    }
+    await saveEmail(email);
   };
   return (
     <form onSubmit={handleSubmit} className="mt-8 flex flex-col items-center">
