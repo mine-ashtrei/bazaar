@@ -14,6 +14,6 @@ export async function saveEmail(email: string) {
     console.info("Saved");
   } else {
     // If there was an error, log it
-    console.error("Error:", response.status);
+    console.error("Errorssss:", response.status);
   }
 }
