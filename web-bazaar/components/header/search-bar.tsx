@@ -8,9 +8,11 @@ export default function SearchBar() {
     <TextField
       id="1"
       // label="Search"
-      sx={{
-        flexBasis: "56%",
-      }}
+      sx={
+        {
+          // flexBasis: "72%",
+        }
+      }
       variant="outlined"
       fullWidth={true}
       size="small"

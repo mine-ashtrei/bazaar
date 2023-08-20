@@ -26,14 +26,21 @@ export default function Actions() {
     //   </Button>
     // </Stack>
     <React.Fragment>
-      <Select sx={{ minWidth: "72px", maxHeight: "32px" }} value={"EN"}>
+      <Select
+        sx={{ minWidth: "72px", maxHeight: "32px", textTransform: "none" }}
+        value={"EN"}
+      >
         <MenuItem value={"AR"}>AR</MenuItem>
         <MenuItem value={"EN"}>EN</MenuItem>
       </Select>
       <Link noWrap color="inherit" href="#">
         Sign in
       </Link>
-      <Button disableElevation sx={{ minWidth: 0 }} variant="contained">
+      <Button
+        disableElevation
+        sx={{ minWidth: "72px", textTransform: "none" }}
+        variant="contained"
+      >
         Sign up
       </Button>
     </React.Fragment>
