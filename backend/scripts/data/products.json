@@ -1,0 +1,247 @@
+[{
+  "_id": {
+    "$oid": "645818960dc5fc16f15b087d"
+  },
+  "name": "Handcrafted Wooden Chair",
+  "description": "A beautiful and comfortable wooden chair crafted from high-quality oak.",
+  "workshopId": {
+    "$oid": "6458182862af92db3e368822"
+  },
+  "msrpPrice": 150,
+  "batchPricing": [
+    {
+      "minQuantity": 1,
+      "maxQuantity": 5,
+      "pricePerProduct": 120,
+      "_id": {
+        "$oid": "645818960dc5fc16f15b087e"
+      }
+    },
+    {
+      "minQuantity": 6,
+      "maxQuantity": 15,
+      "pricePerProduct": 110,
+      "_id": {
+        "$oid": "645818960dc5fc16f15b087f"
+      }
+    }
+  ],
+  "availableQuantity": 20,
+  "images": [],
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1683495062604"
+    }
+  },
+  "updatedAt": {
+    "$date": {
+      "$numberLong": "1683495062604"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "645818a20dc5fc16f15b0882"
+  },
+  "name": "Elegant Wooden Table",
+  "description": "A stylish and functional wooden table made from premium walnut.",
+  "workshopId": {
+    "$oid": "6458182862af92db3e368822"
+  },
+  "msrpPrice": 400,
+  "batchPricing": [
+    {
+      "minQuantity": 1,
+      "maxQuantity": 3,
+      "pricePerProduct": 350,
+      "_id": {
+        "$oid": "645818a20dc5fc16f15b0883"
+      }
+    },
+    {
+      "minQuantity": 4,
+      "maxQuantity": 10,
+      "pricePerProduct": 320,
+      "_id": {
+        "$oid": "645818a20dc5fc16f15b0884"
+      }
+    }
+  ],
+  "availableQuantity": 15,
+  "images": [],
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1683495074882"
+    }
+  },
+  "updatedAt": {
+    "$date": {
+      "$numberLong": "1683495074882"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "645818ac0dc5fc16f15b0887"
+  },
+  "name": "Wooden Picture Frame",
+  "description": "A classic wooden picture frame crafted from maple with a polished finish.",
+  "workshopId": {
+    "$oid": "6458182862af92db3e368822"
+  },
+  "msrpPrice": 40,
+  "batchPricing": [
+    {
+      "minQuantity": 1,
+      "maxQuantity": 10,
+      "pricePerProduct": 35,
+      "_id": {
+        "$oid": "645818ac0dc5fc16f15b0888"
+      }
+    },
+    {
+      "minQuantity": 11,
+      "maxQuantity": 30,
+      "pricePerProduct": 30,
+      "_id": {
+        "$oid": "645818ac0dc5fc16f15b0889"
+      }
+    }
+  ],
+  "availableQuantity": 50,
+  "images": [],
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1683495084732"
+    }
+  },
+  "updatedAt": {
+    "$date": {
+      "$numberLong": "1683495084732"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "645818b70dc5fc16f15b088c"
+  },
+  "name": "Ceramic Flower Vase",
+  "description": "A beautifully designed pottery vase perfect for displaying fresh flowers.",
+  "workshopId": {
+    "$oid": "6458182862af92db3e368822"
+  },
+  "msrpPrice": 80,
+  "batchPricing": [
+    {
+      "minQuantity": 1,
+      "maxQuantity": 5,
+      "pricePerProduct": 70,
+      "_id": {
+        "$oid": "645818b70dc5fc16f15b088d"
+      }
+    },
+    {
+      "minQuantity": 6,
+      "maxQuantity": 15,
+      "pricePerProduct": 60,
+      "_id": {
+        "$oid": "645818b70dc5fc16f15b088e"
+      }
+    }
+  ],
+  "availableQuantity": 25,
+  "images": [],
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1683495095411"
+    }
+  },
+  "updatedAt": {
+    "$date": {
+      "$numberLong": "1683495095411"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "645818bf0dc5fc16f15b0891"
+  },
+  "name": "Decorative Pottery Bowl",
+  "description": "A handcrafted pottery bowl with an intricate design, ideal for home decor.",
+  "workshopId": {
+    "$oid": "6458182862af92db3e368822"
+  },
+  "msrpPrice": 100,
+  "batchPricing": [
+    {
+      "minQuantity": 1,
+      "maxQuantity": 3,
+      "pricePerProduct": 90,
+      "_id": {
+        "$oid": "645818bf0dc5fc16f15b0892"
+      }
+    },
+    {
+      "minQuantity": 4,
+      "maxQuantity": 10,
+      "pricePerProduct": 80,
+      "_id": {
+        "$oid": "645818bf0dc5fc16f15b0893"
+      }
+    }
+  ],
+  "availableQuantity": 20,
+  "images": [],
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1683495103879"
+    }
+  },
+  "updatedAt": {
+    "$date": {
+      "$numberLong": "1683495103879"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "645818c70dc5fc16f15b0896"
+  },
+  "name": "Pottery Coffee Mug",
+  "description": "A unique and stylish coffee mug made from high-quality ceramic materials.",
+  "workshopId": {
+    "$oid": "6458182862af92db3e368822"
+  },
+  "msrpPrice": 30,
+  "batchPricing": [
+    {
+      "minQuantity": 1,
+      "maxQuantity": 10,
+      "pricePerProduct": 25,
+      "_id": {
+        "$oid": "645818c70dc5fc16f15b0897"
+      }
+    },
+    {
+      "minQuantity": 11,
+      "maxQuantity": 30,
+      "pricePerProduct": 20,
+      "_id": {
+        "$oid": "645818c70dc5fc16f15b0898"
+      }
+    }
+  ],
+  "availableQuantity": 40,
+  "images": [],
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1683495111695"
+    }
+  },
+  "updatedAt": {
+    "$date": {
+      "$numberLong": "1683495111695"
+    }
+  },
+  "__v": 0
+}]

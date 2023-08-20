@@ -1,0 +1,120 @@
+messages:
+  error:
+    server:
+      summary: "Something went wrong"
+      userAction: "Retry"
+      description: "Internal server error"
+  auth:
+    logout:
+      summary: "Logout"
+      userAction: "None"
+      description: "User logout"
+    login_error:
+      summary: "Login error"
+      userAction: "Retry"
+      description: "Email and password are not valid"
+    unauthorize:
+      summary: "Unauthorize"
+      userAction: "Retry"
+      description: "User does not have access to resource"
+    missing_token:
+      summary: "No token provided"
+      userAction: "Retry"
+      description: "Authentication token not provided"
+    bad_token:
+      summary: "Bad token"
+      userAction: "Retry"
+      description: "A bad token was provided"
+    redis:
+      summary: "Reddis error"
+      userAction: "Retry"
+      description: "An error occurred while accessing Redis"
+    reset_password_invalid_token:
+      summary: "Invalid token"
+      userAction: "Retry"
+      description: "An invalid token was given"
+    forbidden:
+      summary: "Forbidden"
+      userAction: "None"
+      description: "Action forbiden for user"
+  workshop:
+    deleted:
+      summary: "Workshop deleted"
+      userAction: "None"
+      description: "Workshop deleted successfully"
+    not_found:
+      summary: "Workshop not found"
+      userAction: "Retry"
+      description: "Workshop was not found in the database"
+    forbidden:
+      summary: "Forbidden"
+      userAction: "Retry"
+      description: "User does not have access to this workshop"
+  product:
+    presigned_url:
+      summary: "Failed generating url"
+      userAction: "Retry"
+      description: "Failed to generate presigned url for image"
+    not_found:
+      summary: "Product not found"
+      userAction: "Retry"
+      description: "Product was not found in the database"
+    forbidden:
+      summary: "Forbidden"
+      userAction: "Retry"
+      description: "User does not have access to this product"
+    delete_succesfully:
+      summary: "Product deleted"
+      userAction: "None"
+      description: "Product was deleted successfully"
+  common:
+    invalid_objectid:
+      summary: "Invalid ObjectID"
+      userAction: "Retry"
+      description: "ObjectID is not valid"
+    db_error:
+      summary: "Database Error"
+      userAction: "Retry"
+      description: "An error with the database occured"
+  user:
+    not_found:
+      summary: "User not found"
+      userAction: "Retry"
+      description: "User was not found in the database"
+    db_create:
+      summary: "Error creating user"
+      userAction: "Retry"
+      description: "An error occurred while trying to create the user"
+    db_get:
+      summary: "Error retrieving user"
+      userAction: "Retry"
+      description: "An error occurred while trying to retrive the user"
+    db_update:
+      summary: "Error updating user"
+      userAction: "Retry"
+      description: "An error occurred while trying to update the user"
+    delete_succesfully:
+      summary: "User deleted"
+      userAction: "None"
+      description: "User was deleted successfully"
+    delete:
+      summary: "User not deleted"
+      userAction: "Retry"
+      description: "An error occurred while trying to delete the user"
+  validation:
+    bad_email:
+      summary: "Invalid email"
+      userAction: "Retry"
+      description: "Please enter a valid email address."
+    bad_password:
+      summary: "Invalid password"
+      userAction: "Retry"
+      description: "Password must be at least 6 characters long."
+    missing_querry_filename:
+      summary: "Missing filename"
+      userAction: "Retry"
+      description: "Querry filename is missing"
+    bad_querry_filename_type:
+      summary: "Invalid filename"
+      userAction: "Retry"
+      description: "Please enter a valid filename"

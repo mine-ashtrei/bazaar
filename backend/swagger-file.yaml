@@ -1,0 +1,547 @@
+openapi: 3.0.1
+info:
+  version: "1.0.0"
+  title: "Marketplace API"
+servers:
+  - url: "https://api.example.com/v1"
+paths:
+  /users:
+    post:
+      tags:
+        - Users
+      summary: "Create a new user"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/User"
+      responses:
+        201:
+          description: "Created"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/User"
+        400:
+          description: "Bad request"
+    get:
+      tags:
+        - Users
+      summary: "Get all users (admin only)"
+      responses:
+        200:
+          description: "OK"
+          content:
+            application/json:
+              schema:
+                type: "array"
+                items:
+                  $ref: "#/components/schemas/User"
+        400:
+          description: "Bad request"
+  /users/{userId}:
+    get:
+      tags:
+        - Users
+      summary: "Get user by ID"
+      parameters:
+        - in: path
+          name: userId
+          schema:
+            type: string
+          required: true
+          description: "User ID"
+      responses:
+        200:
+          description: "OK"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/User"
+        404:
+          description: "Not found"
+    put:
+      tags:
+        - Users
+      summary: "Update user by ID"
+      parameters:
+        - in: path
+          name: userId
+          schema:
+            type: string
+          required: true
+          description: "User ID"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/User"
+      responses:
+        200:
+          description: "OK"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/User"
+        400:
+          description: "Bad request"
+        404:
+          description: "Not found"
+    delete:
+      tags:
+        - Users
+      summary: "Delete user by ID"
+      parameters:
+        - in: path
+          name: userId
+          schema:
+            type: string
+          required: true
+          description: "User ID"
+      responses:
+        204:
+          description: "No content"
+        404:
+          description: "Not found"
+  /workshops:
+    post:
+      tags:
+        - Workshops
+      summary: "Create a new workshop"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Workshop"
+      responses:
+        201:
+          description: "Created"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Workshop"
+        400:
+          description: "Bad request"
+    get:
+      tags:
+        - Workshops
+      summary: "Get all workshops"
+      responses:
+        200:
+          description: "OK"
+          content:
+            application/json:
+              schema:
+                type: "array"
+                items:
+                  $ref: "#/components/schemas/Workshop"
+        400:
+          description: "Bad request"
+  /workshops/{workshopId}:
+    get:
+      tags:
+        - Workshops
+      summary: "Get workshop by ID"
+      parameters:
+        - in: path
+          name: workshopId
+          schema:
+            type: string
+          required: true
+          description: "Workshop ID"
+      responses:
+        200:
+          description: "OK"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Workshop"
+        404:
+          description: "Not found"
+    put:
+      tags:
+        - Workshops
+      summary: "Update workshop by ID"
+      parameters:
+        - in: path
+          name: workshopId
+          schema:
+            type: string
+          required: true
+          description: "Workshop ID"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Workshop"
+      responses:
+        200:
+          description: "OK"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Workshop"
+        400:
+          description: "Bad request"
+        404:
+          description: "Not found"
+    delete:
+      tags:
+        - Workshops
+      summary: "Delete workshop by ID"
+      parameters:
+        - in: path
+          name: workshopId
+          schema:
+            type: string
+          required: true
+          description: "Workshop ID"
+      responses:
+        204:
+          description: "No content"
+        404:
+          description: "Not found"
+  /products:
+    post:
+      tags:
+        - Products
+      summary: "Create a new product"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Product"
+      responses:
+        201:
+          description: "Created"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Product"
+        400:
+          description: "Bad request"
+    get:
+      tags:
+        - Products
+      summary: "Get all products"
+      responses:
+        200:
+          description: "OK"
+          content:
+            application/json:
+              schema:
+                type: "array"
+                items:
+                  $ref: "#/components/schemas/Product"
+        400:
+          description: "Bad request"
+  /products/{productId}:
+    get:
+      tags:
+        - Products
+      summary: "Get product by ID"
+      parameters:
+        - in: path
+          name: productId
+          schema:
+            type: string
+          required: true
+          description: "Product ID"
+      responses:
+        200:
+          description: "OK"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Product"
+        404:
+          description: "Not found"
+    put:
+      tags:
+        - Products
+      summary: "Update product by ID"
+      parameters:
+        - in: path
+          name: productId
+          schema:
+            type: string
+          required: true
+          description: "Product ID"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Product"
+      responses:
+        200:
+          description: "OK"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Product"
+        400:
+          description: "Bad request"
+        404:
+          description: "Not found"
+    delete:
+      tags:
+        - Products
+      summary: "Delete product by ID"
+      parameters:
+        - in: path
+          name: productId
+          schema:
+            type: string
+          required: true
+          description: "Product ID"
+      responses:
+        204:
+          description: "No content"
+        404:
+          description: "Not found"
+  /categories:
+    post:
+      tags:
+        - Categories
+      summary: "Create a new category"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Category"
+      responses:
+        201:
+          description: "Created"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Category"
+        400:
+          description: "Bad request"
+    get:
+      tags:
+        - Categories
+      summary: "Get all categories"
+      responses:
+        200:
+          description: "OK"
+          content:
+            application/json:
+              schema:
+                type: "array"
+                items:
+                  $ref: "#/components/schemas/Category"
+        400:
+          description: "Bad request"
+  /categories/{categoryId}:
+    get:
+      tags:
+        - Categories
+      summary: "Get category by ID"
+      parameters:
+        - in: path
+          name: categoryId
+          schema:
+            type: string
+          required: true
+          description: "Category ID"
+      responses:
+        200:
+          description: "OK"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Category"
+        404:
+          description: "Not found"
+    put:
+      tags:
+        - Categories
+      summary: "Update category by ID"
+      parameters:
+        - in: path
+          name: categoryId
+          schema:
+            type: string
+          required: true
+          description: "Category ID"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Category"
+      responses:
+        200:
+          description: "OK"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Category"
+        400:
+          description: "Bad request"
+        404:
+          description: "Not found"
+    delete:
+      tags:
+        - Categories
+      summary: "Delete category by ID"
+      parameters:
+        - in: path
+          name: categoryId
+          schema:
+            type: string
+          required: true
+          description: "Category ID"
+      responses:
+        204:
+          description: "No content"
+        404:
+          description: "Not found"
+components:
+  schemas:
+    User:
+      type: object
+      properties:
+        _id:
+          type: string
+          format: uuid
+        email:
+          type: string
+          format: email
+        password:
+          type: string
+        name:
+          type: string
+        role:
+          type: string
+        googleId:
+          type: string
+          nullable: true
+        facebookId:
+          type: string
+          nullable: true
+      required:
+        - email
+        - password
+        - name
+        - role
+    Workshop:
+      type: object
+      properties:
+        _id:
+          type: string
+          format: uuid
+        name:
+          type: string
+        description:
+          type: string
+        ownerId:
+          type: string
+      required:
+        - name
+        - description
+        - ownerId
+    Product:
+      type: object
+      properties:
+        _id:
+          type: string
+          format: uuid
+        name:
+          type: string
+        description:
+          type: string
+        workshopId:
+          type: string
+        categoryId:
+          type: string
+        batchOptions:
+          type: array
+          items:
+            type: object
+            properties:
+              quantity:
+                type: integer
+              pricePerItem:
+                type: number
+        msrpPrice:
+          type: number
+      required:
+        - name
+        - description
+        - workshopId
+        - categoryId
+        - batchOptions
+        - msrpPrice
+    Category:
+      type: object
+      properties:
+        _id:
+          type: string
+          format: uuid
+        name:
+          type: string
+      required:
+        - name
+    ProductImage:
+      type: object
+      properties:
+        _id:
+          type: string
+          format: uuid
+        productId:
+          type: string
+        imageUrl:
+          type: string
+      required:
+        - productId
+        - imageUrl
+    ShoppingCart:
+      type: object
+      properties:
+        _id:
+          type: string
+          format: uuid
+        userId:
+          type: string
+        items:
+          type: array
+          items:
+            type: object
+            properties:
+              productId:
+                type: string
+              batchOptionIndex:
+                type: integer
+              quantity:
+                type: integer
+      required:
+        - userId
+        - items
+    ShoppingCartItem:
+      type: object
+      properties:
+        _id:
+          type: string
+          format: uuid
+        shoppingCartId:
+          type: string
+        productId:
+          type: string
+        batchOptionIndex:
+          type: integer
+        quantity:
+          type: integer
+      required:
+        - shoppingCartId
+        - productId
+        - batchOptionIndex
+        - quantity
