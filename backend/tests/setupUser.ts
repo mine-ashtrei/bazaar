@@ -9,8 +9,8 @@ export type IUserCreate = {
   role?: string;
 };
 
-export const buyerUserPassword = {
-  email: "buyer@example.com",
+export const retailerUserPassword = {
+  email: "retailer@example.com",
   password: "password123",
 };
 
@@ -37,7 +37,7 @@ export const testWorkshop = {
 };
 
 export const createUser = async (
-  user: IUserCreate = buyerUserPassword
+  user: IUserCreate = retailerUserPassword
 ): Promise<IUser> => {
   const ret = await request(server).post("/api/register").send(user);
   return ret.body;

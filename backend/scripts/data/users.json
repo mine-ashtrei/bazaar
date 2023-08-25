@@ -2,9 +2,9 @@
   "_id": {
     "$oid": "6458140ff4eafa4db8242b9f"
   },
-  "email": "buyer@example.com",
+  "email": "retailer@example.com",
   "password": "$2b$10$JR6/xw7A3M/DSWF8dYv2M.m0bF94Th695PREU1FgqtMEkCimnIPIW",
-  "role": "buyer",
+  "role": "retailer",
   "workshopId": null,
   "createdAt": {
     "$date": {

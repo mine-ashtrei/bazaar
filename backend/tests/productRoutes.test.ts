@@ -2,7 +2,7 @@ import request from "supertest";
 import { startServer, closeServer, server } from "./setupTestApp";
 import { connectDB, disconnectDB } from "./setupTestDB";
 import {
-  // buyerUserPassword,
+  // retailerUserPassword,
   workshopUserPassword,
   createUser,
   createWorkshop,
@@ -14,7 +14,7 @@ import { checkMessage } from "./common";
 // import { IUser } from "../src/models/userModel";
 
 describe("Product Routes", () => {
-  // let buyerUser: IUser;
+  // let retailerUser: IUser;
   // let sellerUser: IUser;
   let sellerToken: string;
 

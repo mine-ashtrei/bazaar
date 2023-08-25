@@ -1,10 +1,10 @@
 import request from "supertest";
 import { startServer, closeServer, server } from "./setupTestApp";
 import { connectDB, disconnectDB } from "./setupTestDB";
-import { createUser, buyerUserPassword } from "./setupUser";
+import { createUser, retailerUserPassword } from "./setupUser";
 
 describe("Auth Route", () => {
-  let user = buyerUserPassword;
+  let user = retailerUserPassword;
 
   beforeAll(async () => {
     await connectDB();
