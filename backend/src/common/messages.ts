@@ -169,6 +169,24 @@ const VALIDATION_BAD_QUERRY_FILENAME_TYPE: ReturnMessage = {
       description: "Please enter a valid filename",
 };
 
+const VALIDATION_BAD_DESCRIPTION: ReturnMessage = {
+      summary: "Invalid description",
+      userAction: "Retry",
+      description: "Please enter a description having between 100 and 2048 characters",
+};
+
+const VALIDATION_BAD_TAGS_ARRAY: ReturnMessage = {
+      summary: "Invalid tags",
+      userAction: "Retry",
+      description: "Please enter a valid tags array",
+};
+
+const VALIDATION_BAD_TAGS_STRING: ReturnMessage = {
+      summary: "Invalid tags content",
+      userAction: "Retry",
+      description: "Please enter a valid entry inside tags array",
+};
+
 export const MESSAGES = {
   ERROR_SERVER: ERROR_SERVER,
   AUTH_LOGOUT: AUTH_LOGOUT,
@@ -198,4 +216,8 @@ export const MESSAGES = {
   VALIDATION_BAD_PASSWORD: VALIDATION_BAD_PASSWORD,
   VALIDATION_MISSING_QUERRY_FILENAME: VALIDATION_MISSING_QUERRY_FILENAME,
   VALIDATION_BAD_QUERRY_FILENAME_TYPE: VALIDATION_BAD_QUERRY_FILENAME_TYPE,
+  VALIDATION_BAD_DESCRIPTION: VALIDATION_BAD_DESCRIPTION,
+  VALIDATION_BAD_TAGS_ARRAY: VALIDATION_BAD_TAGS_ARRAY,
+  VALIDATION_BAD_TAGS_STRING: VALIDATION_BAD_TAGS_STRING,
+
 };
