@@ -1,7 +1,7 @@
 // custom.d.ts
 import { Types } from "mongoose";
 import { IUser } from "../models/userModel";
-import { IWorkshop } from "../models/workshopModel";
+import { ISupplier } from "../models/supplierModel";
 import { IProduct } from "../models/productModel";
 
 declare global {
@@ -14,7 +14,7 @@ declare global {
     }
     export interface Locals {
       user?: IUser;
-      workshop?: IWorkshop;
+      workshop?: ISupplier;
       product?: IProduct;
       [key: string]: any;
     }

@@ -24,7 +24,7 @@ export const isProductOwner = async (
 ) => {
   const product = res.locals.product!;
   if (
-    product.workshopId.toString() !== res.locals.user!.workshopId!.toString()
+    product.workshopId.toString() !== res.locals.user!.supplierId!.toString()
   ) {
     res.status(403).json(MESSAGES.PRODUCT_FORBIDDEN);
     return;

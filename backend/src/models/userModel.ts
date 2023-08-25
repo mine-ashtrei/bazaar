@@ -10,7 +10,7 @@ export interface IUser extends Document {
   password?: string;
   fullName?: string;
   role: RetailerRole | WorkshopRole;
-  workshopId?: Types.ObjectId;
+  supplierId?: Types.ObjectId;
   googleId?: string;
   facebookId?: string;
   createdAt: Date;
@@ -36,11 +36,11 @@ const UserSchema = new Schema<IUser>(
     },
     role: {
       type: String,
-      enum: ["retailer", "workshop", "root"], //workshop -> supplier; 
+      enum: ["retailer", "supplier", "root"], //workshop -> supplier; 
       default: "retailer",
       required: true,
     },
-    workshopId: {
+    supplierId: {
       type: Schema.Types.ObjectId,
       default: null,
       ref: "Workshop",

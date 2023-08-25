@@ -3,3 +3,4 @@ dist
 chatgpt.md
 .env*
 schemas/*
+package-lock.json

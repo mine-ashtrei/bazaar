@@ -25,7 +25,7 @@ export const createProduct = async (
 ) => {
   try {
     const productData: IProduct = req.body;
-    productData.workshopId = res.locals.user!.workshopId!;
+    productData.workshopId = res.locals.user!.supplierId!;
     const newProduct = await productService.createProduct(productData);
     res.status(201).json(newProduct);
   } catch (error) {

@@ -1,6 +1,6 @@
 import { Document, Schema, model } from "mongoose";
 
-export interface IWorkshop extends Document {
+export interface ISupplier extends Document {
   name: string;
   description: string;
   address: {
@@ -18,7 +18,7 @@ export interface IWorkshop extends Document {
   updatedAt: Date;
 }
 
-const WorkshopSchema = new Schema<IWorkshop>({
+const SupplierSchema = new Schema<ISupplier>({
   name: {
     type: String,
     required: true,
@@ -49,5 +49,5 @@ const WorkshopSchema = new Schema<IWorkshop>({
   },
 });
 
-const Workshop = model<IWorkshop>("Workshop", WorkshopSchema);
-export default Workshop;
+const Supplier = model<ISupplier>("Supplier", SupplierSchema);
+export default Supplier;

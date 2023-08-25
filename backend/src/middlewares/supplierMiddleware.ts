@@ -1,7 +1,7 @@
 import { Request, Response, NextFunction } from "express";
 import { Types } from "mongoose";
 import { MESSAGES } from "../common/messages";
-import * as workshopService from "../services/workshopService";
+import * as workshopService from "../services/supplierService";
 
 export const workshopExists = async (
   req: Request,
@@ -11,7 +11,7 @@ export const workshopExists = async (
   const id: Types.ObjectId = req.sanitizedParams.id as Types.ObjectId;
   const workshop = await workshopService.getWorkshopById(id);
   if (!workshop) {
-    res.status(404).json(MESSAGES.WORKSHOP_NOT_FOUND);
+    res.status(404).json(MESSAGES.SUPPLIER_NOT_FOUND);
     return;
   }
   res.locals.workshop = workshop;
@@ -25,11 +25,11 @@ export const isOwner = async (
 ) => {
   const user = res.locals.user!;
   const workshopId: Types.ObjectId = req.sanitizedParams.id!;
-  if (user.workshopId == null) {
+  if (user.supplierId == null) {
     res.status(403).json(MESSAGES.WORKSHOP_FORBIDDEN);
     return;
   }
-  if (user.workshopId!.toString() !== workshopId.toString()) {
+  if (user.supplierId!.toString() !== workshopId.toString()) {
     res.status(403).json(MESSAGES.WORKSHOP_FORBIDDEN);
     return;
   }

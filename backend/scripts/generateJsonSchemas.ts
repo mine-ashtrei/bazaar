@@ -11,7 +11,7 @@ import Product from "../src/models/productModel";
 import ProductImage from "../src/models/productImageModel";
 import ShoppingCartItem from "../src/models/shoppingCartItemModel";
 import ShoppingCart from "../src/models/shoppingCartModel";
-import Workshop from "../src/models/workshopModel";
+import Supplier from "../src/models/supplierModel";
 
 import isEmail from "validator/lib/isEmail";
 import isLength from "validator/lib/isLength";
@@ -28,7 +28,7 @@ const mongooseSchemas = [
   Product,
   ShoppingCartItem,
   ShoppingCart,
-  Workshop,
+  Supplier,
 ];
 
 const validationRules = {

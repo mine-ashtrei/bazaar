@@ -1,7 +1,7 @@
 import request from "supertest";
 import { server } from "./setupTestApp";
 import { IUser } from "../src/models/userModel";
-import { IWorkshop } from "../src/models/workshopModel";
+import { ISupplier } from "../src/models/supplierModel";
 
 export type IUserCreate = {
   email: string;
@@ -43,7 +43,7 @@ export const createUser = async (
   return ret.body;
 };
 
-export const createWorkshop = async (token: string): Promise<IWorkshop> => {
+export const createWorkshop = async (token: string): Promise<ISupplier> => {
   const res = await request(server)
     .post("/api/workshops")
     .set("Authorization", `Bearer ${token}`)

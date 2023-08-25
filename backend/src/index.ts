@@ -12,7 +12,7 @@ import { MESSAGES } from "./common/messages";
 
 import authRoutes from "./routes/authRoutes";
 import userRoutes from "./routes/userRoutes";
-import workshopRoutes from "./routes/workshopRoutes";
+import workshopRoutes from "./routes/supplierRoutes";
 import productRoutes from "./routes/productRoutes";
 
 const app: Express = express();

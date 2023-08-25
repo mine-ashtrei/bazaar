@@ -1,7 +1,7 @@
 import request from "supertest";
 import { startServer, closeServer, server } from "./setupTestApp";
 import { connectDB, disconnectDB } from "./setupTestDB";
-import { IWorkshop } from "../src/models/workshopModel";
+import { ISupplier } from "../src/models/supplierModel";
 import { workshopUserPassword, createUser, loginUser } from "./setupUser";
 import { IUser } from "../src/models/userModel";
 import { MESSAGES } from "../src/common/messages";
@@ -22,7 +22,7 @@ describe("Workshop Routes", () => {
     closeServer();
   });
 
-  let workshop: Partial<IWorkshop>;
+  let workshop: Partial<ISupplier>;
   let test_workshop: any = {
     name: "Test Workshop",
     description: "This is a test workshop.",
@@ -38,7 +38,7 @@ describe("Workshop Routes", () => {
       email: "testworkshop@example.com",
     },
   };
-  let update_workshop: Partial<IWorkshop> = {
+  let update_workshop: Partial<ISupplier> = {
     address: {
       street: "456 Updated Street",
       city: "Updated City",
@@ -124,7 +124,7 @@ describe("Workshop Routes", () => {
       .get(`/api/workshops/${workshop._id}`)
       .set("Authorization", `Bearer ${token}`);
     expect(res.statusCode).toEqual(404);
-    checkMessage(res.body, MESSAGES.WORKSHOP_NOT_FOUND);
+    checkMessage(res.body, MESSAGES.SUPPLIER_NOT_FOUND);
   });
 
   it("should not create a workshop with extra data", async () => {
