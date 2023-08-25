@@ -14,7 +14,7 @@ declare global {
     }
     export interface Locals {
       user?: IUser;
-      workshop?: ISupplier;
+      supplier?: ISupplier;
       product?: IProduct;
       [key: string]: any;
     }

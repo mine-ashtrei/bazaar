@@ -1,13 +1,13 @@
 AUTH:
 
 - refresh tokens
-- create workshop users
+- create Supplier users
 
-WORKSHOP:
+SUPPLIER:
 
-- add tests for forbiden. A different user tries to access a forbidden workshop
-- change test_workshop to testWorkshop
-- only users with workshop role can create a workshop
+- add tests for forbiden. A different user tries to access a forbidden supplier
+- change test_supplier to testSupplier
+- only users with supplier role can create a supplier
 
 PRODUCT:
 

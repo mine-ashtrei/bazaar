@@ -25,7 +25,7 @@ export const createProduct = async (
 ) => {
   try {
     const productData: IProduct = req.body;
-    productData.workshopId = res.locals.user!.supplierId!;
+    productData.supplierId = res.locals.user!.supplierId!;
     const newProduct = await productService.createProduct(productData);
     res.status(201).json(newProduct);
   } catch (error) {
@@ -40,7 +40,7 @@ export const getProducts = async (
 ) => {
   try {
     const pagination = get_pagination(req.query);
-    // const workshopId = res.locals.user!.workshopId!;
+    // const supplierId = res.locals.user!.supplierId!;
     // const categories = req.query.category as string;
     // const tags = req.query.tags as string[];
     // const brand = req.query.brand as string;

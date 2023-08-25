@@ -2,8 +2,8 @@
   "_id": {
     "$oid": "6458182862af92db3e368822"
   },
-  "name": "Creative Workshop",
-  "description": "A versatile workshop offering a wide range of hands-on courses in arts, crafts, and DIY projects, led by experienced instructors.",
+  "name": "Creative Supplier",
+  "description": "A versatile supplier offering a wide range of hands-on courses in arts, crafts, and DIY projects, led by experienced instructors.",
   "address": {
     "street": "456 Innovation Lane",
     "city": "Artisan City",
@@ -13,7 +13,7 @@
   },
   "contact": {
     "phone": "555-123-4567",
-    "email": "creativeworkshop@example.com"
+    "email": "creativesupplier@example.com"
   },
   "createdAt": {
     "$date": {

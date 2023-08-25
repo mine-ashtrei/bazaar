@@ -1,6 +1,6 @@
 import { Document, Schema, model, Types } from "mongoose";
 
-export type AddressOwnerType = "user" | "workshop";
+export type AddressOwnerType = "user" | "supplier";
 
 export interface IAddress extends Document {
   owner: Types.ObjectId;
@@ -24,7 +24,7 @@ const AddressSchema = new Schema<IAddress>(
     ownerType: {
       type: String,
       required: true,
-      enum: ["user", "workshop"],
+      enum: ["user", "supplier"],
     },
     street: {
       type: String,

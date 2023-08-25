@@ -105,30 +105,30 @@ paths:
           description: "No content"
         404:
           description: "Not found"
-  /workshops:
+  /suppliers:
     post:
       tags:
-        - Workshops
-      summary: "Create a new workshop"
+        - Suppliers
+      summary: "Create a new supplier"
       requestBody:
         required: true
         content:
           application/json:
             schema:
-              $ref: "#/components/schemas/Workshop"
+              $ref: "#/components/schemas/Supplier"
       responses:
         201:
           description: "Created"
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Workshop"
+                $ref: "#/components/schemas/Supplier"
         400:
           description: "Bad request"
     get:
       tags:
-        - Workshops
-      summary: "Get all workshops"
+        - Suppliers
+      summary: "Get all suppliers"
       responses:
         200:
           description: "OK"
@@ -137,69 +137,69 @@ paths:
               schema:
                 type: "array"
                 items:
-                  $ref: "#/components/schemas/Workshop"
+                  $ref: "#/components/schemas/Supplier"
         400:
           description: "Bad request"
-  /workshops/{workshopId}:
+  /suppliers/{supplierId}:
     get:
       tags:
-        - Workshops
-      summary: "Get workshop by ID"
+        - Suppliers
+      summary: "Get supplier by ID"
       parameters:
         - in: path
-          name: workshopId
+          name: supplierId
           schema:
             type: string
           required: true
-          description: "Workshop ID"
+          description: "Supplier ID"
       responses:
         200:
           description: "OK"
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Workshop"
+                $ref: "#/components/schemas/Supplier"
         404:
           description: "Not found"
     put:
       tags:
-        - Workshops
-      summary: "Update workshop by ID"
+        - Suppliers
+      summary: "Update supplier by ID"
       parameters:
         - in: path
-          name: workshopId
+          name: supplierId
           schema:
             type: string
           required: true
-          description: "Workshop ID"
+          description: "Supplier ID"
       requestBody:
         required: true
         content:
           application/json:
             schema:
-              $ref: "#/components/schemas/Workshop"
+              $ref: "#/components/schemas/Supplier"
       responses:
         200:
           description: "OK"
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Workshop"
+                $ref: "#/components/schemas/Supplier"
         400:
           description: "Bad request"
         404:
           description: "Not found"
     delete:
       tags:
-        - Workshops
-      summary: "Delete workshop by ID"
+        - Suppliers
+      summary: "Delete supplier by ID"
       parameters:
         - in: path
-          name: workshopId
+          name: supplierId
           schema:
             type: string
           required: true
-          description: "Workshop ID"
+          description: "Supplier ID"
       responses:
         204:
           description: "No content"
@@ -433,7 +433,7 @@ components:
         - password
         - name
         - role
-    Workshop:
+    Supplier:
       type: object
       properties:
         _id:
@@ -459,7 +459,7 @@ components:
           type: string
         description:
           type: string
-        workshopId:
+        supplierId:
           type: string
         categoryId:
           type: string
@@ -477,7 +477,7 @@ components:
       required:
         - name
         - description
-        - workshopId
+        - supplierId
         - categoryId
         - batchOptions
         - msrpPrice

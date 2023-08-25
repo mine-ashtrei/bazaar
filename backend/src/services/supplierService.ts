@@ -3,43 +3,43 @@ import { get_pagination_offset } from "../common/utils";
 import Supplier, { ISupplier } from "../models/supplierModel";
 import { Types } from "mongoose";
 
-export const createWorkshop = async (
-  workshopData: ISupplier
+export const createSupplier = async (
+  supplierData: ISupplier
 ): Promise<ISupplier> => {
-  const workshop = new Supplier(workshopData);
-  return await workshop.save();
+  const supplier = new Supplier(supplierData);
+  return await supplier.save();
 };
 
-export const getWorkshopById = async (
-  workshopId: Types.ObjectId
+export const getSupplierById = async (
+  supplierId: Types.ObjectId
 ): Promise<ISupplier | null> => {
-  return await Supplier.findById(workshopId).exec();
+  return await Supplier.findById(supplierId).exec();
 };
 
-export const updateWorkshop = async (
-  workshopId: Types.ObjectId,
-  workshopData: Partial<ISupplier>
+export const updateSupplier = async (
+  supplierId: Types.ObjectId,
+  supplierData: Partial<ISupplier>
 ): Promise<ISupplier | null> => {
-  return await Supplier.findByIdAndUpdate(workshopId, workshopData, {
+  return await Supplier.findByIdAndUpdate(supplierId, supplierData, {
     new: true,
     runValidators: true,
   }).exec();
 };
 
-export const deleteWorkshop = async (
-  workshopId: Types.ObjectId
+export const deleteSupplier = async (
+  supplierId: Types.ObjectId
 ): Promise<ISupplier | null> => {
-  return await Supplier.findByIdAndRemove(workshopId).exec();
+  return await Supplier.findByIdAndRemove(supplierId).exec();
 };
 
-export const getWorkshops = async (
+export const getSupplier = async (
   pagination: Pagination
 ): Promise<PaginationResult<ISupplier>> => {
   const offset = get_pagination_offset(pagination);
-  const [workshops, total] = await Promise.all([
+  const [supplier, total] = await Promise.all([
     Supplier.find().skip(offset).limit(pagination.limit).exec(),
     Supplier.countDocuments().exec(),
   ]);
 
-  return { values: workshops, total };
+  return { values: supplier, total };
 };

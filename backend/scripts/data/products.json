@@ -4,7 +4,7 @@
   },
   "name": "Handcrafted Wooden Chair",
   "description": "A beautiful and comfortable wooden chair crafted from high-quality oak.",
-  "workshopId": {
+  "supplierId": {
     "$oid": "6458182862af92db3e368822"
   },
   "msrpPrice": 150,
@@ -45,7 +45,7 @@
   },
   "name": "Elegant Wooden Table",
   "description": "A stylish and functional wooden table made from premium walnut.",
-  "workshopId": {
+  "supplierId": {
     "$oid": "6458182862af92db3e368822"
   },
   "msrpPrice": 400,
@@ -86,7 +86,7 @@
   },
   "name": "Wooden Picture Frame",
   "description": "A classic wooden picture frame crafted from maple with a polished finish.",
-  "workshopId": {
+  "supplierId": {
     "$oid": "6458182862af92db3e368822"
   },
   "msrpPrice": 40,
@@ -127,7 +127,7 @@
   },
   "name": "Ceramic Flower Vase",
   "description": "A beautifully designed pottery vase perfect for displaying fresh flowers.",
-  "workshopId": {
+  "supplierId": {
     "$oid": "6458182862af92db3e368822"
   },
   "msrpPrice": 80,
@@ -168,7 +168,7 @@
   },
   "name": "Decorative Pottery Bowl",
   "description": "A handcrafted pottery bowl with an intricate design, ideal for home decor.",
-  "workshopId": {
+  "supplierId": {
     "$oid": "6458182862af92db3e368822"
   },
   "msrpPrice": 100,
@@ -209,7 +209,7 @@
   },
   "name": "Pottery Coffee Mug",
   "description": "A unique and stylish coffee mug made from high-quality ceramic materials.",
-  "workshopId": {
+  "supplierId": {
     "$oid": "6458182862af92db3e368822"
   },
   "msrpPrice": 30,

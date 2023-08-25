@@ -1,15 +1,15 @@
 import { Document, Schema, Types, model } from "mongoose";
 
 export type RetailerRole = "retailer";
-export type WorkshopRole = "workshop";
+export type SupplierRole = "supplier";
 export type RootRole = "root";
-export type UserRole = RetailerRole | WorkshopRole | RootRole;
+export type UserRole = RetailerRole | SupplierRole | RootRole;
 
 export interface IUser extends Document {
   email: string;
   password?: string;
   fullName?: string;
-  role: RetailerRole | WorkshopRole;
+  role: RetailerRole | SupplierRole;
   supplierId?: Types.ObjectId;
   googleId?: string;
   facebookId?: string;
@@ -36,14 +36,14 @@ const UserSchema = new Schema<IUser>(
     },
     role: {
       type: String,
-      enum: ["retailer", "supplier", "root"], //workshop -> supplier; 
+      enum: ["retailer", "supplier", "root"],
       default: "retailer",
       required: true,
     },
     supplierId: {
       type: Schema.Types.ObjectId,
       default: null,
-      ref: "Workshop",
+      ref: "Supplier",
       required: false,
     },
     googleId: {

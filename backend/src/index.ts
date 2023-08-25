@@ -12,7 +12,7 @@ import { MESSAGES } from "./common/messages";
 
 import authRoutes from "./routes/authRoutes";
 import userRoutes from "./routes/userRoutes";
-import workshopRoutes from "./routes/supplierRoutes";
+import supplierRoutes from "./routes/supplierRoutes";
 import productRoutes from "./routes/productRoutes";
 
 const app: Express = express();
@@ -25,7 +25,7 @@ app.use(bodyParser.json());
 // Routes
 app.use("/api", authRoutes);
 app.use("/api/users", userRoutes);
-app.use("/api/workshops", workshopRoutes);
+app.use("/api/suppliers", supplierRoutes);
 app.use("/api/products", productRoutes);
 
 // Error handling middleware

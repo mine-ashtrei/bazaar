@@ -1,28 +1,28 @@
 import { Router } from "express";
-import * as workshopController from "../controllers/supplierController";
+import * as supplierController from "../controllers/supplierController";
 import {
-  createWorkshopValidation,
-  updateWorkshopValidation,
+  createSupplierValidation,
+  updateSupplierValidation,
 } from "../validators/supplierValidator";
 import { authenticated } from "../middlewares/authMiddleware";
 import { objectIdValidation, paginationValidation } from "../validators/common";
-import { workshopExists, isOwner } from "../middlewares/supplierMiddleware";
+import { supplierExists, isOwner } from "../middlewares/supplierMiddleware";
 
 const router = Router();
 
 router.use(authenticated);
-router.post("/", createWorkshopValidation, workshopController.createSupplier);
-router.get("/", paginationValidation, workshopController.getSuppliers);
+router.post("/", createSupplierValidation, supplierController.createSupplier);
+router.get("/", paginationValidation, supplierController.getSuppliers);
 
-router.use("/:id", objectIdValidation("id"), workshopExists);
+router.use("/:id", objectIdValidation("id"), supplierExists);
 
-router.get("/:id", workshopController.getSupplierById);
+router.get("/:id", supplierController.getSupplierById);
 router.put(
   "/:id",
-  updateWorkshopValidation,
+  updateSupplierValidation,
   isOwner,
-  workshopController.updateSupplierById
+  supplierController.updateSupplierById
 );
-router.delete("/:id", isOwner, workshopController.deleteSupplierById);
+router.delete("/:id", isOwner, supplierController.deleteSupplierById);
 
 export default router;

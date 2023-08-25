@@ -3,7 +3,7 @@ import { Document, Schema, Types, model } from "mongoose";
 export interface IProduct extends Document {
   name: string;
   description: string;
-  workshopId: Types.ObjectId;
+  supplierId: Types.ObjectId;
   categoryId: Types.ObjectId;
   msrpPrice: number;
   batchPricing: {
@@ -27,9 +27,9 @@ const ProductSchema = new Schema<IProduct>({
     type: String,
     required: true,
   },
-  workshopId: {
+  supplierId: {
     type: Schema.Types.ObjectId,
-    ref: "Workshop",
+    ref: "Supplier",
     required: true,
   },
   categoryId: {

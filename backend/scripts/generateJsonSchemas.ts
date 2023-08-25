@@ -17,7 +17,7 @@ import isEmail from "validator/lib/isEmail";
 import isLength from "validator/lib/isLength";
 
 // import { emailPasswordRules } from "../src/validators/userValidator";
-// import { createWorkshopRules } from "../src/validators/workshopValidator";
+// import { createSupplierRules } from "../src/validators/supplierValidator";
 import { StandardValidation } from "express-validator/src/context-items";
 
 const typesList = ["ReturnMessage"];
@@ -33,7 +33,7 @@ const mongooseSchemas = [
 
 const validationRules = {
   // emailPasswordRules: emailPasswordRules,
-  // createWorkshopRules: createWorkshopRules,
+  // createSupplierRules: createSupplierRules,
 };
 
 function unCapitalize(string: string): string {

@@ -14,15 +14,15 @@ export const retailerUserPassword = {
   password: "password123",
 };
 
-export const workshopUserPassword = {
+export const supplierUserPassword = {
   email: "seller@example.com",
   password: "password123",
-  role: "workshop",
+  role: "supplier",
 };
 
-export const testWorkshop = {
-  name: "Test Workshop",
-  description: "This is a test workshop.",
+export const testSupplier = {
+  name: "Test Supplier",
+  description: "This is a test supplier.",
   address: {
     street: "123 Test Street",
     city: "Test City",
@@ -32,7 +32,7 @@ export const testWorkshop = {
   },
   contact: {
     phone: "555-555-5555",
-    email: "testworkshop@example.com",
+    email: "testsupplier@example.com",
   },
 };
 
@@ -43,11 +43,11 @@ export const createUser = async (
   return ret.body;
 };
 
-export const createWorkshop = async (token: string): Promise<ISupplier> => {
+export const createSupplier = async (token: string): Promise<ISupplier> => {
   const res = await request(server)
-    .post("/api/workshops")
+    .post("/api/suppliers")
     .set("Authorization", `Bearer ${token}`)
-    .send(testWorkshop);
+    .send(testSupplier);
   return res.body;
 };
 

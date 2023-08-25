@@ -37,19 +37,19 @@ messages:
       summary: "Forbidden"
       userAction: "None"
       description: "Action forbiden for user"
-  workshop:
+  supplier:
     deleted:
-      summary: "Workshop deleted"
+      summary: "Supplier deleted"
       userAction: "None"
-      description: "Workshop deleted successfully"
+      description: "Supplier deleted successfully"
     not_found:
-      summary: "Workshop not found"
+      summary: "Supplier not found"
       userAction: "Retry"
-      description: "Workshop was not found in the database"
+      description: "Supplier was not found in the database"
     forbidden:
       summary: "Forbidden"
       userAction: "Retry"
-      description: "User does not have access to this workshop"
+      description: "User does not have access to this supplier"
   product:
     presigned_url:
       summary: "Failed generating url"

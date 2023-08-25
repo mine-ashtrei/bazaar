@@ -55,22 +55,22 @@ const AUTH_FORBIDDEN: ReturnMessage = {
       description: "Action forbiden for user",
 };
 
-const WORKSHOP_DELETED: ReturnMessage = {
-      summary: "Workshop deleted",
+const SUPPLIER_DELETED: ReturnMessage = {
+      summary: "Supplier deleted",
       userAction: "None",
-      description: "Workshop deleted successfully",
+      description: "Supplier deleted successfully",
 };
 
-const WORKSHOP_NOT_FOUND: ReturnMessage = {
-      summary: "Workshop not found",
+const SUPPLIER_NOT_FOUND: ReturnMessage = {
+      summary: "Supplier not found",
       userAction: "Retry",
-      description: "Workshop was not found in the database",
+      description: "Supplier was not found in the database",
 };
 
-const WORKSHOP_FORBIDDEN: ReturnMessage = {
+const SUPPLIER_FORBIDDEN: ReturnMessage = {
       summary: "Forbidden",
       userAction: "Retry",
-      description: "User does not have access to this workshop",
+      description: "User does not have access to this supplier",
 };
 
 const PRODUCT_PRESIGNED_URL: ReturnMessage = {
@@ -179,9 +179,9 @@ export const MESSAGES = {
   AUTH_REDIS: AUTH_REDIS,
   AUTH_RESET_PASSWORD_INVALID_TOKEN: AUTH_RESET_PASSWORD_INVALID_TOKEN,
   AUTH_FORBIDDEN: AUTH_FORBIDDEN,
-  SUPPLIER_DELETED: WORKSHOP_DELETED,
-  SUPPLIER_NOT_FOUND: WORKSHOP_NOT_FOUND,
-  WORKSHOP_FORBIDDEN: WORKSHOP_FORBIDDEN,
+  SUPPLIER_DELETED: SUPPLIER_DELETED,
+  SUPPLIER_NOT_FOUND: SUPPLIER_NOT_FOUND,
+  SUPPLIER_FORBIDDEN: SUPPLIER_FORBIDDEN,
   PRODUCT_PRESIGNED_URL: PRODUCT_PRESIGNED_URL,
   PRODUCT_NOT_FOUND: PRODUCT_NOT_FOUND,
   PRODUCT_FORBIDDEN: PRODUCT_FORBIDDEN,

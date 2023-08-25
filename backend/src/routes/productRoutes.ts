@@ -17,7 +17,7 @@ const router = Router();
 router.post(
   "/",
   authenticated,
-  hasRole(["workshop"]),
+  hasRole(["supplier"]),
   createProductValidation,
   productController.createProduct
 );
@@ -36,7 +36,7 @@ router.get(
 router.put(
   "/:productId",
   authenticated,
-  hasRole(["workshop"]),
+  hasRole(["supplier"]),
   objectIdValidation("productId"),
   productExists,
   isProductOwner,
@@ -46,7 +46,7 @@ router.put(
 router.delete(
   "/:productId",
   authenticated,
-  hasRole(["workshop"]),
+  hasRole(["supplier"]),
   objectIdValidation("productId"),
   productExists,
   isProductOwner,

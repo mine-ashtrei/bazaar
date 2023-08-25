@@ -3,9 +3,9 @@ import { startServer, closeServer, server } from "./setupTestApp";
 import { connectDB, disconnectDB } from "./setupTestDB";
 import {
   // retailerUserPassword,
-  workshopUserPassword,
+  supplierUserPassword,
   createUser,
-  createWorkshop,
+  createSupplier,
   loginUser,
 } from "./setupUser";
 import { IProduct } from "../src/models/productModel";
@@ -22,9 +22,9 @@ describe("Product Routes", () => {
     await connectDB();
     startServer();
 
-    await createUser(workshopUserPassword);
-    sellerToken = await loginUser(workshopUserPassword);
-    await createWorkshop(sellerToken);
+    await createUser(supplierUserPassword);
+    sellerToken = await loginUser(supplierUserPassword);
+    await createSupplier(sellerToken);
   });
 
   afterAll(async () => {

@@ -47,18 +47,18 @@ const properties: IValidationRules[] = [
   },
 ];
 
-const createWorkshopRules: ValidationChain[] =
+const createSupplierRules: ValidationChain[] =
   getCreateValidationRules(properties);
 
-const updateWorkshopRules: ValidationChain[] =
+const updateSupplierRules: ValidationChain[] =
   getUpdateValidationRules(properties);
 
-export const createWorkshopValidation = [
-  checkExact(createWorkshopRules),
+export const createSupplierValidation = [
+  checkExact(createSupplierRules),
   validate,
 ];
 
-export const updateWorkshopValidation = [
-  checkExact(updateWorkshopRules),
+export const updateSupplierValidation = [
+  checkExact(updateSupplierRules),
   validate,
 ];

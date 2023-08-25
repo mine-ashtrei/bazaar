@@ -27,13 +27,13 @@ export const getProducts = async (
   return { values, total };
 };
 
-export const getProductsByWorkshopId = async (
-  workshopId: Types.ObjectId,
+export const getProductsBySupplierId = async (
+  supplierId: Types.ObjectId,
   pagination: Pagination
 ): Promise<PaginationResult<IProduct>> => {
   const offset = get_pagination_offset(pagination);
   const [values, total] = await Promise.all([
-    Product.find({ workshopId: workshopId })
+    Product.find({ supplierId: supplierId })
       .skip(offset)
       .limit(pagination.limit)
       .exec(),

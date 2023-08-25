@@ -5,7 +5,7 @@
   "email": "retailer@example.com",
   "password": "$2b$10$JR6/xw7A3M/DSWF8dYv2M.m0bF94Th695PREU1FgqtMEkCimnIPIW",
   "role": "retailer",
-  "workshopId": null,
+  "supplierId": null,
   "createdAt": {
     "$date": {
       "$numberLong": "1683493903754"
@@ -21,10 +21,10 @@
   "_id": {
     "$oid": "6458144ff4eafa4db8242ba1"
   },
-  "email": "workshop@example.com",
+  "email": "supplier@example.com",
   "password": "$2b$10$uwRWfpH541kW3qgFl0qNEuuCvunWuyr/Vhkf951D7W1Q6jTCF6x3a",
-  "role": "workshop",
-  "workshopId": {
+  "role": "supplier",
+  "supplierId": {
     "$oid": "6458182862af92db3e368822"
   },
   "createdAt": {
