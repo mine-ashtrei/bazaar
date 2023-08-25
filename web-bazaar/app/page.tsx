@@ -2,13 +2,23 @@ import EmailForm from "../components/email";
 
 export default function Home() {
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen py-2">
-      <div className="w-1/3 mx-auto">
-        <h1 className="text-4xl font-bold text-center">
-          All Good Things Come to Those Who Wait...
-        </h1>
+    <>
+      {/* <div className="svg-background">
+        <img src="ashtrei/pattern.svg" className="" />
+      </div> */}
+      <div className="bg-container flex flex-col items-center justify-center min-h-screen">
+        {/* <img src="ashtrei/patternAsset_4.svg" alt="Logo" /> */}
+        <img src="ashtrei/logo.svg" alt="Logo" className="w-3/12 logo py-4" />
+        <h1 className="font-bold text-center uppercase mt-12">Comming soon</h1>
+        <div className="circle-container">
+          <div className="circle" style={{ opacity: 0.9 }}></div>
+          <div className="circle" style={{ opacity: 0.6 }}></div>
+          <div className="circle" style={{ opacity: 0.3 }}></div>
+        </div>
+        {/* <div className="w-1/3 mx-auto flex flex-col ">
+      </div> */}
+        <EmailForm></EmailForm>
       </div>
-      <EmailForm></EmailForm>
-    </div>
+    </>
   );
 }
