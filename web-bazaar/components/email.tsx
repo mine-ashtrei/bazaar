@@ -13,7 +13,7 @@ export default function EmailForm() {
   return (
     // <form onSubmit={handleSubmit} className="mt-8 flex flex-col items-center">
     <>
-      <form className="w-4/12 mt-12">
+      <form className="w-8/12 mt-8 md:w-4/12 md:mt-12">
         <input
           type="email"
           value={email}
