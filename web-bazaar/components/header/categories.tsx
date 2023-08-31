@@ -1,6 +1,6 @@
 import { Stack, Link } from "@mui/material";
 
-const CATEGIRUES = [
+const CATEGORIES = [
   "Men",
   "Women",
   "Home & Decor",
@@ -8,20 +8,19 @@ const CATEGIRUES = [
   "Jewelry",
 ];
 
-function Category(name: string) {
+type CategoryProps = {
+  name: string;
+};
+
+function Category({ name }: CategoryProps) {
   return (
     <Link color="inherit" noWrap href="#" underline="hover">
       {name}
     </Link>
   );
-  // <Chip size="small" label={name} />;
 }
 
 export default function Categories() {
-  const categories = [];
-  for (let category of CATEGIRUES) {
-    categories.push(Category(category));
-  }
   return (
     <Stack
       direction="row"
@@ -29,7 +28,9 @@ export default function Categories() {
       justifyContent="space-around"
       alignItems="center"
     >
-      {categories}
+      {CATEGORIES.map((category) => (
+        <Category key={category} name={category} />
+      ))}
     </Stack>
   );
 }
