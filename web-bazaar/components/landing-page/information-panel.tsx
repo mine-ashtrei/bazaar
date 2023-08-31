@@ -1,4 +1,4 @@
-import { Box, Stack, Divider } from "@mui/material";
+import { Box, Stack, Divider, Container, Grid, Hidden } from "@mui/material";
 import react from "react";
 
 type InformationPanelProps = {
@@ -11,26 +11,71 @@ export default function InformationPanel({ children }: InformationPanelProps) {
   if (childrenArray.length !== 2) {
     throw new Error("The component must have exactly two children.");
   }
-  const MARGIN = 10;
+
+  // make it responsive
   return (
-    <Stack
-      direction="row"
-      width={"100%"}
-      sx={{ backgroundColor: "#E4D6A7", height: "30vh" }}
+    <Grid
+      container
+      spacing={2}
+      sx={{ backgroundColor: "#E4D6A7", minHeight: "40vh" }}
       alignItems="center"
-      justifyContent="space-around"
+      justifyContent="space-evenly"
     >
-      <Box margin={MARGIN}>{children![0]}</Box>
-      <Divider
-        orientation="vertical"
-        sx={{
-          transform: "scaleY(0.8)",
-          //   borderRightWidth: 1,
-          borderColor: "black",
-        }}
-        flexItem
-      />
-      <Box margin={MARGIN}>{children![1]}</Box>
-    </Stack>
+      <Grid item xs={12} sm={5}>
+        <Box
+          display="flex"
+          height="100%"
+          alignItems="center"
+          justifyContent="center"
+        >
+          {children![0]}
+        </Box>
+      </Grid>
+      <Hidden smUp>
+        <Grid xs={12} sm={false}>
+          <Divider variant="middle" />
+        </Grid>
+      </Hidden>
+      <Hidden xsDown>
+        <Divider
+          orientation="vertical"
+          sx={{
+            transform: "scaleY(0.8)",
+            //   borderRightWidth: 1,
+            borderColor: "black",
+          }}
+          flexItem
+        />
+      </Hidden>
+      <Grid item xs={12} sm={5}>
+        <Box
+          display="flex"
+          height="100%"
+          alignItems="center"
+          justifyContent="center"
+        >
+          {children![1]}
+        </Box>
+      </Grid>
+    </Grid>
+    // <Stack
+    //   direction="row"
+    //   width={"100%"}
+    //   sx={{ backgroundColor: "#E4D6A7", height: "30vh" }}
+    //   alignItems="center"
+    //   justifyContent="space-around"
+    // >
+    //   <Box margin={MARGIN}>{children![0]}</Box>
+    //   <Divider
+    //     orientation="vertical"
+    //     sx={{
+    //       transform: "scaleY(0.8)",
+    //       //   borderRightWidth: 1,
+    //       borderColor: "black",
+    //     }}
+    //     flexItem
+    //   />
+    //   <Box margin={MARGIN}>{children![1]}</Box>
+    // </Stack>
   );
 }
