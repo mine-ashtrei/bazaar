@@ -7,7 +7,7 @@ import SearchBar from "./searchBar";
 
 export default function Header() {
   return (
-    <header className="fixed top-0 left-0 w-full bg-primary">
+    <header className="sticky top-0 left-0 w-full bg-primary">
       <div className="flex mt-2 justify-around items-center">
         <LogoHeader />
         <SearchBar variant="web" className="hidden md:flex" />
