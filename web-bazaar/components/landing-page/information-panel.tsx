@@ -12,7 +12,6 @@ export default function InformationPanel({ children }: InformationPanelProps) {
     throw new Error("The component must have exactly two children.");
   }
 
-  // make it responsive
   return (
     <Grid
       container
@@ -58,24 +57,5 @@ export default function InformationPanel({ children }: InformationPanelProps) {
         </Box>
       </Grid>
     </Grid>
-    // <Stack
-    //   direction="row"
-    //   width={"100%"}
-    //   sx={{ backgroundColor: "#E4D6A7", height: "30vh" }}
-    //   alignItems="center"
-    //   justifyContent="space-around"
-    // >
-    //   <Box margin={MARGIN}>{children![0]}</Box>
-    //   <Divider
-    //     orientation="vertical"
-    //     sx={{
-    //       transform: "scaleY(0.8)",
-    //       //   borderRightWidth: 1,
-    //       borderColor: "black",
-    //     }}
-    //     flexItem
-    //   />
-    //   <Box margin={MARGIN}>{children![1]}</Box>
-    // </Stack>
   );
 }
