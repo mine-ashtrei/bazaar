@@ -10,9 +10,10 @@ export default function Header() {
     <header className="fixed top-0 left-0 w-full bg-primary">
       <div className="flex mt-2 justify-around items-center">
         <LogoHeader />
-        <SearchBar />
+        <SearchBar variant="web" className="hidden md:flex" />
+        <SearchBar variant="mobile" className="md:hidden" />
         <LanguageSelector />
-        <SignInButton />
+        <SignInButton className="hidden md:block" />
         <SignUpButton />
       </div>
       <Categories />

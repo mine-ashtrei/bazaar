@@ -1,9 +1,26 @@
 import Image from "next/image";
 import SearchIcon from "../../public/icons/Search_light.svg";
+import { ClassNameProp } from "../common/types";
 
-export default function SearchBar() {
+type SearchBarProps = {
+  variant?: "web" | "mobile";
+} & ClassNameProp;
+
+export default function SearchBar({
+  className = "",
+  variant = "web",
+}: SearchBarProps) {
+  if (variant === "mobile") {
+    return (
+      <button className={`p-2 ${className}`}>
+        <Image priority src={SearchIcon} alt="Search" />
+      </button>
+    );
+  }
   return (
-    <div className="relative w-5/12 flex justify-end items-center">
+    <div
+      className={`relative w-5/12 flex justify-end items-center ${className}`}
+    >
       {/* Input */}
       <input
         type="text"
