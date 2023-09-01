@@ -1,19 +1,9 @@
-const CATEGORIES = [
-  "Men",
-  "Women",
-  "Home & Decor",
-  "Beauty & Wellness",
-  "Jewelry",
-];
+import { CATEGORIES, CategoryProps } from ".";
 
-type CategoryProps = {
-  name: string;
-};
-
-function Category({ name }: CategoryProps) {
+function Category({ category }: CategoryProps) {
   return (
     <a href="#" className="hover:underline">
-      {name}
+      {category.name}
     </a>
   );
 }
@@ -22,7 +12,7 @@ export default function CategoriesHeader() {
   return (
     <div className="bg-secondary mt-1 flex justify-evenly space-x-4">
       {CATEGORIES.map((category) => (
-        <Category key={category} name={category} />
+        <Category key={category.name} category={category} />
       ))}
     </div>
   );

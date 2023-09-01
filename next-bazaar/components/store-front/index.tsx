@@ -2,6 +2,7 @@ import InformationPanel from "../structure/informationPanel";
 import React from "react";
 import Image from "next/image";
 import Button from "../common/button";
+import CategoriesCarousel from "../categories/carousel";
 
 export default function StoreFront() {
   return (
@@ -20,6 +21,7 @@ export default function StoreFront() {
           <Button size="lg">Learn More</Button>
         </div>
       </InformationPanel>
+      <CategoriesCarousel />
       {/* Second */}
       <InformationPanel bg="accent">
         <Image
