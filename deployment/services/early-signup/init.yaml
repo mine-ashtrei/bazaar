@@ -1,0 +1,22 @@
+---
+- name: Init early-signup service
+  hosts: services
+  gather_facts: no
+
+  tasks:
+    - name: Create early-signup directory
+      file:
+        path: /home/{{ username }}/early-signup
+        state: directory
+        mode: "0700"
+
+    - name: Copy early-signup service
+      copy:
+        src: docker-compose.yaml
+        dest: /home/{{ username }}/early-signup/docker-compose.yaml
+        mode: "0600"
+
+    - name: Start early-signup service
+      docker_compose:
+        project_src: /home/{{ username }}/early-signup/
+        state: present

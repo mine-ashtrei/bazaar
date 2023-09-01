@@ -1,0 +1,15 @@
+---
+- name: Restart early-signup service
+  hosts: services
+  gather_facts: no
+
+  tasks:
+    - name: Stop early-signup service
+      docker_compose:
+        project_src: /home/{{ username }}/early-signup/
+        state: absent
+
+    - name: Start early-signup service
+      docker_compose:
+        project_src: /home/{{ username }}/early-signup/
+        state: present
