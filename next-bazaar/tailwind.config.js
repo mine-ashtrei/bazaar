@@ -13,34 +13,56 @@ module.exports = {
           "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
       },
       colors: {
-        primary: "#123456", // Example primary color
-        secondary: "#C1D5A4", // Green
-        accentPrimaryDark: "#E4D6A7",
-        accentPrimary: "#E7DFC6",
-        accentSecondary: "#2A3843",
-        accentTertiary: "#F2F5F7",
+        accentPrimary: {
+          dark: "#334126",
+          DEFAULT: "#c1d5a4",
+          50: "#f3f7ee",
+          100: "#e6eed9",
+          200: "#c1d5a4",
+          300: "#afc98d",
+          400: "#92b269",
+          500: "#74974b",
+          600: "#597739",
+          700: "#465c2f",
+          800: "#3a4b29",
+          900: "#334126",
+          950: "#192211",
+        },
+        primary: {
+          dark: "#E4D6A7",
+          DEFAULT: "#e7dfc6",
+          50: "#faf8f2",
+          100: "#f3efe1",
+          200: "#e7dfc6",
+          300: "#d5c69c",
+          400: "#c3aa74",
+          500: "#b79458",
+          600: "#a9804d",
+          700: "#8d6841",
+          800: "#72543a",
+          900: "#5d4631",
+          950: "#322418",
+        },
+        secondary: {
+          dark: "#314049",
+          DEFAULT: "#f2f5f7",
+          50: "#f2f5f7",
+          100: "#ebf0f3",
+          200: "#d4dee3",
+          300: "#adc2cc",
+          400: "#81a1af",
+          500: "#618596",
+          600: "#4d6c7c",
+          700: "#3f5765",
+          800: "#374b55",
+          900: "#314049",
+          950: "#212a30",
+        },
         accentQuaternary: "#CB769E",
         statusError: "#FF3E04",
         statusSuccess: "#3FA30A",
         statusWarning: "#D0D806",
       },
-      typography: (theme) => ({
-        DEFAULT: {
-          css: {
-            color: theme("colors.primary"),
-            // ... other styles
-            h1: {
-              color: theme("colors.secondary"),
-              // ... other styles
-            },
-            h2: {
-              color: theme("colors.primary"),
-              // ... other styles
-            },
-            // ... other typography styles
-          },
-        },
-      }),
     },
   },
   plugins: [

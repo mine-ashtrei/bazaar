@@ -13,7 +13,11 @@ export default function LanguageSelector() {
       {({ open }) => (
         <>
           <div className="relative">
-            <Listbox.Button className="block w-16 p-2 border rounded-md bg-white shadow-sm focus:ring focus:ring-opacity-50">
+            <Listbox.Button
+              className="
+              block w-16 p-2 rounded-md bg-secondary shadow-sm 
+              focus:ring-2 focus:ring-primary-500 focus:ring-opacity-50 focus:border-secondary"
+            >
               <div className="flex items-center space-x-2">
                 <span>{selectedLanguage}</span>
                 <div className="transform -rotate-90">

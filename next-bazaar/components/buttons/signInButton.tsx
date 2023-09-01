@@ -1,3 +1,7 @@
 export default function SignInButton() {
-  return <button className="underline">Sign In</button>;
+  return (
+    <a href="#" className="underline">
+      Sign In
+    </a>
+  );
 }

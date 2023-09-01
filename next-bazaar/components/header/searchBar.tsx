@@ -3,11 +3,14 @@ import SearchIcon from "../../public/icons/Search_light.svg";
 
 export default function SearchBar() {
   return (
-    <div className="relative w-1/2 flex justify-end items-center">
+    <div className="relative w-5/12 flex justify-end items-center">
       {/* Input */}
       <input
         type="text"
-        className="w-full h-10 pl-4 pr-10 border-0 rounded focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-accentPrimaryDark"
+        className="w-full h-10 
+        pl-4 pr-10 border-0 rounded 
+        focus:outline-none focus:ring-2 
+        focus:ring-offset-1 focus:ring-primary-500"
       />
       <Image
         priority
