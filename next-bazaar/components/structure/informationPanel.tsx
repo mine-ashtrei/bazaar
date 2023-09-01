@@ -1,15 +1,16 @@
 import react from "react";
 
-type InformationPanelBg = "primary" | "accent";
+type InformationPanelBg = "primary" | "accent" | "accent-secondary";
 
 const bgMapping: Record<InformationPanelBg, string | undefined> = {
   primary: "bg-primary-dark",
   accent: "bg-accentPrimary",
+  "accent-secondary": "bg-accentSecondary",
 };
 
 export default function InformationPanel({
   children,
-  bg,
+  bg = "primary",
 }: {
   children: react.ReactNode;
   bg?: InformationPanelBg;

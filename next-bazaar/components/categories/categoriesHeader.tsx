@@ -18,7 +18,7 @@ function Category({ name }: CategoryProps) {
   );
 }
 
-export default function Categories() {
+export default function CategoriesHeader() {
   return (
     <div className="bg-secondary mt-1 flex justify-evenly space-x-4">
       {CATEGORIES.map((category) => (

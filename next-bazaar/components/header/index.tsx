@@ -1,7 +1,7 @@
 import LanguageSelector from "../buttons/languageSelector";
 import SignInButton from "../buttons/signInButton";
 import SignUpButton from "../buttons/signUpButton";
-import Categories from "./categories";
+import CategoriesHeader from "../categories/categoriesHeader";
 import LogoHeader from "./logoHeader";
 import SearchBar from "./searchBar";
 
@@ -16,7 +16,7 @@ export default function Header() {
         <SignInButton className="hidden md:block" />
         <SignUpButton />
       </div>
-      <Categories />
+      <CategoriesHeader />
     </header>
   );
 }
