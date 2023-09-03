@@ -3,6 +3,7 @@ import React from "react";
 import Image from "next/image";
 import Button from "../common/button";
 import CategoriesCarousel from "../categories/carousel";
+import SupplierCarousel from "../suppliers/carousel";
 
 export default function StoreFront() {
   return (
@@ -45,6 +46,7 @@ export default function StoreFront() {
           </p>
         </div>
       </InformationPanel>
+      <SupplierCarousel />
       {/* Third */}
       <InformationPanel bg="accent-secondary">
         <div className="flex flex-col items-start justify-center">

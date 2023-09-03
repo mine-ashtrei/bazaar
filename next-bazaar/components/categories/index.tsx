@@ -1,4 +1,4 @@
-export const CATEGORIES = [
+export const CATEGORIES: Category[] = [
   {
     name: "Men",
     imgUrl: "/categories-mock/first.jpg",

@@ -25,7 +25,7 @@ export default function SearchBar({
       <input
         type="text"
         className="w-full h-10 
-        pl-4 pr-10 border-0 rounded 
+        ltr:pl-4 ltr:pr-10 rtl:pr-4 rtl-pl-10 border-0 rounded 
         focus:outline-none focus:ring-2 
         focus:ring-offset-1 focus:ring-primary-500"
       />
@@ -33,7 +33,7 @@ export default function SearchBar({
         priority
         src={SearchIcon}
         alt={""}
-        className="absolute mr-2 w-10"
+        className="absolute ltr:mr-2 rtl:ml-2 w-10"
       />
     </div>
   );

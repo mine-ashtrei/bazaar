@@ -1,23 +1,18 @@
-import { CategoryProps } from ".";
+import { Category } from ".";
 import Image from "next/image";
 import Link from "next/link";
 
-export default function CategoryCard({ category }: CategoryProps) {
+export default function CategoryCard({ item }: { item: Category }) {
   return (
     // <Link href={`/path-to-page/${category.name}`}>
     <div className="flex items-start flex-col justify-start m-2">
       <Link href="#" passHref>
-        <div className="relative cursor-pointer hover:opacity-90 transition">
-          <Image
-            src={category.imgUrl}
-            width={245}
-            height={309}
-            alt={category.name}
-          />
+        <div className="cursor-pointer hover:opacity-90 transition">
+          <Image src={item.imgUrl} width={245} height={309} alt={item.name} />
         </div>
       </Link>
       <div className="prose self-center">
-        <h3>{category.name}</h3>
+        <h3>{item.name}</h3>
       </div>
     </div>
   );
