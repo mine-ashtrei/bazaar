@@ -1,5 +1,5 @@
 "use client";
-import { ClassNameProp } from "./types";
+import { ClassNameProp } from "../types";
 import React from "react";
 
 type ButtonSize = "xl" | "lg" | "md" | "auto" | "auto-lg";

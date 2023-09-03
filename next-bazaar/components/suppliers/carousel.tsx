@@ -8,7 +8,7 @@ export default function SupplierCarousel() {
     <Carousel
       items={SUPPLIERS}
       CardComponent={SupplierCard}
-      title="Featured Local Sellers"
+      title="بائعين متميزين"
     />
   );
 }

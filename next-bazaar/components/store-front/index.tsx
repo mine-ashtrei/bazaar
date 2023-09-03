@@ -1,7 +1,7 @@
 import InformationPanel from "../structure/informationPanel";
 import React from "react";
 import Image from "next/image";
-import Button from "../common/button";
+import Button from "../common/buttons/button";
 import CategoriesCarousel from "../categories/carousel";
 import SupplierCarousel from "../suppliers/carousel";
 
@@ -11,15 +11,15 @@ export default function StoreFront() {
       {/* First */}
       <InformationPanel>
         <div className="prose-2xl">
-          <h3>Quality products are just around the corner.</h3>
+          <h3>أشترى! كل اللى عايزة لمشروعك بالجملة</h3>
         </div>
         <div className="flex flex-col items-start justify-center">
           <p>
-            Ashtrei connects local retailers and wholesalers directly to provide
-            the best quality products and selling experiences for small business
-            owners. Learn more
+            يقوم أشتري بتوصيل تجار التجزئة بالمصنعين والحرفيين المحليين مباشرة
+            لتقديم أفضل المنتجات عالية الجودة وتجارب البيع لأصحاب الأعمال
+            الصغيرة.
           </p>
-          <Button size="lg">Learn More</Button>
+          <Button size="lg">أعرف المزيد</Button>
         </div>
       </InformationPanel>
       <CategoriesCarousel />
@@ -33,16 +33,16 @@ export default function StoreFront() {
         />
         <div className="flex flex-col items-start justify-center">
           <div className="prose">
-            <h3>Quality products are just around the corner.</h3>
+            <h3>تسوق أينما كنت</h3>
           </div>
           <p>
-            At Ashtrei, we are dedicated to providing quality products that
-            exceed our customers' expectations. With a commitment to excellence,
-            we strive to ensure that the finest products are always just around
-            the corner, ready to enhance and improve the lives of our valued
-            customers. By consistently ensuring exceptional quality, innovative
-            designs, and superior craftsmanship, we aim to be the trusted choice
-            for individuals seeking top-tier products in retail.
+            في أشتري، نحن ملتزمون بتقديم اكبر مجموعه من المصنعين المستقلين و
+            الحرفيين الذين يقدمون منتجات عالية الجودة تتجاوز توقعات عملائنا. مع
+            التزامنا بالتميز، فنحن نسعى جاهدين لضمان أن تكون أفضل المنتجات
+            دائمًا في متناول اليد، وعلى استعداد لتسهيل وتحسين حياة عملائنا
+            الكرام. من خلال ضمان الجودة الاستثنائية والتصميمات المبتكرة والحرفية
+            الفائقة باستمرار، هدفنا اننا نكون الخيار الموثوق به للأفراد الذين
+            يبحثون عن منتجات عالية الجوده في مجال البيع بالتجزئة.
           </p>
         </div>
       </InformationPanel>
@@ -51,18 +51,17 @@ export default function StoreFront() {
       <InformationPanel bg="accent-secondary">
         <div className="flex flex-col items-start justify-center">
           <div className="prose">
-            <h3>Join a community of local sellers and artisans</h3>
+            <h3>انضم إلى مجتمع البائعين والحرفيين المحليين</h3>
           </div>
           <p>
-            Join us today and unlock a world of possibilities. Join Ashtrei so
-            you can elevate your product experience, enjoy exclusive benefits,
-            and become part of a thriving community that appreciates and values
-            quality products. Experience the true meaning of exceptional
-            craftsmanship and innovation, as you discover the countless
-            opportunities that await you as a member of our distinguished
-            community.
+            انضم إلينا اليوم وافتح عالمًا من الإمكانيات. انضم إلى أشتري حتى
+            تتمكن من تجربة منتجك والاستمتاع بالمزايا الحصرية وتصبح جزءًا من
+            مجتمع يحتوي علي منتجات عالية الجودة ويقدرها. اختبر المعنى الحقيقي
+            للحرفية الاستثنائية والابتكار، حيث تكتشف الفرص التي تنتظرك كعضو في
+            مجتمعنا المتميز.
           </p>
         </div>
+
         <Image
           src="/landing-page/second.jpg"
           width={528}
@@ -74,20 +73,20 @@ export default function StoreFront() {
       <InformationPanel bg="primary">
         <div className="flex flex-col items-start justify-center">
           <div className="prose">
-            <h3>Become a part of something great</h3>
+            <h3>كن جزءً من مجتمع أشتري </h3>
           </div>
           <p>
-            Join us today and unlock a world of possibilities. Join Ashtrei so
-            you can elevate your product experience, enjoy exclusive benefits,
-            and become part of a thriving community that appreciates and values
-            quality products.
+            انضم إلينا اليوم وافتح عالمًا من الإمكانيات. انضم إلى أشتري حتى
+            تتمكن من تجربة منتجك والاستمتاع بالمزايا الحصرية وتصبح جزءًا من
+            مجتمع يقدر منتجات محلية عالية الجودة و اختبر افضل تجربة تسوق
+            إليكتروني .
           </p>
           <div className="flex flex-row ">
             <Button size="md" color="secondary" className="mx-2">
-              Become a Seller
+              سجل كمشترى
             </Button>
             <Button size="md" className="mx-2">
-              Sign Up to Shop
+              سجل كبائع
             </Button>
           </div>
         </div>

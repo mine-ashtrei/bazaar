@@ -15,7 +15,7 @@ export default function SupplierCard({ item }: { item: Supplier }) {
           justify-start
           items-baseline
           hover:bg-gray-100 
-          dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700"
+          "
       >
         <Image src={item.imgUrl} width={370} height={200} alt={item.name} />
 

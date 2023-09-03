@@ -7,7 +7,7 @@ export default function CategoriesCarousel() {
     <Carousel
       items={CATEGORIES}
       CardComponent={CategoryCard}
-      title="Shop The Latest"
+      title="تسوق الأحدث"
     />
   );
 }

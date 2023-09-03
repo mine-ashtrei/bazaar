@@ -1,22 +1,22 @@
 export const CATEGORIES: Category[] = [
   {
-    name: "Men",
+    name: "حريمى",
     imgUrl: "/categories-mock/first.jpg",
   },
   {
-    name: "Women",
+    name: "رجالى",
     imgUrl: "/categories-mock/first.jpg",
   },
   {
-    name: "Home & Decor",
+    name: "الصحة والجمال",
     imgUrl: "/categories-mock/first.jpg",
   },
   {
-    name: "Beauty & Wellness",
+    name: "المنزل والديكور",
     imgUrl: "/categories-mock/first.jpg",
   },
   {
-    name: "Jewelry",
+    name: "إكسسوارات",
     imgUrl: "/categories-mock/first.jpg",
   },
 ];

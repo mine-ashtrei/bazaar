@@ -4,7 +4,7 @@ import { ClassNameProp } from "../common/types";
 export default function SignInButton({ className }: ClassNameProp) {
   return (
     <a href="#" className={`underline ${className}`}>
-      Sign In
+      تسجيل الدخول
     </a>
   );
 }

@@ -20,7 +20,7 @@ export default function RootLayout({
     // <html lang="en">
     //   <body className={inter.className}>{children}</body>
     // </html>
-    <html dir="rtl">
+    <html dir="rtl" className="ligth">
       <body className={inter.className}>
         <div className="flex flex-col min-h-screen">
           <Header />
