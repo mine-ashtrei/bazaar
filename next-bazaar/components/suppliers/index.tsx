@@ -1,4 +1,5 @@
 export type Supplier = {
+  supplierId: string;
   name: string;
   imgUrl: string;
   categories: string[];
@@ -12,24 +13,27 @@ export type SupplierProps = {
 
 export const SUPPLIERS: Supplier[] = [
   {
-    name: "C-Town Ceramics",
+    supplierId: "1",
+    name: "سى - تاون للسيراميك",
     imgUrl: "/suppliers-mock/first.jpg",
-    categories: ["Jewelry", "Home & Decor"],
-    geography: ["Anywhere", "Egypt"],
+    categories: ["المنزل والديكور", "إكسسوارات"],
+    geography: ["القاهرة ", " مصر"],
     rating: 3.4,
   },
   {
-    name: "Body Care International",
-    imgUrl: "/suppliers-mock/first.jpg",
-    categories: ["Beauty & Wellness", "Women"],
-    geography: ["Anywhere", "Egypt"],
+    supplierId: "2",
+    name: "بودى كير انترناشونال",
+    imgUrl: "/suppliers-mock/second.jpg",
+    categories: ["الصحه والجمال", "حريمى"],
+    geography: ["القاهرة ", " مصر"],
     rating: 5,
   },
   {
-    name: "Dapper Denim",
-    imgUrl: "/suppliers-mock/first.jpg",
-    categories: ["Men", "Women"],
-    geography: ["Anywhere", "Egypt"],
+    supplierId: "3",
+    name: "جوكار جينز",
+    imgUrl: "/suppliers-mock/third.jpg",
+    categories: ["حريمى", "رجال"],
+    geography: ["القاهرة ", " مصر"],
     rating: 4.2,
   },
 ];

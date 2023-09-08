@@ -4,6 +4,7 @@ import Image from "next/image";
 import Button from "../common/buttons/button";
 import CategoriesCarousel from "../categories/carousel";
 import SupplierCarousel from "../suppliers/carousel";
+import ProductCarousel from "../products/carousel";
 
 export default function StoreFront() {
   return (
@@ -70,6 +71,7 @@ export default function StoreFront() {
         />
       </InformationPanel>
       {/* Fourth */}
+      <ProductCarousel />
       <InformationPanel bg="primary">
         <div className="flex flex-col items-start justify-center">
           <div className="prose">

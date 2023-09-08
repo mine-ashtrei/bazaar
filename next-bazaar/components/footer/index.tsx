@@ -23,6 +23,7 @@ export default function Footer() {
         <div className="space-y-2">
           <h4 className="font-bold">تواصل معنا</h4>
           <div className="flex gap-2">
+            {/* TODO: make the icons bolder programatically */}
             <IconButton src="/icons/social/facebook.svg" href="#" />
             <IconButton src="/icons/social/instagram.svg" href="#" />
           </div>

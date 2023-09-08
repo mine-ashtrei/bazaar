@@ -14,7 +14,7 @@ export default function Carousel<T>({
       <div className="prose mb-2">
         <h3>{title}</h3>
       </div>
-      <div className="flex flex-row justify-evenly ">
+      <div className="flex flex-row justify-evenly gap-8">
         {items.map((item, index) => (
           <CardComponent key={index} item={item} />
         ))}
