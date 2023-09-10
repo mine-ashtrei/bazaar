@@ -35,6 +35,12 @@ app.use((err: Error, _req: Request, res: Response, _next: NextFunction) => {
   res.status(500).json(MESSAGES.ERROR_SERVER);
 });
 
+// Catch-all handler for unknown routes
+app.use((_req: Request, res: Response) => {
+  console.log("BLBLBL");
+  res.status(404).json({ error: "Endpoint not found" });
+});
+
 const startDev = async () => {
   await connectDB();
   await connectRedis();

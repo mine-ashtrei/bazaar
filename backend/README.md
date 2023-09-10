@@ -18,3 +18,7 @@ To start reddis on macbook
 
 In service aruncam toate erorile de tipul 500 si le logam
 In controllere dam mai departe erorile din service cu 500
+
+To start reddis on macbook
+
+- https://redis.io/docs/getting-started/installation/install-redis-on-mac-os/
