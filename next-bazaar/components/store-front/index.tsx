@@ -6,8 +6,15 @@ import CategoriesCarousel from "../categories/carousel";
 import SupplierCarousel from "../suppliers/carousel";
 import ProductCarousel from "../products/carousel";
 import { Category } from "../../lib/categories";
+import { Supplier } from "../../lib/suppliers";
 
-export default function StoreFront({ categories }: { categories: Category[] }) {
+export default function StoreFront({
+  categories,
+  suppliers,
+}: {
+  categories: Category[];
+  suppliers: Supplier[];
+}) {
   return (
     <React.Fragment>
       {/* First */}
@@ -48,7 +55,7 @@ export default function StoreFront({ categories }: { categories: Category[] }) {
           </p>
         </div>
       </InformationPanel>
-      <SupplierCarousel />
+      <SupplierCarousel suppliers={suppliers} />
       {/* Third */}
       <InformationPanel bg="accent-secondary">
         <div className="flex flex-col items-start justify-center">
