@@ -12,11 +12,20 @@ export type Product = {
   }[];
   availableQuantity: number;
   images: string[];
-  createdAt: Date;
-  updatedAt: Date;
+  createdAt: string;
+  updatedAt: string;
 };
 
-export const PRODUCTS: Product[] = [
+export const products = {
+  getById: async (id: string): Promise<Product | undefined> => {
+    return PRODUCTS.find((cat) => cat.supplierId === id);
+  },
+  getAll: async (): Promise<Product[]> => {
+    return PRODUCTS;
+  },
+};
+
+const PRODUCTS: Product[] = [
   {
     id: "1",
     name: "خاتم ذهب",
@@ -30,8 +39,8 @@ export const PRODUCTS: Product[] = [
     ],
     availableQuantity: 100,
     images: ["/products-mock/first.jpg"],
-    createdAt: new Date(),
-    updatedAt: new Date(),
+    createdAt: "2023-09-13 12:35:37 UTC+0000",
+    updatedAt: "2023-09-13 12:36:37 UTC+0000",
   },
   {
     id: "2",
@@ -46,8 +55,8 @@ export const PRODUCTS: Product[] = [
     ],
     availableQuantity: 200,
     images: ["/products-mock/first.jpg"],
-    createdAt: new Date(),
-    updatedAt: new Date(),
+    createdAt: "2023-09-13 12:36:37 UTC+0000",
+    updatedAt: "2023-09-13 12:37:37 UTC+0000",
   },
   {
     id: "3",
@@ -62,8 +71,8 @@ export const PRODUCTS: Product[] = [
     ],
     availableQuantity: 150,
     images: ["/products-mock/first.jpg"],
-    createdAt: new Date(),
-    updatedAt: new Date(),
+    createdAt: "2023-09-13 12:38:37 UTC+0000",
+    updatedAt: "2023-09-13 12:39:37 UTC+0000",
   },
   {
     id: "4",
@@ -78,8 +87,8 @@ export const PRODUCTS: Product[] = [
     ],
     availableQuantity: 80,
     images: ["/products-mock/first.jpg"],
-    createdAt: new Date(),
-    updatedAt: new Date(),
+    createdAt: "2023-09-13 12:31:37 UTC+0000",
+    updatedAt: "2023-09-13 12:32:37 UTC+0000",
   },
   {
     id: "5",
@@ -94,7 +103,7 @@ export const PRODUCTS: Product[] = [
     ],
     availableQuantity: 300,
     images: ["/products-mock/first.jpg"],
-    createdAt: new Date(),
-    updatedAt: new Date(),
+    createdAt: "2023-09-13 12:33:37 UTC+0000",
+    updatedAt: "2023-09-13 12:34:37 UTC+0000",
   },
 ];

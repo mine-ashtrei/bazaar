@@ -3,22 +3,27 @@ import type { InferGetStaticPropsType, GetStaticProps } from "next";
 import API from "../lib";
 import { useCategories } from "../components/categories/categoriesContext";
 import { Supplier } from "../lib/suppliers";
+import { Product, products } from "../lib/products";
 
 export const getStaticProps = (async () => {
   const suppliers = await API.suppliers.getAll();
-  return { props: { suppliers } };
+  const products = await API.products.getAll();
+  return { props: { suppliers, products } };
 }) satisfies GetStaticProps<{
   suppliers: Supplier[];
+  products: Product[];
 }>;
 
 export default function Home({
   suppliers,
+  products,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
   const categoriesContext = useCategories();
   return (
     <StoreFront
       categories={categoriesContext.categories}
       suppliers={suppliers}
+      products={products}
     />
   );
 }

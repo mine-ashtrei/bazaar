@@ -1,12 +1,12 @@
-import { PRODUCTS } from ".";
 import ProductCard from "./card";
 import Carousel from "../structure/carousel";
+import { Product } from "../../lib/products";
 
-export default function ProductCarousel() {
+export default function ProductCarousel({ products }: { products: Product[] }) {
   // TODO: for small screens create a carousel to swipe through
   return (
     <Carousel
-      items={PRODUCTS.slice(0, 4)}
+      items={products}
       CardComponent={ProductCard}
       title="بائعين متميزين"
     />

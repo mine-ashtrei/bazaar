@@ -7,13 +7,16 @@ import SupplierCarousel from "../suppliers/carousel";
 import ProductCarousel from "../products/carousel";
 import { Category } from "../../lib/categories";
 import { Supplier } from "../../lib/suppliers";
+import { Product } from "../../lib/products";
 
 export default function StoreFront({
   categories,
   suppliers,
+  products,
 }: {
   categories: Category[];
   suppliers: Supplier[];
+  products: Product[];
 }) {
   return (
     <React.Fragment>
@@ -79,7 +82,8 @@ export default function StoreFront({
         />
       </InformationPanel>
       {/* Fourth */}
-      <ProductCarousel />
+      {/* Maybe put products based on screen size */}
+      <ProductCarousel products={products} />
       <InformationPanel bg="primary">
         <div className="flex flex-col items-start justify-center">
           <div className="prose">
