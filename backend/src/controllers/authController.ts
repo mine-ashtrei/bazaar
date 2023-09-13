@@ -65,10 +65,16 @@ export const loginGoogleUser = async (
 
 export const refreshToken = async (
   _req: Request,
-  _res: Response,
-  _next: NextFunction
+  res: Response,
+  next: NextFunction
 ) => {
-  throw new Error("Not Implemented");
+  try {
+    await redisService.deleteLoginToken(res.locals.user!.id);
+    const token = await authService.createToken(res.locals.user!);
+    res.status(200).json({ token });
+  } catch (error) {
+    next(error);
+  }
 };
 
 export const logout = async (

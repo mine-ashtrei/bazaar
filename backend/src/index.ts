@@ -37,7 +37,7 @@ app.use((err: Error, _req: Request, res: Response, _next: NextFunction) => {
 
 // Catch-all handler for unknown routes
 app.use((_req: Request, res: Response) => {
-  console.log("BLBLBL");
+  console.log("Endpoint not found");
   res.status(404).json({ error: "Endpoint not found" });
 });
 
