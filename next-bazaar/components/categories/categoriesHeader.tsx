@@ -1,6 +1,6 @@
-import { CATEGORIES, CategoryProps } from ".";
+import { Category } from "../../lib/categories";
 
-function Category({ category }: CategoryProps) {
+function Category({ category }: { category: Category }) {
   return (
     <a href="#" className="hover:underline">
       {category.name}
@@ -8,10 +8,14 @@ function Category({ category }: CategoryProps) {
   );
 }
 
-export default function CategoriesHeader() {
+export default function CategoriesHeader({
+  categories,
+}: {
+  categories: Category[];
+}) {
   return (
     <div className="bg-secondary mt-1 flex justify-evenly space-x-4">
-      {CATEGORIES.map((category) => (
+      {categories.map((category) => (
         <Category key={category.name} category={category} />
       ))}
     </div>

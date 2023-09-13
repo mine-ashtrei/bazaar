@@ -1,6 +1,6 @@
-import { Category } from ".";
 import Image from "next/image";
 import Link from "next/link";
+import { Category } from "../../lib/categories";
 
 export default function CategoryCard({ item }: { item: Category }) {
   return (

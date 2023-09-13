@@ -5,8 +5,9 @@ import Button from "../common/buttons/button";
 import CategoriesCarousel from "../categories/carousel";
 import SupplierCarousel from "../suppliers/carousel";
 import ProductCarousel from "../products/carousel";
+import { Category } from "../../lib/categories";
 
-export default function StoreFront() {
+export default function StoreFront({ categories }: { categories: Category[] }) {
   return (
     <React.Fragment>
       {/* First */}
@@ -23,7 +24,7 @@ export default function StoreFront() {
           <Button size="lg">أعرف المزيد</Button>
         </div>
       </InformationPanel>
-      <CategoriesCarousel />
+      <CategoriesCarousel categories={categories} />
       {/* Second */}
       <InformationPanel bg="accent">
         <Image

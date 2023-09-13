@@ -3,7 +3,7 @@ import { ClassNameProp } from "../types";
 import React from "react";
 
 type ButtonSize = "xl" | "lg" | "md" | "auto" | "auto-lg";
-type ButtonColor = "primary" | "secondary";
+type ButtonColor = "primary" | "secondary" | "underline";
 
 const sizeMapping: Record<ButtonSize, string> = {
   xl: "w-[480px] px-4",
@@ -16,9 +16,10 @@ const sizeMapping: Record<ButtonSize, string> = {
 const colorMapping: Record<ButtonColor, string> = {
   primary: "bg-secondary-dark hover:bg-secondary-800 text-white",
   secondary: "bg-secondary hover:bg-secondary-100 text-black",
+  underline: "underline ",
 };
 
-type ButtonProps = {
+export type ButtonProps = {
   size?: ButtonSize;
   color?: ButtonColor;
   onClick?: () => void;
