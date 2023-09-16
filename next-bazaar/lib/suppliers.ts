@@ -3,7 +3,7 @@ export type Supplier = {
   name: string;
   imgUrl: string;
   categories: string[];
-  geography: string[];
+  // geography: string[];
   rating: number;
 };
 
@@ -17,7 +17,7 @@ const SUPPLIERS: Supplier[] = [
     name: "سى - تاون للسيراميك",
     imgUrl: "/suppliers-mock/first.jpg",
     categories: ["المنزل والديكور", "إكسسوارات"],
-    geography: ["القاهرة ", " مصر"],
+    // geography: ["القاهرة ", " مصر"],
     rating: 3.4,
   },
   {
@@ -25,7 +25,7 @@ const SUPPLIERS: Supplier[] = [
     name: "بودى كير انترناشونال",
     imgUrl: "/suppliers-mock/second.jpg",
     categories: ["الصحه والجمال", "حريمى"],
-    geography: ["القاهرة ", " مصر"],
+    // geography: ["القاهرة ", " مصر"],
     rating: 5,
   },
   {
@@ -33,7 +33,7 @@ const SUPPLIERS: Supplier[] = [
     name: "جوكار جينز",
     imgUrl: "/suppliers-mock/third.jpg",
     categories: ["حريمى", "رجال"],
-    geography: ["القاهرة ", " مصر"],
+    // geography: ["القاهرة ", " مصر"],
     rating: 4.2,
   },
 ];
