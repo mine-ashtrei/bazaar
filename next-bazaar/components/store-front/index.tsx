@@ -3,11 +3,12 @@ import React from "react";
 import Image from "next/image";
 import Button from "../common/buttons/button";
 import CategoriesCarousel from "../categories/carousel";
-import SupplierCarousel from "../suppliers/carousel";
+import SupplierCarousel from "../suppliers/threeItemsSupplier";
 import ProductCarousel from "../products/carousel";
 import { Category } from "../../lib/categories";
 import { Supplier } from "../../lib/suppliers";
 import { Product } from "../../lib/products";
+import ThreeSuppliers from "../suppliers/threeItemsSupplier";
 
 export default function StoreFront({
   categories,
@@ -58,7 +59,7 @@ export default function StoreFront({
           </p>
         </div>
       </InformationPanel>
-      <SupplierCarousel suppliers={suppliers} />
+      <ThreeSuppliers suppliers={suppliers} />
       {/* Third */}
       <InformationPanel bg="accent-secondary">
         <div className="flex flex-col items-start justify-center">
