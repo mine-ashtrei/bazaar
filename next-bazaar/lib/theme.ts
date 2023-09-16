@@ -10,7 +10,7 @@ export const themeOptions = createTheme({
       main: "#314049",
     },
     secondary: {
-      main: "#c1d5a4",
+      main: "#ff5",
     },
     desertDark: {
       main: desertColorDark,

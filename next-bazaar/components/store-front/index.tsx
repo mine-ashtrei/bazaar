@@ -1,7 +1,7 @@
 import InformationPanel from "../structure/informationPanel";
 import React from "react";
 import Image from "next/image";
-import Button from "../common/buttons/button";
+// import Button from "../common/buttons/button";
 import CategoriesCarousel from "../categories/carousel";
 import SupplierCarousel from "../suppliers/threeItemsSupplier";
 import ProductCarousel from "../products/carousel";
@@ -9,7 +9,8 @@ import { Category } from "../../lib/categories";
 import { Supplier } from "../../lib/suppliers";
 import { Product } from "../../lib/products";
 import ThreeSuppliers from "../suppliers/threeItemsSupplier";
-import { useTheme } from "@mui/material";
+import { Button, Stack, Typography, useTheme } from "@mui/material";
+import { ButtonLg, ButtonMd } from "../common/buttons/button";
 
 export default function StoreFront({
   categories,
@@ -25,17 +26,20 @@ export default function StoreFront({
     <React.Fragment>
       {/* First */}
       <InformationPanel backgroundColor={theme.palette.desertDark}>
-        <div className="prose-2xl">
-          <h3>أشترى! كل اللى عايزة لمشروعك بالجملة</h3>
-        </div>
-        <div className="flex flex-col items-start justify-center">
-          <p>
+        <Typography variant="h3">
+          أشترى! كل اللى عايزة لمشروعك بالجملة
+        </Typography>
+        <Stack justifyContent="center" alignItems={"start"} spacing={2}>
+          <Typography variant="body1">
             يقوم أشتري بتوصيل تجار التجزئة بالمصنعين والحرفيين المحليين مباشرة
             لتقديم أفضل المنتجات عالية الجودة وتجارب البيع لأصحاب الأعمال
             الصغيرة.
-          </p>
-          <Button size="lg">أعرف المزيد</Button>
-        </div>
+          </Typography>
+          {/* Learn More */}
+          <Button variant="contained" sx={{ ...ButtonLg }}>
+            أعرف المزيد
+          </Button>
+        </Stack>
       </InformationPanel>
       <CategoriesCarousel categories={categories} />
       {/* Second */}
@@ -46,11 +50,9 @@ export default function StoreFront({
           height={308}
           alt="first"
         />
-        <div className="flex flex-col items-start justify-center">
-          <div className="prose">
-            <h3>تسوق أينما كنت</h3>
-          </div>
-          <p>
+        <Stack justifyContent="center" alignItems={"start"} spacing={1}>
+          <Typography variant="h5">تسوق أينما كنت</Typography>
+          <Typography variant="body1">
             في أشتري، نحن ملتزمون بتقديم اكبر مجموعه من المصنعين المستقلين و
             الحرفيين الذين يقدمون منتجات عالية الجودة تتجاوز توقعات عملائنا. مع
             التزامنا بالتميز، فنحن نسعى جاهدين لضمان أن تكون أفضل المنتجات
@@ -58,25 +60,24 @@ export default function StoreFront({
             الكرام. من خلال ضمان الجودة الاستثنائية والتصميمات المبتكرة والحرفية
             الفائقة باستمرار، هدفنا اننا نكون الخيار الموثوق به للأفراد الذين
             يبحثون عن منتجات عالية الجوده في مجال البيع بالتجزئة.
-          </p>
-        </div>
+          </Typography>
+        </Stack>
       </InformationPanel>
       <ThreeSuppliers suppliers={suppliers} />
       {/* Third */}
       <InformationPanel backgroundColor={theme.palette.life}>
-        <div className="flex flex-col items-start justify-center">
-          <div className="prose">
-            <h3>انضم إلى مجتمع البائعين والحرفيين المحليين</h3>
-          </div>
-          <p>
+        <Stack justifyContent="center" alignItems={"start"} spacing={1}>
+          <Typography variant="h5">
+            انضم إلى مجتمع البائعين والحرفيين المحليين
+          </Typography>
+          <Typography variant="body1">
             انضم إلينا اليوم وافتح عالمًا من الإمكانيات. انضم إلى أشتري حتى
             تتمكن من تجربة منتجك والاستمتاع بالمزايا الحصرية وتصبح جزءًا من
             مجتمع يحتوي علي منتجات عالية الجودة ويقدرها. اختبر المعنى الحقيقي
             للحرفية الاستثنائية والابتكار، حيث تكتشف الفرص التي تنتظرك كعضو في
             مجتمعنا المتميز.
-          </p>
-        </div>
-
+          </Typography>
+        </Stack>
         <Image
           src="/landing-page/second.jpg"
           width={528}
@@ -88,25 +89,25 @@ export default function StoreFront({
       {/* Maybe put products based on screen size */}
       <ProductCarousel products={products} />
       <InformationPanel backgroundColor={theme.palette.desertDark}>
-        <div className="flex flex-col items-start justify-center">
-          <div className="prose">
-            <h3>كن جزءً من مجتمع أشتري </h3>
-          </div>
-          <p>
+        <Stack justifyContent="center" alignItems={"start"} spacing={1}>
+          <Typography variant="h5">كن جزءً من مجتمع أشتري</Typography>
+          <Typography variant="body1">
             انضم إلينا اليوم وافتح عالمًا من الإمكانيات. انضم إلى أشتري حتى
             تتمكن من تجربة منتجك والاستمتاع بالمزايا الحصرية وتصبح جزءًا من
             مجتمع يقدر منتجات محلية عالية الجودة و اختبر افضل تجربة تسوق
             إليكتروني .
-          </p>
-          <div className="flex flex-row ">
-            <Button size="md" color="secondary" className="mx-2">
+          </Typography>
+          <Stack direction={"row"} spacing={2}>
+            {/* Become a seller */}
+            <Button variant="contained" color="secondary" sx={{ ...ButtonMd }}>
               سجل كمشترى
             </Button>
-            <Button size="md" className="mx-2">
+            {/* Signup to shop */}
+            <Button variant="contained" sx={{ ...ButtonMd }}>
               سجل كبائع
             </Button>
-          </div>
-        </div>
+          </Stack>
+        </Stack>
         <Image
           src="/landing-page/third.jpg"
           width={528}
