@@ -9,7 +9,7 @@ export default function MinimalLayout({
   return (
     <>
       <MinimalHeader />
-      <main className="flex-1">{children}</main>
+      <main>{children}</main>
       <MinimalFooter />
     </>
   );

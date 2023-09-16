@@ -26,18 +26,16 @@ export default function App({ Component, pageProps }: AppProps) {
   const Layout = (Component as any).layout || DefaultLayout;
 
   return (
-    <div className={`${font.className} flex flex-col min-h-screen`}>
-      <ThemeProvider theme={themeOptions}>
-        <CacheProvider value={cacheRtl}>
-          <CategoryProvider>
-            <SessionProvider session={pageProps.session}>
-              <Layout>
-                <Component {...pageProps} />
-              </Layout>
-            </SessionProvider>
-          </CategoryProvider>
-        </CacheProvider>
-      </ThemeProvider>
-    </div>
+    <ThemeProvider theme={themeOptions}>
+      <CacheProvider value={cacheRtl}>
+        <CategoryProvider>
+          <SessionProvider session={pageProps.session}>
+            <Layout>
+              <Component {...pageProps} />
+            </Layout>
+          </SessionProvider>
+        </CategoryProvider>
+      </CacheProvider>
+    </ThemeProvider>
   );
 }

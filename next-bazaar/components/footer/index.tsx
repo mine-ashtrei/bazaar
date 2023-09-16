@@ -1,56 +1,88 @@
 import Image from "next/image";
-import Link from "next/link";
-
-import TextButton from "../common/buttons/textButton";
+import NextLink from "next/link";
+import { Link as MuiLink, Stack, Toolbar, useTheme } from "@mui/material";
 import IconButton from "../common/buttons/iconButton";
+import Grid from "@mui/material/Grid";
+import Typography from "@mui/material/Typography";
+import { Box } from "@mui/material";
 
 export default function Footer() {
+  const theme = useTheme();
   return (
-    <footer className=" bg-primary bottom-0 left-0 w-full  ltr:py-4 rlt:pl-4">
-      {/* <div className="container mt-6 mb-12 mx-auto grid grid-cols-4 "> */}
-      <div className="flex justify-evenly mt-6 mb-12 mx-auto">
+    <Box
+      component="footer"
+      sx={{
+        backgroundColor: theme.palette.desert.main,
+        bottom: 0,
+        left: 0,
+      }}
+    >
+      <Grid container spacing={2} sx={{ paddingY: 2, paddingX: 4 }}>
         {/* First Column */}
-        <div className="flex flex-col justify-center items-start">
+        <Grid item xs={3}>
           <Image
             width={171}
             height={87}
             src="/logo-lg-secondary.svg"
             alt="Logo"
           />
-          <span className="mt-4">&copy; كل الحقوق محفوظة 2023 Ashtrei.com</span>
-        </div>
+          <Typography variant="body2" sx={{ mt: 4 }}>
+            &copy; كل الحقوق محفوظة 2023 Ashtrei.com
+          </Typography>
+        </Grid>
 
         {/* Second Column Follow Us */}
-        <div className="space-y-2">
-          <h4 className="font-bold">تواصل معنا</h4>
-          <div className="flex gap-2">
-            {/* TODO: make the icons bolder programatically */}
+        <Grid item xs={3}>
+          <Typography variant="h6">تواصل معنا</Typography>
+          <Stack direction={"row"} spacing={1}>
             <IconButton src="/icons/social/facebook.svg" href="/" />
             <IconButton src="/icons/social/instagram.svg" href="/" />
-          </div>
-        </div>
+          </Stack>
+        </Grid>
 
         {/* Third Column About Us*/}
-        <div className="space-y-2">
-          <Link href="/about">
-            <h4 className="font-bold">من نحن</h4>
-          </Link>{" "}
-          {/* About Us */}
-          <TextButton text="مركز المساعده" href="/" /> {/* Help Center */}
-          <TextButton text="الدعم" href="/" /> {/* Support */}
-          <TextButton text="الاخبار" href="/" /> {/* Newsletter */}
-          <TextButton text="المدونه" href="/" /> {/* Blog */}
-        </div>
+        <Grid item xs={3}>
+          <Stack>
+            <MuiLink
+              component={NextLink}
+              href="/about"
+              underline="hover"
+              variant="h6"
+            >
+              من نحن
+            </MuiLink>
+            <MuiLink component={NextLink} href="/" underline="hover">
+              مركز المساعده
+            </MuiLink>
+            <MuiLink component={NextLink} href="/" underline="hover">
+              الدعم
+            </MuiLink>
+            <MuiLink component={NextLink} href="/" underline="hover">
+              الاخبار
+            </MuiLink>
+            <MuiLink component={NextLink} href="/" underline="hover">
+              المدونه
+            </MuiLink>
+          </Stack>
+        </Grid>
 
         {/* Fourth Column Legal*/}
-        <div className="space-y-2">
-          <h4 className="font-bold">الشروط والأحكام</h4>
-          <TextButton text="شروط الاستخدام" href="/" />
-          <TextButton text="سياسة الخصوصية" href="/" />
-          <TextButton text="تراخيص" href="/" />
-          <TextButton text="ملفات تعريف الارتباط" href="/" />
-        </div>
-      </div>
-    </footer>
+        <Grid item xs={3}>
+          <Typography variant="h6">الشروط والأحكام</Typography>
+          <MuiLink component={NextLink} href="/" underline="hover">
+            شروط الاستخدام
+          </MuiLink>
+          <MuiLink component={NextLink} href="/" underline="hover">
+            سياسة الخصوصية
+          </MuiLink>
+          <MuiLink component={NextLink} href="/" underline="hover">
+            تراخيص
+          </MuiLink>
+          <MuiLink component={NextLink} href="/" underline="hover">
+            ملفات تعريف الارتباط
+          </MuiLink>
+        </Grid>
+      </Grid>
+    </Box>
   );
 }
