@@ -14,11 +14,13 @@ declare module "@mui/material/styles" {
     desert?: PaletteColor;
     vegetation?: PaletteColor;
     life?: PaletteColor;
+    desertDark?: PaletteColor;
   }
 
   interface PaletteOptions {
     desert?: PaletteColorOptions;
     vegetation?: PaletteColorOptions;
     life?: PaletteColorOptions;
+    desertDark?: PaletteColorOptions;
   }
 }

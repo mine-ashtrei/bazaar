@@ -9,6 +9,7 @@ import { Category } from "../../lib/categories";
 import { Supplier } from "../../lib/suppliers";
 import { Product } from "../../lib/products";
 import ThreeSuppliers from "../suppliers/threeItemsSupplier";
+import { useTheme } from "@mui/material";
 
 export default function StoreFront({
   categories,
@@ -19,10 +20,11 @@ export default function StoreFront({
   suppliers: Supplier[];
   products: Product[];
 }) {
+  const theme = useTheme();
   return (
     <React.Fragment>
       {/* First */}
-      <InformationPanel>
+      <InformationPanel backgroundColor={theme.palette.desertDark}>
         <div className="prose-2xl">
           <h3>أشترى! كل اللى عايزة لمشروعك بالجملة</h3>
         </div>
@@ -37,7 +39,7 @@ export default function StoreFront({
       </InformationPanel>
       <CategoriesCarousel categories={categories} />
       {/* Second */}
-      <InformationPanel bg="accent">
+      <InformationPanel backgroundColor={theme.palette.vegetation}>
         <Image
           src="/landing-page/first.jpg"
           width={528}
@@ -61,7 +63,7 @@ export default function StoreFront({
       </InformationPanel>
       <ThreeSuppliers suppliers={suppliers} />
       {/* Third */}
-      <InformationPanel bg="accent-secondary">
+      <InformationPanel backgroundColor={theme.palette.life}>
         <div className="flex flex-col items-start justify-center">
           <div className="prose">
             <h3>انضم إلى مجتمع البائعين والحرفيين المحليين</h3>
@@ -85,7 +87,7 @@ export default function StoreFront({
       {/* Fourth */}
       {/* Maybe put products based on screen size */}
       <ProductCarousel products={products} />
-      <InformationPanel bg="primary">
+      <InformationPanel backgroundColor={theme.palette.desertDark}>
         <div className="flex flex-col items-start justify-center">
           <div className="prose">
             <h3>كن جزءً من مجتمع أشتري </h3>

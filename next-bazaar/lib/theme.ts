@@ -12,6 +12,9 @@ export const themeOptions = createTheme({
     secondary: {
       main: "#c1d5a4",
     },
+    desertDark: {
+      main: desertColorDark,
+    },
     desert: {
       main: desertColor,
     },
@@ -19,7 +22,7 @@ export const themeOptions = createTheme({
       main: "#c1d5a4",
     },
     life: {
-      main: "b86f52",
+      main: "#b86f52",
     },
   },
   direction: "rtl",
