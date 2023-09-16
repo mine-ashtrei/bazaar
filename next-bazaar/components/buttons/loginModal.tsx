@@ -48,6 +48,7 @@ export default function LoginModal({ onClose }: LoginModalProps) {
     }
   };
 
+  // TODO: create a component with the login form and put it in a /auth/signin page
   return (
     <Modal onClose={onClose}>
       {showSnackbar && (

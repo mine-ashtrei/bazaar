@@ -3,8 +3,6 @@ import type { AppProps } from "next/app";
 import { Noto_Sans_Arabic } from "next/font/google";
 import { SessionProvider } from "next-auth/react";
 
-import Header from "../components/header";
-import Footer from "../components/footer";
 import { CategoryProvider } from "../components/categories/categoriesContext";
 import DefaultLayout from "../components/layouts/defaultLayout";
 

@@ -1,7 +1,8 @@
+import SignUpForm from "../../components/forms/signup";
 import MinimalLayout from "../../components/layouts/minimalLayout";
 
 const Page = () => {
-  return <p>SignUP Page</p>;
+  return <SignUpForm />;
 };
 
 Page.layout = MinimalLayout;
