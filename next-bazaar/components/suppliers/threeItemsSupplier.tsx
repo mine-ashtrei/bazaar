@@ -7,7 +7,6 @@ export default function ThreeSuppliers({
 }: {
   suppliers: Supplier[];
 }) {
-  // TODO: for small screens create a carousel to swipe through
   return (
     <ThreeItemGrid
       title="بائعين متميزين"
@@ -16,10 +15,5 @@ export default function ThreeSuppliers({
         <SupplierCard item={supplier} key={index} />
       ))}
     ></ThreeItemGrid>
-    // <Carousel
-    //   items={suppliers}
-    //   CardComponent={SupplierCard}
-    //   title="بائعين متميزين"
-    // />
   );
 }

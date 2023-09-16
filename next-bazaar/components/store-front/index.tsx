@@ -1,9 +1,6 @@
 import InformationPanel from "../structure/informationPanel";
 import React from "react";
 import Image from "next/image";
-// import Button from "../common/buttons/button";
-import CategoriesCarousel from "../categories/carousel";
-import SupplierCarousel from "../suppliers/threeItemsSupplier";
 import ProductCarousel from "../products/carousel";
 import { Category } from "../../lib/categories";
 import { Supplier } from "../../lib/suppliers";
@@ -11,6 +8,7 @@ import { Product } from "../../lib/products";
 import ThreeSuppliers from "../suppliers/threeItemsSupplier";
 import { Button, Stack, Typography, useTheme } from "@mui/material";
 import { ButtonLg, ButtonMd } from "../common/buttons/button";
+import FiveCategories from "../categories/fiveItemCategory";
 
 export default function StoreFront({
   categories,
@@ -41,7 +39,7 @@ export default function StoreFront({
           </Button>
         </Stack>
       </InformationPanel>
-      <CategoriesCarousel categories={categories} />
+      <FiveCategories categories={categories.slice(0, 5)} />
       {/* Second */}
       <InformationPanel backgroundColor={theme.palette.vegetation}>
         <Image
