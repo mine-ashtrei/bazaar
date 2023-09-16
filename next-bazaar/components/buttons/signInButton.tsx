@@ -1,21 +1,18 @@
-import React from "react";
-import { ClassNameProp } from "../common/types";
-import Button from "../common/buttons/button";
-
 import { useState } from "react";
 import LoginModal from "./loginModal";
+import { Link } from "@mui/material";
 
-export default function SignInButton({ className }: ClassNameProp) {
+export default function SignInButton() {
   const [showModal, setShowModal] = useState(false);
   return (
     <>
-      <Button
-        color="underline"
-        className={` ${className}`}
+      <Link
+        underline="always"
+        sx={{ cursor: "pointer" }}
         onClick={() => setShowModal(true)}
       >
         تسجيل الدخول
-      </Button>
+      </Link>
       {showModal && <LoginModal onClose={() => setShowModal(false)} />}
     </>
   );

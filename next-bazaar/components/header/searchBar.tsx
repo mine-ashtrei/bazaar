@@ -1,40 +1,41 @@
 import Image from "next/image";
 import SearchIcon from "../../public/icons/Search_light.svg";
-import { ClassNameProp } from "../common/types";
+import { Box, InputBase } from "@mui/material";
 
-type SearchBarProps = {
-  variant?: "web" | "mobile";
-} & ClassNameProp;
-
-export default function SearchBar({
-  className = "",
-  variant = "web",
-}: SearchBarProps) {
-  if (variant === "mobile") {
-    return (
-      <button className={`p-2 ${className}`}>
-        <Image priority src={SearchIcon} alt="Search" />
-      </button>
-    );
-  }
+const SearchBar = () => {
   return (
-    <div
-      className={`relative w-5/12 flex justify-end items-center ${className}`}
+    <Box
+      sx={{
+        position: "relative",
+        borderRadius: "4px",
+        backgroundColor: "rgb(255,255,255)",
+        "&:hover": {
+          backgroundColor: "rgba(255,255,255, 0.9)",
+        },
+        width: "50vw",
+      }}
     >
-      {/* Input */}
-      <input
-        type="text"
-        className="w-full h-10 
-        ltr:pl-4 ltr:pr-10 rtl:pr-4 rtl-pl-10 border-0 rounded 
-        focus:outline-none focus:ring-2 
-        focus:ring-offset-1 focus:ring-primary-500"
+      <InputBase
+        sx={{
+          pl: "14px",
+          pr: "60px", // Adjust based on the size of the icon and any desired padding
+          width: "100%",
+          height: 40, // Adjust based on your design requirements
+        }}
+        placeholder="Search Brands or Products"
       />
-      <Image
-        priority
-        src={SearchIcon}
-        alt={""}
-        className="absolute ltr:mr-2 rtl:ml-2 w-10"
-      />
-    </div>
+      <Box
+        sx={{
+          position: "absolute",
+          right: 2,
+          top: "50%",
+          transform: "translateY(-50%)",
+        }}
+      >
+        <Image priority src={SearchIcon} alt="" className="w-10" />
+      </Box>
+    </Box>
   );
-}
+};
+
+export default SearchBar;

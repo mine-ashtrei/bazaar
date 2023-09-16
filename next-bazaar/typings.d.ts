@@ -6,3 +6,19 @@ declare module "next-auth" {
     role?: string;
   }
 }
+
+import "@mui/material/styles";
+
+declare module "@mui/material/styles" {
+  interface Palette {
+    desert?: PaletteColor;
+    vegetation?: PaletteColor;
+    life?: PaletteColor;
+  }
+
+  interface PaletteOptions {
+    desert?: PaletteColorOptions;
+    vegetation?: PaletteColorOptions;
+    life?: PaletteColorOptions;
+  }
+}
