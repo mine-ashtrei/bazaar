@@ -12,6 +12,8 @@ export default function Footer() {
     <Box
       component="footer"
       sx={{
+        paddingX: 6,
+        paddingY: 4,
         backgroundColor: theme.palette.desert.main,
         bottom: 0,
         left: 0,
@@ -19,7 +21,7 @@ export default function Footer() {
         // width: "100%",
       }}
     >
-      <Grid container spacing={2} sx={{ paddingY: 2, paddingX: 4 }}>
+      <Grid container spacing={2}>
         {/* First Column */}
         <Grid item xs={3}>
           <Image
