@@ -37,7 +37,7 @@ const SignInForm = () => {
       spacing={1}
       justifyContent={"center"}
       alignItems={"center"}
-      sx={{ width: "33%" }}
+      sx={{ width: "100%" }}
     >
       {/*Welcome back */}
       <Typography variant="h2">مرحباً بك!</Typography>

@@ -3,7 +3,7 @@ import LogoHeader from "./logoHeader";
 
 export default function MinimalHeader() {
   return (
-    <AppBar>
+    <AppBar position="sticky">
       <Toolbar>
         <Box
           sx={{

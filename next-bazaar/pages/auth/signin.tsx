@@ -1,12 +1,12 @@
-import { Stack } from "@mui/material";
+import { Box, Stack } from "@mui/material";
 import SignInForm from "../../components/forms/signin";
 import MinimalLayout from "../../components/layouts/minimalLayout";
 
 const Page = () => {
   return (
-    <Stack alignItems={"center"} justifyContent={"center"}>
+    <Box width={"40vw"}>
       <SignInForm />
-    </Stack>
+    </Box>
   );
 };
 
