@@ -1,3 +1,4 @@
+import { Box, Stack, Typography } from "@mui/material";
 import Image from "next/image";
 
 export default function PanelWithBg({
@@ -9,14 +10,44 @@ export default function PanelWithBg({
   title: string;
   subtitle?: string;
 }) {
+  const HEIGHT = "450px";
   return (
-    <div className="w-full relative h-[450px] flex flex-col items-center justify-center">
-      <div className="w-full h-[450px] absolute -z-20 top-0 ">
+    <Stack
+      justifyContent={"center"}
+      alignItems={"center"}
+      sx={{
+        height: HEIGHT,
+        position: "relative",
+      }}
+    >
+      <Box
+        sx={{
+          width: "100%",
+          height: HEIGHT,
+          zIndex: -20,
+          position: "absolute",
+          top: 0,
+        }}
+      >
         <Image src={imgSrc} fill={true} alt="img" />
-      </div>
-      <div className="w-full h-[450px] absolute -z-20 top-0 bg-black opacity-25"></div>
-      <h2 className="text-white -z-10 text-6xl">{title}</h2>
-      <h4 className="text-white -z-10 text-4xl">{subtitle}</h4>
-    </div>
+      </Box>
+      <Box
+        sx={{
+          width: "100%",
+          height: HEIGHT,
+          zIndex: -19,
+          position: "absolute",
+          top: 0,
+          backgroundColor: "black",
+          opacity: "30%",
+        }}
+      />
+      <Typography color={"common.white"} variant="h1">
+        {title}
+      </Typography>
+      <Typography color={"common.white"} variant="h2">
+        {subtitle}
+      </Typography>
+    </Stack>
   );
 }

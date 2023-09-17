@@ -1,4 +1,4 @@
-import StoreFront from "../components/store-front";
+import StoreFront from "../components/pages/storeFront";
 import type { InferGetStaticPropsType, GetStaticProps } from "next";
 import API from "../lib";
 import { useCategories } from "../components/categories/categoriesContext";
