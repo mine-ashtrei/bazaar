@@ -8,7 +8,8 @@ import { Product } from "../../lib/products";
 import ThreeSuppliers from "../suppliers/threeItemsSupplier";
 import { Button, Stack, Typography, useTheme } from "@mui/material";
 import { ButtonLg, ButtonMd } from "../common/buttons/button";
-import FiveCategories from "../categories/fiveItemCategory";
+import FiveCategories from "../categories/fiveCategories";
+import FiveProducts from "../products/fiveProducts";
 
 export default function StoreFront({
   categories,

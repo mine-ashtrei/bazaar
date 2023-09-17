@@ -68,19 +68,21 @@ export default function Footer() {
 
         {/* Fourth Column Legal*/}
         <Grid item xs={3}>
-          <Typography variant="h6">الشروط والأحكام</Typography>
-          <MuiLink component={NextLink} href="/" underline="hover">
-            شروط الاستخدام
-          </MuiLink>
-          <MuiLink component={NextLink} href="/" underline="hover">
-            سياسة الخصوصية
-          </MuiLink>
-          <MuiLink component={NextLink} href="/" underline="hover">
-            تراخيص
-          </MuiLink>
-          <MuiLink component={NextLink} href="/" underline="hover">
-            ملفات تعريف الارتباط
-          </MuiLink>
+          <Stack>
+            <Typography variant="h6">الشروط والأحكام</Typography>
+            <MuiLink component={NextLink} href="/" underline="hover">
+              شروط الاستخدام
+            </MuiLink>
+            <MuiLink component={NextLink} href="/" underline="hover">
+              سياسة الخصوصية
+            </MuiLink>
+            <MuiLink component={NextLink} href="/" underline="hover">
+              تراخيص
+            </MuiLink>
+            <MuiLink component={NextLink} href="/" underline="hover">
+              ملفات تعريف الارتباط
+            </MuiLink>
+          </Stack>
         </Grid>
       </Grid>
     </Box>

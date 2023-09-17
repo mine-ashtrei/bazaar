@@ -14,6 +14,7 @@ export type Product = {
   images: string[];
   createdAt: string;
   updatedAt: string;
+  supplierName?: string;
 };
 
 export const products = {

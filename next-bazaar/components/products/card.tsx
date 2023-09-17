@@ -1,32 +1,31 @@
-import { Product } from ".";
 import Image from "next/image";
 import Link from "next/link";
+import { Product } from "../../lib/products";
+import { Box, Paper, Stack, Typography, useTheme } from "@mui/material";
 
 export default function ProductCard({ item }: { item: Product }) {
+  const theme = useTheme();
   return (
     <Link href="#" passHref>
-      <div
-        className="flex flex-col bg-gray-50
-          border border-gray-200 rounded-lg 
-          justify-start
-          items-baseline
-          hover:bg-gray-100 
-          "
-      >
-        <div className="w-full">
+      <Paper>
+        <Stack>
           <Image src={item.images[0]} width={304} height={200} alt="img" />
-        </div>
-        <div className="w-full bg-primary">
-          <div className="text-2xl my-2 px-2">{item.name}</div>
-          <div className="my-2 px-2">
-            {item.batchPricing[0].pricePerProduct}ج. م/للقطعة
-          </div>
-        </div>
-        {/* somehow get the supplier here based on the id in the item?? */}
-        <div className="w-full bg-gray-50 my-2 px-2">
-          Get supplier{item.supplierId}
-        </div>
-      </div>
+          <Box
+            sx={{
+              padding: 1,
+              backgroundColor: theme.palette.desert.main,
+            }}
+          >
+            <Stack>
+              <Typography variant="h5">{item.name}</Typography>
+              <Typography>ج. م{item.msrpPrice}/للقطعة</Typography>
+            </Stack>
+          </Box>
+          <Typography sx={{ padding: 1 }} variant="body2">
+            {item.supplierName} BLBLB
+          </Typography>
+        </Stack>
+      </Paper>
     </Link>
   );
 }
