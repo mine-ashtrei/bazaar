@@ -15,6 +15,8 @@ export default function Footer() {
         backgroundColor: theme.palette.desert.main,
         bottom: 0,
         left: 0,
+        // position: "absolute",
+        // width: "100%",
       }}
     >
       <Grid container spacing={2} sx={{ paddingY: 2, paddingX: 4 }}>
