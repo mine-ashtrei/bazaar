@@ -9,6 +9,7 @@ import ThreeSuppliers from "../suppliers/threeItemsSupplier";
 import { Button, Stack, Typography, useTheme } from "@mui/material";
 import { ButtonLg, ButtonMd } from "../common/buttons/button";
 import FiveCategories from "../categories/fiveCategories";
+import SignUpRetailerSupplier from "../buttons/signUpRetailerSupplier";
 
 export default function StoreFront({
   categories,
@@ -95,16 +96,7 @@ export default function StoreFront({
             مجتمع يقدر منتجات محلية عالية الجودة و اختبر افضل تجربة تسوق
             إليكتروني .
           </Typography>
-          <Stack direction={"row"} spacing={2}>
-            {/* Become a seller */}
-            <Button variant="contained" color="secondary" sx={{ ...ButtonMd }}>
-              سجل كمشترى
-            </Button>
-            {/* Signup to shop */}
-            <Button variant="contained" sx={{ ...ButtonMd }}>
-              سجل كبائع
-            </Button>
-          </Stack>
+          <SignUpRetailerSupplier />
         </Stack>
         <Image
           src="/landing-page/third.jpg"

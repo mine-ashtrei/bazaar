@@ -1,13 +1,26 @@
+import { Box, PaletteColor, Stack } from "@mui/material";
 import react from "react";
 
 export default function Panel({
   children,
-  className,
+  backgroundColor,
 }: {
   children: react.ReactNode;
-  className?: string;
+  backgroundColor?: PaletteColor;
 }) {
-  // TODO refactor from informationPanel.tsx and take the bg code
-  // informationPanel and panelWithBg should use this component
-  return <div className={`${className} h-[450px]`}>{children}</div>;
+  // TODO make dark theam compatible
+  return (
+    <Stack
+      justifyContent={"center"}
+      alignItems={"center"}
+      gap={2}
+      sx={{
+        height: "450px",
+        width: "100%",
+        backgroundColor: backgroundColor?.main,
+      }}
+    >
+      {children}
+    </Stack>
+  );
 }
