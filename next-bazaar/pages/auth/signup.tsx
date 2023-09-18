@@ -4,7 +4,7 @@ import MinimalLayout from "../../components/layouts/minimalLayout";
 
 const Page = () => {
   return (
-    <Box sx={{ width: "90vw", alignContent: "center" }}>
+    <Box sx={{ width: "90vw", display: "flex", marginY: 4 }}>
       <SignUpStepper />
     </Box>
   );

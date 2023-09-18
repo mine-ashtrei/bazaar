@@ -1,9 +1,36 @@
 import React, { useState } from "react";
-import { Stepper, Step, StepLabel, Button, Box, Stack } from "@mui/material";
+import {
+  Stepper,
+  Step,
+  StepLabel,
+  Button,
+  Box,
+  Stack,
+  StepConnector,
+} from "@mui/material";
 
 import UserForm from "./userForm";
 
-const steps = ["Step 1", "Step 2", "Step 3", "Step 4"];
+import { StepIconProps } from "@mui/material/StepIcon";
+import CheckCircleIcon from "@mui/icons-material/CheckCircle";
+import CircleFilled from "@mui/icons-material/Circle";
+import CheckIcon from "@mui/icons-material/RadioButtonChecked";
+import Circle from "@mui/icons-material/CircleOutlined";
+
+const CustomStepIcon: React.FC<StepIconProps> = (props) => {
+  const { completed, active } = props;
+  console.log(props);
+  if (active) {
+    return <CircleFilled color="primary" />;
+  }
+  if (completed) {
+    return <CheckCircleIcon color="primary" />;
+  }
+
+  return <Circle color="primary" />;
+};
+
+const steps = ["1", "2", "3", "4"];
 
 const SignUpStepper = () => {
   const [activeStep, setActiveStep] = useState(0);
@@ -25,15 +52,11 @@ const SignUpStepper = () => {
   };
 
   return (
-    <Stack
-      sx={{
-        justifyContent: "center",
-      }}
-    >
+    <Stack justifyContent={"space-between"} spacing={2} sx={{ width: "100%" }}>
       <Stepper activeStep={activeStep}>
         {steps.map((label) => (
           <Step key={label}>
-            <StepLabel>{label}</StepLabel>
+            <StepLabel StepIconComponent={CustomStepIcon}>{label}</StepLabel>
           </Step>
         ))}
       </Stepper>
