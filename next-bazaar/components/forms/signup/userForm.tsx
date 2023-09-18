@@ -1,18 +1,15 @@
-import React, { useState } from "react";
-import { Button, TextField } from "@mui/material";
+import React, { useState, forwardRef, useImperativeHandle } from "react";
+import TextField from "@mui/material/TextField";
+import useForm, { FormHandles } from "./common";
 
-const UserForm = ({ onSubmit }: { onSubmit: (data: any) => void }) => {
-  const [data, setData] = useState({ fieldOne: "", fieldTwo: "" });
-  const [errors, setErrors] = useState({ fieldOne: "", fieldTwo: "" });
+// Define props for the UserForm component
+const UserForm = forwardRef<FormHandles, any>((_, ref) => {
+  const { data, errors, setErrors, handleChange } = useForm({
+    fieldOne: "",
+    fieldTwo: "",
+  });
 
-  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = event.target;
-    setData((prev) => ({ ...prev, [name]: value }));
-    // Clear any existing error for the field
-    setErrors((prev) => ({ ...prev, [name]: "" }));
-  };
-
-  const validate = () => {
+  const validateForm = (): boolean => {
     let valid = true;
     const newErrors = { fieldOne: "", fieldTwo: "" };
 
@@ -30,11 +27,10 @@ const UserForm = ({ onSubmit }: { onSubmit: (data: any) => void }) => {
     return valid;
   };
 
-  const handleNext = () => {
-    if (validate()) {
-      onSubmit(data);
-    }
-  };
+  // Expose the validate method for use with ref in the parent
+  useImperativeHandle(ref, () => ({
+    validate: validateForm,
+  }));
 
   return (
     <div>
@@ -54,9 +50,10 @@ const UserForm = ({ onSubmit }: { onSubmit: (data: any) => void }) => {
         helperText={errors.fieldTwo}
         error={Boolean(errors.fieldTwo)}
       />
-      <Button onClick={handleNext}>Next</Button>
     </div>
   );
-};
+});
+
+UserForm.displayName = "UserForm";
 
 export default UserForm;

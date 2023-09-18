@@ -1,25 +1,16 @@
-import React, { useState } from "react";
-import {
-  Stepper,
-  Step,
-  StepLabel,
-  Button,
-  Box,
-  Stack,
-  StepConnector,
-} from "@mui/material";
+import React, { useRef, useState } from "react";
+import { Stepper, Step, StepLabel, Button, Box, Stack } from "@mui/material";
 
 import UserForm from "./userForm";
 
 import { StepIconProps } from "@mui/material/StepIcon";
 import CheckCircleIcon from "@mui/icons-material/CheckCircle";
 import CircleFilled from "@mui/icons-material/Circle";
-import CheckIcon from "@mui/icons-material/RadioButtonChecked";
 import Circle from "@mui/icons-material/CircleOutlined";
+import { FormHandles } from "./common";
 
 const CustomStepIcon: React.FC<StepIconProps> = (props) => {
   const { completed, active } = props;
-  console.log(props);
   if (active) {
     return <CircleFilled color="primary" />;
   }
@@ -30,20 +21,24 @@ const CustomStepIcon: React.FC<StepIconProps> = (props) => {
   return <Circle color="primary" />;
 };
 
-const steps = ["1", "2", "3", "4"];
+const steps = ["", "", "", ""];
 
 const SignUpStepper = () => {
   const [activeStep, setActiveStep] = useState(0);
   const [collectedData, setCollectedData] = useState({});
 
+  const formRef = useRef<FormHandles | null>(null);
+
   const handleNext = (data: any) => {
     setCollectedData((prev) => ({ ...prev, ...data }));
-    if (activeStep < steps.length - 1) {
-      setActiveStep((prev) => prev + 1);
-    } else {
-      // All steps completed - submit the data
-      console.log("Submitting data:", collectedData);
-      // Make your API call here
+    if (formRef.current && formRef.current.validate()) {
+      if (activeStep < steps.length - 1) {
+        setActiveStep((prev) => prev + 1);
+      } else {
+        // All steps completed - submit the data
+        console.log("Submitting data:", collectedData);
+        // Make your API call here
+      }
     }
   };
 
@@ -54,17 +49,17 @@ const SignUpStepper = () => {
   return (
     <Stack justifyContent={"space-between"} spacing={2} sx={{ width: "100%" }}>
       <Stepper activeStep={activeStep}>
-        {steps.map((label) => (
-          <Step key={label}>
-            <StepLabel StepIconComponent={CustomStepIcon}>{label}</StepLabel>
+        {steps.map((_, index) => (
+          <Step key={index}>
+            <StepLabel StepIconComponent={CustomStepIcon} />
           </Step>
         ))}
       </Stepper>
       <Box flexGrow={1}>
-        {activeStep === 0 && <UserForm onSubmit={handleNext} />}
-        {activeStep === 1 && <UserForm onSubmit={handleNext} />}
-        {activeStep === 2 && <UserForm onSubmit={handleNext} />}
-        {activeStep === 3 && <UserForm onSubmit={handleNext} />}
+        {activeStep === 0 && <UserForm ref={formRef} onSubmit={handleNext} />}
+        {activeStep === 1 && <UserForm ref={formRef} onSubmit={handleNext} />}
+        {activeStep === 2 && <UserForm ref={formRef} onSubmit={handleNext} />}
+        {activeStep === 3 && <UserForm ref={formRef} onSubmit={handleNext} />}
       </Box>
       <Stack direction={"row"} justifyContent={"space-between"}>
         <Button disabled={activeStep === 0} onClick={handleBack}>
