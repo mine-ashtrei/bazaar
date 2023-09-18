@@ -1,5 +1,12 @@
 import React from "react";
-import { Grid, Typography, Link as MuiLink, Box, Stack } from "@mui/material";
+import {
+  Grid,
+  Typography,
+  Link as MuiLink,
+  Box,
+  Stack,
+  LinearProgress,
+} from "@mui/material";
 import NextLink from "next/link";
 
 type FiveItemGridProps = {
@@ -9,9 +16,8 @@ type FiveItemGridProps = {
 };
 
 const FiveItemGrid: React.FC<FiveItemGridProps> = ({ items, title, href }) => {
-  if (items.length !== 5 || items.length == 0) {
-    console.error("FiveItemGridProps expects exactly 5 items.");
-    return null;
+  if (!items) {
+    return <LinearProgress />; // or return a spinner or other placeholder
   }
 
   return (
