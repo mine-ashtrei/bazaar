@@ -7,7 +7,7 @@ import { Supplier } from "../../lib/suppliers";
 import { Product } from "../../lib/products";
 import ThreeSuppliers from "../suppliers/threeItemsSupplier";
 import { Button, Stack, Typography, useTheme } from "@mui/material";
-import { ButtonLg, ButtonMd } from "../common/buttons/button";
+import { ButtonLg, ButtonMd } from "../common/buttons";
 import FiveCategories from "../categories/fiveCategories";
 import SignUpRetailerSupplier from "../buttons/signUpRetailerSupplier";
 

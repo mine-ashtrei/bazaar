@@ -19,7 +19,7 @@ const LoginWithFacebook: React.FC<LoginWithFacebookProps> = ({
       onClick={onClick}
       {...props} // Spread additional props onto the Button
     >
-      المتابعه بحساب Google
+      المتابعه بحساب Facebook
     </Button>
   );
 };

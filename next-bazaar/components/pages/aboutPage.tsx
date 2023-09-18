@@ -3,7 +3,6 @@ import InformationPanel from "../../components/structure/informationPanel";
 import Image from "next/image";
 import PanelWithBg from "../../components/structure/panelWithBg";
 import Panel from "../../components/structure/panel";
-import Button from "../../components/common/buttons/button";
 import { Stack, Typography, useTheme } from "@mui/material";
 import SignUpRetailerSupplier from "../buttons/signUpRetailerSupplier";
 

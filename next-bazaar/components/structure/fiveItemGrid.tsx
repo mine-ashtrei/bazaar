@@ -9,7 +9,7 @@ type FiveItemGridProps = {
 };
 
 const FiveItemGrid: React.FC<FiveItemGridProps> = ({ items, title, href }) => {
-  if (items.length !== 5) {
+  if (items.length !== 5 || items.length == 0) {
     console.error("FiveItemGridProps expects exactly 5 items.");
     return null;
   }

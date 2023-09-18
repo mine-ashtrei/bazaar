@@ -31,8 +31,6 @@ const Carousel: React.FC<CarouselProps> = ({ cards }) => {
   if (diff < 4) {
     visibleCards.push(...cards.slice(0, 4 - diff));
   }
-  console.log(startIndex);
-  console.log(visibleCards);
   // TODO: make arrow buttons smaller
   return (
     <Box sx={{ margin: 2, position: "relative" }}>

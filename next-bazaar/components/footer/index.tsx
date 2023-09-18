@@ -1,10 +1,11 @@
 import Image from "next/image";
 import NextLink from "next/link";
-import { Link as MuiLink, Stack, Toolbar, useTheme } from "@mui/material";
-import IconButton from "../common/buttons/iconButton";
+import { Link as MuiLink, Stack, SvgIcon, useTheme } from "@mui/material";
 import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
 import { Box } from "@mui/material";
+import InstagramSvg from "../common/icons/instagram";
+import FacebookSvg from "../common/icons/facebook";
 
 export default function Footer() {
   const theme = useTheme();
@@ -39,8 +40,8 @@ export default function Footer() {
         <Grid item xs={3}>
           <Typography variant="h6">تواصل معنا</Typography>
           <Stack direction={"row"} spacing={1}>
-            <IconButton src="/icons/social/facebook.svg" href="/" />
-            <IconButton src="/icons/social/instagram.svg" href="/" />
+            <InstagramSvg />
+            <FacebookSvg />
           </Stack>
         </Grid>
 
