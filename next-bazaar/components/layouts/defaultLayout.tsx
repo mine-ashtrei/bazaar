@@ -16,16 +16,7 @@ export default function DefaultLayout({
       }}
     >
       <Header />
-      <Box
-        sx={{
-          flexGrow: "1",
-          display: "flex", // Add this line
-          alignItems: "center", // Center content vertically
-          justifyContent: "center", // Center content horizontally
-        }}
-      >
-        <main>{children}</main>
-      </Box>
+      <main>{children}</main>
       <Footer />
     </Box>
   );
