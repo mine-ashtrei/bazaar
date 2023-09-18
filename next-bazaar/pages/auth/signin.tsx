@@ -1,10 +1,10 @@
-import { Box, Stack } from "@mui/material";
+import Box from "@mui/material/Box";
 import SignInForm from "../../components/forms/signin";
 import MinimalLayout from "../../components/layouts/minimalLayout";
 
 const Page = () => {
   return (
-    <Box width={"40vw"}>
+    <Box sx={{ width: "40vw", alignSelf: "center" }}>
       <SignInForm />
     </Box>
   );
