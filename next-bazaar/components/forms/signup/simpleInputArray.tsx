@@ -14,6 +14,7 @@ const SimpleInputArray = forwardRef<any, SimpleFormProps>((props, ref) => {
   // Expose the validate method for use with ref in the parent
   useImperativeHandle(ref, () => ({
     validate: () => validateForm(data, inputs, setErrors),
+    getData: () => data,
   }));
 
   return (

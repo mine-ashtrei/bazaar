@@ -3,6 +3,7 @@ import { ValidationParams } from "../validations";
 
 export interface FormHandles {
   validate: () => boolean;
+  getData: () => FormState;
 }
 
 export interface InputDefinition {
@@ -15,6 +16,10 @@ export interface InputDefinition {
 
 export interface FormState {
   [key: string]: string;
+}
+
+export interface SimpleFormProps {
+  initialState: FormState | undefined;
 }
 
 export interface FormErrors {
@@ -50,12 +55,20 @@ export const validateForm = (
   return valid;
 };
 
-export const useForm = (inputs: InputDefinition[]) => {
-  const initialState = inputs.reduce((acc, input) => {
-    acc[input.key] = "";
+export const useForm = (
+  inputs: InputDefinition[],
+  initialState: FormState | undefined
+) => {
+  const buildInitial = inputs.reduce((acc, input) => {
+    if (initialState && initialState[input.key]) {
+      acc[input.key] = initialState[input.key];
+    } else {
+      acc[input.key] = "";
+    }
     return acc;
   }, {} as Record<string, string>);
-  const [data, setData] = useState<FormState>(initialState);
+
+  const [data, setData] = useState<FormState>(buildInitial);
   const [errors, setErrors] = useState<FormErrors>({});
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {

@@ -1,12 +1,17 @@
 import React, { forwardRef, useImperativeHandle } from "react";
-import { FormHandles, InputDefinition, useForm, validateForm } from "./common";
-import { isMobileNumber, notEmpty } from "../validations";
-import SimpleInputs from "./simpleInputArray";
-import { Box, Grid, Stack, TextField, Typography } from "@mui/material";
+import {
+  FormHandles,
+  InputDefinition,
+  SimpleFormProps,
+  useForm,
+  validateForm,
+} from "./common";
+import { notEmpty } from "../validations";
+import { Box, Grid, Stack, Typography } from "@mui/material";
 import SimpleInput from "./simpleInput";
 
 // Define props for the UserForm component
-const AddressForm = forwardRef<FormHandles, any>((_, ref) => {
+const AddressForm = forwardRef<FormHandles, SimpleFormProps>((props, ref) => {
   const inputs: InputDefinition[] = [
     {
       key: "address",
@@ -32,11 +37,15 @@ const AddressForm = forwardRef<FormHandles, any>((_, ref) => {
 
   const gridXs = [12, 6, 6, 3];
 
-  const { data, errors, setErrors, handleChange } = useForm(inputs);
+  const { data, errors, setErrors, handleChange } = useForm(
+    inputs,
+    props.initialState
+  );
 
   // Expose the validate method for use with ref in the parent
   useImperativeHandle(ref, () => ({
     validate: () => validateForm(data, inputs, setErrors),
+    getData: () => data,
   }));
 
   return (
