@@ -60,11 +60,11 @@ const BusinessForm = forwardRef<FormHandles, SimpleFormProps>((props, ref) => {
   }));
 
   return (
-    <Stack spacing={4}>
+    <Stack spacing={4} alignItems={"center"}>
       <Box>
         <Typography variant="h4">Tell us about your business!</Typography>
       </Box>
-      <Grid container spacing={2} sx={{ width: "50vw" }}>
+      <Grid container spacing={2}>
         {inputs.map((input, index) => (
           <Grid item key={index} xs={gridXs[index]}>
             <SimpleInput

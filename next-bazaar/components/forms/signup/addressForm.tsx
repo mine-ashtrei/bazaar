@@ -49,7 +49,7 @@ const AddressForm = forwardRef<FormHandles, SimpleFormProps>((props, ref) => {
   }));
 
   return (
-    <Stack>
+    <Stack spacing={2}>
       <Box>
         <Typography variant="h6">Address</Typography>
       </Box>

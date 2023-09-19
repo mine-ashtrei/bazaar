@@ -14,7 +14,6 @@ import SignUpFinish from "./signUpFinish";
 
 const CustomStepIcon: React.FC<StepIconProps> = (props) => {
   const { completed, active } = props;
-  console.log("Step Icon State:", { completed, active }); // Debugging line
 
   if (completed) {
     return <CheckCircleIcon color="primary" />;
@@ -41,7 +40,6 @@ const SignUpStepper = () => {
   const setStep = (value: boolean) => {
     const newCompletedSteps = [...completedSteps];
     newCompletedSteps[activeStep] = value;
-    console.log(newCompletedSteps);
     setCompletedSteps(newCompletedSteps);
   };
 
@@ -49,7 +47,7 @@ const SignUpStepper = () => {
     if (!formRef.current) {
       return;
     }
-
+    console.log("Form data:", formRef.current?.getData());
     setCollectedData((prev) => ({ ...prev, ...formRef.current?.getData() }));
     if (formRef.current.validate()) {
       setStep(true);
@@ -77,11 +75,7 @@ const SignUpStepper = () => {
   };
 
   return (
-    <Stack
-      justifyContent={!isSubmitted ? "space-between" : "flex-start"}
-      spacing={2}
-      sx={{ width: "100%" }}
-    >
+    <Stack spacing={2}>
       <Stepper activeStep={activeStep}>
         {steps.map((_, index) => (
           <Step completed={completedSteps[index]} key={index}>
@@ -92,7 +86,7 @@ const SignUpStepper = () => {
 
       {!isSubmitted && (
         <>
-          <Box flexGrow={1}>
+          <Box>
             {activeStep === 0 && (
               <UserForm ref={formRef} initialState={collectedData} />
             )}
