@@ -8,6 +8,8 @@ import CheckCircleIcon from "@mui/icons-material/CheckCircle";
 import CircleFilled from "@mui/icons-material/Circle";
 import Circle from "@mui/icons-material/CircleOutlined";
 import { FormHandles } from "./common";
+import BusinessForm from "./businessForm";
+import AddressForm from "./addressForm";
 
 const CustomStepIcon: React.FC<StepIconProps> = (props) => {
   const { completed, active } = props;
@@ -30,6 +32,7 @@ const SignUpStepper = () => {
   const formRef = useRef<FormHandles | null>(null);
 
   const handleNext = (data: any) => {
+    console.log(data);
     setCollectedData((prev) => ({ ...prev, ...data }));
     if (formRef.current && formRef.current.validate()) {
       if (activeStep < steps.length - 1) {
@@ -57,8 +60,12 @@ const SignUpStepper = () => {
       </Stepper>
       <Box flexGrow={1}>
         {activeStep === 0 && <UserForm ref={formRef} onSubmit={handleNext} />}
-        {activeStep === 1 && <UserForm ref={formRef} onSubmit={handleNext} />}
-        {activeStep === 2 && <UserForm ref={formRef} onSubmit={handleNext} />}
+        {activeStep === 1 && (
+          <BusinessForm ref={formRef} onSubmit={handleNext} />
+        )}
+        {activeStep === 2 && (
+          <AddressForm ref={formRef} onSubmit={handleNext} />
+        )}
         {activeStep === 3 && <UserForm ref={formRef} onSubmit={handleNext} />}
       </Box>
       <Stack direction={"row"} justifyContent={"space-between"}>

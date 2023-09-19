@@ -9,13 +9,15 @@ export interface InputDefinition {
   label: string;
   validation: ((params: ValidationParams) => string)[];
   key: string;
+  isPassword?: boolean;
+  isMultiline?: boolean;
 }
 
-interface FormState {
+export interface FormState {
   [key: string]: string;
 }
 
-interface FormErrors {
+export interface FormErrors {
   [key: string]: string;
 }
 
@@ -24,6 +26,8 @@ export const validateForm = (
   inputs: InputDefinition[],
   setErrors: (value: React.SetStateAction<FormErrors>) => void
 ): boolean => {
+  // comment to skip validation for dev
+  return true;
   let valid = true;
   const newErrors: any = {};
   for (const input of inputs) {

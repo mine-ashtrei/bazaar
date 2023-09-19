@@ -46,3 +46,34 @@ export const isPassword = ({ fieldName, value }: ValidationParams): string => {
   }
   return "Invalid Password";
 };
+
+export const isUrl = ({ fieldName, value }: ValidationParams): string => {
+  try {
+    const newUrl = new URL(value);
+    const httpType =
+      newUrl.protocol === "http:" || newUrl.protocol === "https:";
+    return "";
+  } catch (err) {
+    return "Invalid URL";
+  }
+};
+
+export const isInstagramUrl = ({
+  fieldName,
+  value,
+}: ValidationParams): string => {
+  if (value.startsWith("https://www.instagram.com/")) {
+    return "";
+  }
+  return "Invalid Instagram URL";
+};
+
+export const isFacebookUrl = ({
+  fieldName,
+  value,
+}: ValidationParams): string => {
+  if (value.startsWith("https://www.facebook.com/")) {
+    return "";
+  }
+  return "Invalid Facebook URL";
+};
