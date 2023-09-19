@@ -1,56 +1,57 @@
 import React, { useState, forwardRef, useImperativeHandle } from "react";
 import TextField from "@mui/material/TextField";
-import useForm, { FormHandles } from "./common";
+import { useForm, validateForm, FormHandles, InputDefinition } from "./common";
+import { Box, Stack, Typography } from "@mui/material";
+import { isMobileNumber, notEmpty } from "../validations";
 
 // Define props for the UserForm component
 const UserForm = forwardRef<FormHandles, any>((_, ref) => {
-  const { data, errors, setErrors, handleChange } = useForm({
-    fieldOne: "",
-    fieldTwo: "",
-  });
+  const inputs: InputDefinition[] = [
+    {
+      key: "firstName",
+      label: "First Name",
+      validation: [notEmpty],
+    },
+    {
+      key: "lastName",
+      label: "Last Name",
+      validation: [notEmpty],
+    },
+    {
+      key: "mobileNumber",
+      label: "Mobile Number",
+      validation: [notEmpty, isMobileNumber],
+    },
+  ];
 
-  const validateForm = (): boolean => {
-    let valid = true;
-    const newErrors = { fieldOne: "", fieldTwo: "" };
-
-    if (!data.fieldOne) {
-      newErrors.fieldOne = "Field One is required";
-      valid = false;
-    }
-
-    if (!data.fieldTwo) {
-      newErrors.fieldTwo = "Field Two is required";
-      valid = false;
-    }
-
-    setErrors(newErrors);
-    return valid;
-  };
+  const { data, errors, setErrors, handleChange } = useForm(inputs);
 
   // Expose the validate method for use with ref in the parent
   useImperativeHandle(ref, () => ({
-    validate: validateForm,
+    validate: () => validateForm(data, inputs, setErrors),
   }));
 
   return (
-    <div>
-      <TextField
-        name="fieldOne"
-        label="Field One"
-        value={data.fieldOne}
-        onChange={handleChange}
-        helperText={errors.fieldOne}
-        error={Boolean(errors.fieldOne)}
-      />
-      <TextField
-        name="fieldTwo"
-        label="Field Two"
-        value={data.fieldTwo}
-        onChange={handleChange}
-        helperText={errors.fieldTwo}
-        error={Boolean(errors.fieldTwo)}
-      />
-    </div>
+    <Stack sx={{ width: "33vw" }} spacing={4}>
+      <Box>
+        <Typography variant="h4">Let’s get started!</Typography>
+        <Typography variant="h6"> Tell us a little bit about you.</Typography>
+      </Box>
+      <Stack spacing={2}>
+        {inputs.map((input, index) => (
+          <TextField
+            key={index}
+            name={input.key}
+            label={input.label}
+            value={data[input.key]}
+            type="text"
+            onChange={handleChange}
+            helperText={errors[input.key]}
+            error={Boolean(errors[input.key])}
+          />
+        ))}
+      </Stack>
+    </Stack>
   );
 });
 
