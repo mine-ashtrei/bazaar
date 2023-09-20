@@ -53,7 +53,7 @@ const AddressForm = forwardRef<FormHandles, SimpleFormProps>((props, ref) => {
       <Box>
         <Typography variant="h6">Address</Typography>
       </Box>
-      <Grid container spacing={2} sx={{ width: "50vw" }}>
+      <Grid container spacing={2}>
         {inputs.map((input, index) => (
           <Grid item key={index} xs={gridXs[index]}>
             <SimpleInput

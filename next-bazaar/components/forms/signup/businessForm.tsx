@@ -59,6 +59,8 @@ const BusinessForm = forwardRef<FormHandles, SimpleFormProps>((props, ref) => {
     getData: () => data,
   }));
 
+  // TODO add socials buttons
+
   return (
     <Stack spacing={4} alignItems={"center"}>
       <Box>
