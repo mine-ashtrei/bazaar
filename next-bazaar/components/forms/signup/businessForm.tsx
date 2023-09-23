@@ -66,6 +66,7 @@ const BusinessForm = forwardRef<FormHandles, SimpleFormProps>((props, ref) => {
       <Box>
         <Typography variant="h4">Tell us about your business!</Typography>
       </Box>
+      {/*  */}
       <Grid container spacing={2}>
         {inputs.map((input, index) => (
           <Grid item key={index} xs={gridXs[index]}>
