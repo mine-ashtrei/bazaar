@@ -1,3 +1,8 @@
+export type ImageT = {
+  url: string;
+  alt: string;
+};
+
 export type Product = {
   id: string;
   name: string;
@@ -11,7 +16,7 @@ export type Product = {
     pricePerProduct: number;
   }[];
   availableQuantity: number;
-  images: string[];
+  images: ImageT[];
   createdAt: string;
   updatedAt: string;
   supplierName?: string;
@@ -39,7 +44,7 @@ const PRODUCTS: Product[] = [
       { minQuantity: 11, maxQuantity: 50, pricePerProduct: 2800 },
     ],
     availableQuantity: 100,
-    images: ["/products-mock/first.jpg"],
+    images: [{ url: "/products-mock/first.jpg", alt: "خاطئة" }],
     createdAt: "2023-09-13 12:35:37 UTC+0000",
     updatedAt: "2023-09-13 12:36:37 UTC+0000",
   },
@@ -55,7 +60,7 @@ const PRODUCTS: Product[] = [
       { minQuantity: 6, maxQuantity: 20, pricePerProduct: 460 },
     ],
     availableQuantity: 200,
-    images: ["/products-mock/first.jpg"],
+    images: [{ url: "/products-mock/first.jpg", alt: "خاطئة" }],
     createdAt: "2023-09-13 12:36:37 UTC+0000",
     updatedAt: "2023-09-13 12:37:37 UTC+0000",
   },
@@ -71,7 +76,7 @@ const PRODUCTS: Product[] = [
       { minQuantity: 4, maxQuantity: 10, pricePerProduct: 750 },
     ],
     availableQuantity: 150,
-    images: ["/products-mock/first.jpg"],
+    images: [{ url: "/products-mock/first.jpg", alt: "خاطئة" }],
     createdAt: "2023-09-13 12:38:37 UTC+0000",
     updatedAt: "2023-09-13 12:39:37 UTC+0000",
   },
@@ -87,7 +92,7 @@ const PRODUCTS: Product[] = [
       { minQuantity: 5, maxQuantity: 15, pricePerProduct: 560 },
     ],
     availableQuantity: 80,
-    images: ["/products-mock/first.jpg"],
+    images: [{ url: "/products-mock/first.jpg", alt: "خاطئة" }],
     createdAt: "2023-09-13 12:31:37 UTC+0000",
     updatedAt: "2023-09-13 12:32:37 UTC+0000",
   },
@@ -103,7 +108,7 @@ const PRODUCTS: Product[] = [
       { minQuantity: 7, maxQuantity: 20, pricePerProduct: 230 },
     ],
     availableQuantity: 300,
-    images: ["/products-mock/first.jpg"],
+    images: [{ url: "/products-mock/first.jpg", alt: "خاطئة" }],
     createdAt: "2023-09-13 12:33:37 UTC+0000",
     updatedAt: "2023-09-13 12:34:37 UTC+0000",
   },
