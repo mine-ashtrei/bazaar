@@ -57,7 +57,7 @@ const ProductHighlight = ({
         </Typography>
         <RaitingOneStar value={supplier.rating} />
       </Stack>
-      <TableContainer sx={{ width: "300px" }} component={Paper}>
+      <TableContainer component={Paper}>
         <Table>
           <TableHead>
             <TableRow>
