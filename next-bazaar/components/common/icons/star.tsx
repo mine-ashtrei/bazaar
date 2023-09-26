@@ -1,4 +1,4 @@
-export default function Star({ className }: { className: string }) {
+export default function StarSvg({ className }: { className: string }) {
   // TODO: add overlay for the star so we have a x% fill for the star
   return (
     <svg
