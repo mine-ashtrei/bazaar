@@ -9,7 +9,12 @@ export default function ProductCard({ item }: { item: Product }) {
     <Link href="#" passHref>
       <Paper>
         <Stack>
-          <Image src={item.images[0]} width={304} height={200} alt="img" />
+          <Image
+            src={item.images[0].url}
+            width={304}
+            height={200}
+            alt={item.images[0].alt}
+          />
           <Box
             sx={{
               padding: 1,
