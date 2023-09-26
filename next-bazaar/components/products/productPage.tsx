@@ -13,7 +13,12 @@ const ProductPage = ({
   supplier: Supplier;
 }) => {
   return (
-    <Stack direction={"row"} sx={{ padding: 5 }} spacing={5}>
+    <Stack
+      direction={"row"}
+      sx={{ padding: 5 }}
+      spacing={5}
+      justifyContent={"space-between"}
+    >
       <ProductImage images={product.images} />
       <ProductMain product={product} supplier={supplier} />
       <ProductHighlight product={product} supplier={supplier} />

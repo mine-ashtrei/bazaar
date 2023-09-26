@@ -16,7 +16,8 @@ const ProductMain = ({
   return (
     <Box
       sx={{
-        width: "450px",
+        minWidth: "300px",
+        flex: 1,
       }}
     >
       <Typography variant="h2">{product.name}</Typography>

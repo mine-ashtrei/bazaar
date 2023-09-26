@@ -45,7 +45,10 @@ const PRODUCTS: Product[] = [
       { minQuantity: 11, maxQuantity: 50, pricePerProduct: 2800 },
     ],
     availableQuantity: 100,
-    images: [{ url: "/products-mock/first.jpg", alt: "خاطئة" }],
+    images: [
+      { url: "/products-mock/first.jpg", alt: "خاطئة" },
+      { url: "/products-mock/second.png", alt: "خاطئة" },
+    ],
     createdAt: "2023-09-13 12:35:37 UTC+0000",
     updatedAt: "2023-09-13 12:36:37 UTC+0000",
   },

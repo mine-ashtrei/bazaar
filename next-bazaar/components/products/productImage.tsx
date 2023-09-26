@@ -1,9 +1,14 @@
 import { Box, Stack } from "@mui/material";
 import { ImageT } from "../../lib/products";
 import Image from "next/image";
+import { useState } from "react";
 
 const ProductImage = ({ images }: { images: ImageT[] }) => {
-  images = Array(5).fill(images[0]);
+  const newImages = Array(5).fill(images[0]);
+  newImages[1] = images[1];
+
+  const [curretnImageIndex, setCurrentImageIndex] = useState(0);
+
   return (
     <Box
       sx={{
@@ -12,13 +17,16 @@ const ProductImage = ({ images }: { images: ImageT[] }) => {
     >
       <Stack spacing={1} justifyContent={"center"} alignItems={"center"}>
         <Image
-          src={images[0].url}
+          src={newImages[curretnImageIndex].url}
           width={400}
           height={400}
-          alt={images[0].alt}
+          alt={newImages[curretnImageIndex].alt}
         />
         <Stack direction={"row"} spacing={1} justifyContent={"center"}>
-          {images.map((image, index) => {
+          {newImages.map((image, index) => {
+            if (curretnImageIndex == index) {
+              return null;
+            }
             return (
               <Image
                 key={index}
@@ -26,6 +34,9 @@ const ProductImage = ({ images }: { images: ImageT[] }) => {
                 width={60}
                 height={60}
                 alt={image.alt}
+                onClick={() => {
+                  setCurrentImageIndex(index);
+                }}
               />
             );
           })}
