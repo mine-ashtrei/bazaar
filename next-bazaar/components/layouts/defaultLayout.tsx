@@ -1,4 +1,4 @@
-import { Box } from "@mui/material";
+import { Stack } from "@mui/material";
 import Footer from "../footer";
 import Header from "../header";
 
@@ -8,16 +8,15 @@ export default function DefaultLayout({
   children: React.ReactNode;
 }) {
   return (
-    <Box
+    <Stack
+      direction={"column"}
       sx={{
-        display: "flex",
-        flexDirection: "column",
         minHeight: "100vh",
       }}
     >
       <Header />
-      <main>{children}</main>
+      <main className="flex-1">{children}</main>
       <Footer />
-    </Box>
+    </Stack>
   );
 }
