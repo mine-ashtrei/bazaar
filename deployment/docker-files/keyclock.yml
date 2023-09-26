@@ -1,0 +1,48 @@
+version: "3"
+
+services:
+  traefik:
+    image: traefik:v2.5
+    command:
+      - "--api.insecure=true"
+      - "--providers.docker=true"
+      - "--entrypoints.web.address=:80"
+    ports:
+      - "80:80"
+      - "8081:8081" # Traefik Dashboard
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+
+  pgdb:
+    image: postgres:16.0
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+    environment:
+      POSTGRES_DB: postgres
+      POSTGRES_USER: bzadmin
+      POSTGRES_PASSWORD: bzadmin
+    ports:
+      - "5432:5432"
+
+  keycloak:
+    image: quay.io/keycloak/keycloak:22.0
+    command:
+      - "start-dev"
+      - "--proxy edge"
+      - "--db postgres"
+      - "--db-url-host pgdb"
+      - "--db-username bzadmin"
+      - "--db-password bzadmin"
+    hostname: keycloak
+    environment:
+      KEYCLOAK_ADMIN: bzadmin
+      KEYCLOAK_ADMIN_PASSWORD: bzadmin
+    depends_on:
+      - pgdb
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.keycloak.rule=Host(`keycloak.bazaar-dev`)"
+      - "traefik.http.routers.keycloak.entrypoints=web"
+
+volumes:
+  postgres-data:
