@@ -8,6 +8,7 @@ import SignUpButton from "../buttons/signUpButton";
 import SignInButton from "../buttons/signInButton";
 import UserIcon from "./userIcon";
 import SearchBar from "./searchBar";
+import SignOutButton from "../buttons/signOutButton";
 
 const Header = () => {
   const { data: session, status } = useSession();
@@ -27,42 +28,6 @@ const Header = () => {
           <LogoHeader />
           <SearchBar />
           {/* TODO: Add for small displays*/}
-          {/* <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
-            <IconButton
-              size="large"
-              aria-label="account of current user"
-              aria-controls="menu-appbar"
-              aria-haspopup="true"
-              onClick={handleOpenNavMenu}
-              color="inherit"
-            >
-              <MenuOutlined />
-            </IconButton>
-            <Menu
-              id="menu-appbar"
-              anchorEl={anchorElNav}
-              anchorOrigin={{
-                vertical: "bottom",
-                horizontal: "left",
-              }}
-              keepMounted
-              transformOrigin={{
-                vertical: "top",
-                horizontal: "left",
-              }}
-              open={Boolean(anchorElNav)}
-              onClose={handleCloseNavMenu}
-              sx={{
-                display: { xs: "block", md: "none" },
-              }}
-            >
-              {pages.map((page) => (
-                <MenuItem key={page} onClick={handleCloseNavMenu}>
-                  <Typography textAlign="center">{page}</Typography>
-                </MenuItem>
-              ))}
-            </Menu>
-          </Box> */}
           {!authenticated && (
             <Box
               sx={{
@@ -79,7 +44,12 @@ const Header = () => {
             </Box>
           )}
 
-          {authenticated && <UserIcon />}
+          {authenticated && (
+            <>
+              {" "}
+              <UserIcon /> <SignOutButton />
+            </>
+          )}
         </Toolbar>
       </Container>
       <CategoriesHeader categories={categories} />
