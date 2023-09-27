@@ -19,19 +19,20 @@ interface FormValues {
   confirmPassword: string;
 }
 
-const EmailPasswordSignUpForm = () => {
+const EmailPasswordSignUpForm = ({ onSubmit }: { onSubmit: VoidFunction }) => {
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm<FormValues>();
 
-  const onSubmit = (data: FormValues) => {
+  const _onSubmit = (data: FormValues) => {
     console.log(data);
+    onSubmit();
   };
 
   return (
-    <Stack spacing={2} component="form" onSubmit={handleSubmit(onSubmit)}>
+    <Stack spacing={2} component="form" onSubmit={handleSubmit(_onSubmit)}>
       <Typography variant="h5">Login to Ashtrei</Typography>
       <TextField
         label="Email"
