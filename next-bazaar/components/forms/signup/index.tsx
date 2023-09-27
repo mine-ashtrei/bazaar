@@ -1,16 +1,37 @@
-import React, { useRef, useState } from "react";
-import { Stepper, Step, StepLabel, Button, Box, Stack } from "@mui/material";
-
+import { useState } from "react";
+import { useForm } from "react-hook-form";
+import {
+  Button,
+  Stepper,
+  Step,
+  StepLabel,
+  StepIconProps,
+  Stack,
+} from "@mui/material";
 import UserForm from "./userForm";
-
-import { StepIconProps } from "@mui/material/StepIcon";
-import CheckCircleIcon from "@mui/icons-material/CheckCircle";
-import CircleFilled from "@mui/icons-material/Circle";
-import Circle from "@mui/icons-material/CircleOutlined";
-import { FormHandles, FormState } from "./common";
 import BusinessForm from "./businessForm";
 import AddressForm from "./addressForm";
+import Circle from "@mui/icons-material/CircleOutlined";
+import CheckCircleIcon from "@mui/icons-material/CheckCircle";
+import CircleFilled from "@mui/icons-material/Circle";
 import SignUpFinish from "./signUpFinish";
+
+export interface SignUpFormData {
+  role: string;
+  firstName: string;
+  lastName: string;
+  mobileNumber: string;
+  businessName: string;
+  website: string;
+  about: string;
+  constactEmail: string;
+  constactNumber: string;
+  taxId: string;
+  address: string;
+  province: string;
+  city: string;
+  zipCode: string;
+}
 
 const CustomStepIcon: React.FC<StepIconProps> = (props) => {
   const { completed, active } = props;
@@ -25,57 +46,76 @@ const CustomStepIcon: React.FC<StepIconProps> = (props) => {
   return <Circle color="primary" />;
 };
 
-const steps = ["", "", ""];
+export default function SignUpStepper() {
+  const steps = [
+    "User Information",
+    "Business Information",
+    "Address Information",
+  ];
 
-const SignUpStepper = () => {
   const [activeStep, setActiveStep] = useState(0);
-  const [collectedData, setCollectedData] = useState<FormState>();
+  const [isSubmitted, setIsSubmitted] = useState(false);
   const [completedSteps, setCompletedSteps] = useState<boolean[]>(
     new Array(steps.length).fill(false)
   );
-  const [isSubmitted, setIsSubmitted] = useState(false);
+  const useFormVar = useForm<SignUpFormData>({
+    mode: "onBlur",
+    reValidateMode: "onChange",
+  });
+  const { register, handleSubmit, formState, getValues, trigger, clearErrors } =
+    useFormVar;
 
-  const formRef = useRef<FormHandles | null>(null);
+  const validateArrayFunctions = [
+    async () => {
+      return await trigger(["role", "firstName", "lastName", "mobileNumber"]);
+    },
+    async () => {
+      return await trigger([
+        "businessName",
+        "website",
+        "about",
+        "constactEmail",
+        "constactNumber",
+        "taxId",
+      ]);
+    },
+    async () => {
+      return await trigger(["address", "province", "city", "zipCode"]);
+    },
+  ];
 
-  const setStep = (value: boolean) => {
-    const newCompletedSteps = [...completedSteps];
-    newCompletedSteps[activeStep] = value;
-    setCompletedSteps(newCompletedSteps);
-  };
-
-  const handleNext = () => {
-    if (!formRef.current) {
+  const handleNext = async () => {
+    if (!(await validateArrayFunctions[activeStep]())) {
       return;
     }
-    console.log("Form data:", formRef.current?.getData());
-    setCollectedData((prev) => ({ ...prev, ...formRef.current?.getData() }));
-    if (formRef.current.validate()) {
-      setStep(true);
-      if (activeStep < steps.length - 1) {
-        setActiveStep((prev) => prev + 1);
-      } else {
-        // All steps completed - submit the data
-        // take the last collectedData
-        const data = {
-          ...formRef.current?.getData(),
-          ...collectedData,
-        };
-        console.log("Submitting data:", data);
-        // Make your API call here
-        setIsSubmitted(true);
-      }
+    const newCompletedSteps = [...completedSteps];
+    newCompletedSteps[activeStep] = true;
+    setCompletedSteps(newCompletedSteps);
+
+    if (activeStep < steps.length - 1) {
+      setActiveStep((prevActiveStep) => prevActiveStep + 1);
+    } else {
+      // All data submitted
+      console.log(getValues());
+      setIsSubmitted(true);
     }
   };
 
   const handleBack = () => {
-    setStep(false);
-    setActiveStep((prev) => prev - 1);
-    // also set collected data to come back to something completed
-    setCollectedData((prev) => ({ ...prev, ...formRef.current?.getData() }));
+    const newCompletedSteps = [...completedSteps];
+    newCompletedSteps[activeStep] = false;
+    newCompletedSteps[activeStep - 1] = false;
+    setCompletedSteps(newCompletedSteps);
+    setActiveStep((prevActiveStep) => prevActiveStep - 1);
+  };
+
+  const handleFormSubmit = (data: SignUpFormData) => {
+    console.log(data);
+    setIsSubmitted(true);
   };
 
   return (
-    <Stack spacing={2}>
+    <Stack sx={{ width: isSubmitted ? "600px" : "350px" }} spacing={2}>
       <Stepper activeStep={activeStep}>
         {steps.map((_, index) => (
           <Step completed={completedSteps[index]} key={index}>
@@ -83,21 +123,11 @@ const SignUpStepper = () => {
           </Step>
         ))}
       </Stepper>
-
       {!isSubmitted && (
         <>
-          <Box>
-            {activeStep === 0 && (
-              <UserForm ref={formRef} initialState={collectedData} />
-            )}
-            {activeStep === 1 && (
-              <BusinessForm ref={formRef} initialState={collectedData} />
-            )}
-            {activeStep === 2 && (
-              <AddressForm ref={formRef} initialState={collectedData} />
-            )}
-          </Box>
-
+          {activeStep === 0 && <UserForm useFormVar={useFormVar} />}
+          {activeStep === 1 && <BusinessForm useFormVar={useFormVar} />}
+          {activeStep === 2 && <AddressForm useFormVar={useFormVar} />}
           <Stack direction={"row"} justifyContent={"space-between"}>
             <Button disabled={activeStep === 0} onClick={handleBack}>
               Back
@@ -111,6 +141,4 @@ const SignUpStepper = () => {
       {isSubmitted && <SignUpFinish />}
     </Stack>
   );
-};
-
-export default SignUpStepper;
+}

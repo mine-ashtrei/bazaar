@@ -19,7 +19,7 @@ export default function SignUpPage() {
   };
 
   return (
-    <Box sx={{ width: "350px", marginTop: 2 }}>
+    <Box sx={{ marginTop: 2 }}>
       {showStepper ? (
         <SignUpStepper />
       ) : (

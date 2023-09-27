@@ -1,145 +1,51 @@
-import React, {
-  forwardRef,
-  useEffect,
-  useImperativeHandle,
-  useState,
-} from "react";
-import {
-  FormHandles,
-  SimpleFormProps,
-  InputDefinition,
-  useForm,
-  validateForm,
-} from "./common";
-import { isMobileNumber, notEmpty } from "../validations_old";
-import {
-  Alert,
-  Box,
-  Divider,
-  Stack,
-  ToggleButton,
-  ToggleButtonGroup,
-  Typography,
-  styled,
-  useTheme,
-} from "@mui/material";
-import SimpleInput from "./simpleInput";
+import { UseFormReturn } from "react-hook-form";
+import { TextField, Typography, Divider, Stack } from "@mui/material";
+import { SignUpFormData } from ".";
+import RoleForm from "./roleForm";
 
-const CustomToggleButton = styled(ToggleButton)(({ theme }) => ({
-  "&.Mui-selected, &.Mui-selected:hover": {
-    backgroundColor: theme.palette.primary.main,
-  },
-}));
+interface UserFormProps {
+  useFormVar: UseFormReturn<SignUpFormData, any, undefined>;
+}
 
-// Define props for the UserForm component
-const UserForm = forwardRef<FormHandles, SimpleFormProps>((props, ref) => {
-  const inputs: InputDefinition[] = [
-    {
-      key: "firstName",
-      label: "First Name",
-      validation: [notEmpty],
-    },
-    {
-      key: "lastName",
-      label: "Last Name",
-      validation: [notEmpty],
-    },
-    {
-      key: "mobileNumber",
-      label: "Mobile Number",
-      validation: [notEmpty, isMobileNumber],
-    },
-  ];
-  const theme = useTheme();
-
-  const { data, errors, setErrors, handleChange } = useForm(
-    inputs,
-    props.initialState
-  );
-  let initialAccountType = "";
-  if (props.initialState && props.initialState["accountType"]) {
-    initialAccountType = props.initialState["accountType"];
-  }
-  const [accountType, setAccoutType] = useState<string>(initialAccountType);
-  const [accountError, setAccountError] = useState("");
-
-  // Expose the validate method for use with ref in the parent
-  useImperativeHandle(ref, () => ({
-    validate: () => {
-      if (accountType !== "supplier" && accountType !== "retailer") {
-        setAccountError("Please select an account type");
-        return false;
-      }
-      setAccountError("");
-      return validateForm(data, inputs, setErrors);
-    },
-    getData: () => ({ ...data, accountType: accountType }),
-  }));
-
+export default function UserForm({ useFormVar }: UserFormProps) {
+  const { register, formState, clearErrors } = useFormVar;
   return (
-    <Stack spacing={4}>
+    <Stack spacing={2} component={"form"}>
       <Typography alignSelf={"center"} variant="h4">
         Let’s get started!
       </Typography>
-      <Stack spacing={2}>
-        <Typography variant="h5">
-          {" "}
-          Do you want to buy or sell on Ashtrei?
-        </Typography>
-        {accountError && <Alert severity="error"> {accountError}</Alert>}
-        <ToggleButtonGroup
-          value={accountType}
-          exclusive
-          onChange={(event, newType) => {
-            setAccoutType(newType);
-          }}
-          sx={{ display: "flex", justifyContent: "space-evenly" }}
-        >
-          <CustomToggleButton
-            selected={accountType === "supplier"}
-            color="secondary"
-            sx={{
-              border: "none",
-              display: "block",
-            }}
-            size="large"
-            value="supplier"
-          >
-            <Typography variant="body1">SELL</Typography>
-            <Typography variant="h5"> supplier</Typography>
-          </CustomToggleButton>
-          <CustomToggleButton
-            selected={accountType === "retailer"}
-            color="secondary"
-            sx={{ border: "none", display: "block" }}
-            size="large"
-            value="retailer"
-          >
-            <Typography variant="body1">BUY</Typography>
-            <Typography variant="h5"> retailer</Typography>
-          </CustomToggleButton>
-        </ToggleButtonGroup>
-      </Stack>
+      <RoleForm useFormVar={useFormVar} />
       <Divider />
-      <Stack spacing={2}>
-        <Typography variant="h5"> Tell us a little bit about you.</Typography>
-        <Stack spacing={2}>
-          {inputs.map((input, index) => (
-            <SimpleInput
-              sx={{ width: "100%" }}
-              key={index}
-              input={input}
-              data={data}
-              errors={errors}
-              handleChange={handleChange}
-            />
-          ))}
-        </Stack>
+      <Typography variant="h5"> Tell us a little bit about you.</Typography>
+      <Stack spacing={1}>
+        <TextField
+          label="First Name"
+          variant="outlined"
+          fullWidth
+          onFocus={() => clearErrors("firstName")}
+          {...register("firstName", { required: true })}
+          error={!!formState.errors.firstName}
+          helperText={formState.errors.firstName?.message?.toString() ?? ""}
+        />
+        <TextField
+          label="Last Name"
+          variant="outlined"
+          fullWidth
+          onFocus={() => clearErrors("lastName")}
+          {...register("lastName", { required: true })}
+          error={!!formState.errors.lastName}
+          helperText={formState.errors.lastName?.message?.toString() ?? ""}
+        />
+        <TextField
+          label="Mobile Number"
+          variant="outlined"
+          fullWidth
+          onFocus={() => clearErrors("mobileNumber")}
+          {...register("mobileNumber", { required: true })}
+          error={!!formState.errors.mobileNumber}
+          helperText={formState.errors.mobileNumber?.message?.toString() ?? ""}
+        />
       </Stack>
     </Stack>
   );
-});
-
-UserForm.displayName = "UserForm";
-
-export default UserForm;
+}

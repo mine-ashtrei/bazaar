@@ -32,7 +32,12 @@ const EmailPasswordSignUpForm = ({ onSubmit }: { onSubmit: VoidFunction }) => {
   };
 
   return (
-    <Stack spacing={2} component="form" onSubmit={handleSubmit(_onSubmit)}>
+    <Stack
+      sx={{ width: "350px" }}
+      spacing={2}
+      component="form"
+      onSubmit={handleSubmit(_onSubmit)}
+    >
       <Typography variant="h5">Login to Ashtrei</Typography>
       <TextField
         label="Email"

@@ -1,93 +1,85 @@
-import React, { forwardRef, useImperativeHandle } from "react";
-import {
-  FormHandles,
-  SimpleFormProps,
-  InputDefinition,
-  useForm,
-  validateForm,
-} from "./common";
-import { isEmail, isMobileNumber, isUrl, notEmpty } from "../validations_old";
-import { Box, Grid, Stack, TextField, Typography } from "@mui/material";
-import SimpleInput from "./simpleInput";
+import { UseFormReturn } from "react-hook-form";
+import { TextField, Button, Stack, Box, Typography, Grid } from "@mui/material";
+import { SignUpFormData } from ".";
 
-// Define props for the UserForm component
-const BusinessForm = forwardRef<FormHandles, SimpleFormProps>((props, ref) => {
-  const inputs: InputDefinition[] = [
-    {
-      key: "businessName",
-      label: "Business Name",
-      validation: [notEmpty],
-    },
-    {
-      key: "website",
-      label: "Website",
-      validation: [notEmpty, isUrl],
-    },
-    {
-      key: "about",
-      label: "About",
-      validation: [notEmpty],
-      isMultiline: true,
-    },
-    {
-      key: "contactNumber",
-      label: "Contact Number",
-      validation: [notEmpty, isMobileNumber],
-    },
-    {
-      key: "contactEmail",
-      label: "Contact Email",
-      validation: [notEmpty, isEmail],
-    },
-    {
-      key: "taxId",
-      label: "Tax Id",
-      validation: [notEmpty],
-    },
-  ];
+interface BusinessFormProps {
+  useFormVar: UseFormReturn<SignUpFormData, any, undefined>;
+}
 
-  const gridXs = [12, 12, 12, 6, 6, 4];
-
-  const { data, errors, setErrors, handleChange } = useForm(
-    inputs,
-    props.initialState
-  );
-
-  // Expose the validate method for use with ref in the parent
-  useImperativeHandle(ref, () => ({
-    validate: () => validateForm(data, inputs, setErrors),
-    getData: () => data,
-  }));
-
-  // TODO add socials buttons
-
+export default function BusinessForm({ useFormVar }: BusinessFormProps) {
+  const { register, formState } = useFormVar;
   return (
-    <Stack spacing={4} alignItems={"center"}>
-      <Box>
-        <Typography variant="h4">Tell us about your business!</Typography>
-      </Box>
+    <Stack spacing={2} component={"form"} alignItems={"center"}>
+      <Typography variant="h4">Tell us about your business!</Typography>
       {/*  */}
-      <Grid container spacing={2}>
-        {inputs.map((input, index) => (
-          <Grid item key={index} xs={gridXs[index]}>
-            <SimpleInput
-              sx={{ width: "100%" }}
-              key={index}
-              input={input}
-              data={data}
-              errors={errors}
-              handleChange={handleChange}
-            />
-          </Grid>
-        ))}
+      <Grid container spacing={1}>
+        <Grid item xs={12}>
+          <TextField
+            label="Business Name"
+            variant="outlined"
+            fullWidth
+            {...register("businessName", { required: true })}
+            error={!!formState.errors.businessName}
+            helperText={
+              formState.errors.businessName?.message?.toString() ?? ""
+            }
+          />
+        </Grid>
+        <Grid item xs={12}>
+          <TextField
+            label="Website"
+            variant="outlined"
+            fullWidth
+            {...register("website", { required: true })}
+            error={!!formState.errors.website}
+            helperText={formState.errors.website?.message?.toString() ?? ""}
+          />
+        </Grid>
+        <Grid item xs={12}>
+          <TextField
+            label="About"
+            variant="outlined"
+            fullWidth
+            {...register("about", { required: true })}
+            error={!!formState.errors.about}
+            helperText={formState.errors.about?.message?.toString() ?? ""}
+          />
+        </Grid>
+        <Grid item xs={6}>
+          <TextField
+            label="Contact Email"
+            variant="outlined"
+            fullWidth
+            {...register("constactEmail", { required: true })}
+            error={!!formState.errors.constactEmail}
+            helperText={
+              formState.errors.constactEmail?.message?.toString() ?? ""
+            }
+          />
+        </Grid>
+        <Grid item xs={6}>
+          <TextField
+            label="Contact Phone"
+            variant="outlined"
+            fullWidth
+            {...register("constactNumber", { required: true })}
+            error={!!formState.errors.constactNumber}
+            helperText={
+              formState.errors.constactNumber?.message?.toString() ?? ""
+            }
+          />
+        </Grid>
+        <Grid item xs={6}>
+          <TextField
+            label="Tax ID"
+            variant="outlined"
+            fullWidth
+            {...register("taxId", { required: true })}
+            error={!!formState.errors.taxId}
+            helperText={formState.errors.taxId?.message?.toString() ?? ""}
+          />
+        </Grid>
       </Grid>
-      {/* <Stack sx={{ width: "33vw" }} spacing={2}>
-        <SimpleInputArray inputs={inputs} ref={ref} />
-      </Stack> */}
     </Stack>
   );
-});
-
-BusinessForm.displayName = "UserForm";
-
-export default BusinessForm;
+}

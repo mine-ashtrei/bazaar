@@ -11,7 +11,7 @@ const SignUpFinish = () => {
     >
       <Image width={188} height={152} alt="mail" src="/mail-check.svg" />
       <Typography variant="h3">Verify your email.</Typography>
-      <Typography align="center" sx={{ maxWidth: "50%" }} variant="body1">
+      <Typography align="center" variant="body1">
         We’ve sent an email to yourname@business.com. Click on the link in the
         email we sent you to finish setting up your account.
       </Typography>

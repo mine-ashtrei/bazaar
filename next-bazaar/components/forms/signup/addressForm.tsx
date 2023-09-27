@@ -1,76 +1,58 @@
-import React, { forwardRef, useImperativeHandle } from "react";
-import {
-  FormHandles,
-  InputDefinition,
-  SimpleFormProps,
-  useForm,
-  validateForm,
-} from "./common";
-import { notEmpty } from "../validations_old";
-import { Box, Grid, Stack, Typography } from "@mui/material";
-import SimpleInput from "./simpleInput";
+import { UseFormReturn } from "react-hook-form";
+import { TextField, Button, Stack, Typography, Grid } from "@mui/material";
+import { SignUpFormData } from ".";
 
-// Define props for the UserForm component
-const AddressForm = forwardRef<FormHandles, SimpleFormProps>((props, ref) => {
-  const inputs: InputDefinition[] = [
-    {
-      key: "address",
-      label: "Address",
-      validation: [notEmpty],
-    },
-    {
-      key: "city",
-      label: "City",
-      validation: [notEmpty],
-    },
-    {
-      key: "province",
-      label: "Province",
-      validation: [notEmpty],
-    },
-    {
-      key: "zipCode",
-      label: "Zip Code",
-      validation: [notEmpty],
-    },
-  ];
+interface AddressFormProps {
+  useFormVar: UseFormReturn<SignUpFormData, any, undefined>;
+}
 
-  const gridXs = [12, 6, 6, 3];
-
-  const { data, errors, setErrors, handleChange } = useForm(
-    inputs,
-    props.initialState
-  );
-
-  // Expose the validate method for use with ref in the parent
-  useImperativeHandle(ref, () => ({
-    validate: () => validateForm(data, inputs, setErrors),
-    getData: () => data,
-  }));
-
+export default function AddressForm({ useFormVar }: AddressFormProps) {
+  const { register, formState } = useFormVar;
   return (
-    <Stack spacing={2}>
-      <Box>
-        <Typography variant="h6">Address</Typography>
-      </Box>
-      <Grid container spacing={2}>
-        {inputs.map((input, index) => (
-          <Grid item key={index} xs={gridXs[index]}>
-            <SimpleInput
-              sx={{ width: "100%" }}
-              key={index}
-              input={input}
-              data={data}
-              errors={errors}
-              handleChange={handleChange}
-            />
-          </Grid>
-        ))}
+    <Stack spacing={2} component={"form"}>
+      <Typography variant="h4">Business Address</Typography>
+      <Grid container spacing={1}>
+        <Grid item xs={12}>
+          <TextField
+            label="Address"
+            variant="outlined"
+            fullWidth
+            {...register("address", { required: true })}
+            error={!!formState.errors.address}
+            helperText={formState.errors.address?.message?.toString() ?? ""}
+          />
+        </Grid>
+        <Grid item xs={6}>
+          <TextField
+            label="City"
+            variant="outlined"
+            fullWidth
+            {...register("city", { required: true })}
+            error={!!formState.errors.city}
+            helperText={formState.errors.city?.message?.toString() ?? ""}
+          />
+        </Grid>
+        <Grid item xs={6}>
+          <TextField
+            label="Province"
+            variant="outlined"
+            fullWidth
+            {...register("province", { required: true })}
+            error={!!formState.errors.province}
+            helperText={formState.errors.province?.message?.toString() ?? ""}
+          />
+        </Grid>
+        <Grid item xs={6}>
+          <TextField
+            label="Zip Code"
+            variant="outlined"
+            fullWidth
+            {...register("zipCode", { required: true })}
+            error={!!formState.errors.zipCode}
+            helperText={formState.errors.zipCode?.message?.toString() ?? ""}
+          />
+        </Grid>
       </Grid>
     </Stack>
   );
-});
-
-AddressForm.displayName = "UserForm";
-
-export default AddressForm;
+}
