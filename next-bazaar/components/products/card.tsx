@@ -26,9 +26,11 @@ export default function ProductCard({ item }: { item: Product }) {
               <Typography>ج. م{item.msrpPrice}/للقطعة</Typography>
             </Stack>
           </Box>
-          <Typography sx={{ padding: 1 }} variant="body2">
-            {item.supplierName} BLBLB
-          </Typography>
+          {item.supplierName && (
+            <Typography sx={{ padding: 1 }} variant="body2">
+              {item.supplierName}
+            </Typography>
+          )}
         </Stack>
       </Paper>
     </Link>

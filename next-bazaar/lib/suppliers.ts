@@ -3,8 +3,13 @@ export type Supplier = {
   name: string;
   imgUrl: string;
   categories: string[];
+  about: string;
   // geography: string[];
   rating: number;
+  instagram?: string;
+  facebook?: string;
+  email: string;
+  enstablished: string;
 };
 
 export type SupplierProps = {
@@ -19,6 +24,10 @@ const SUPPLIERS: Supplier[] = [
     categories: ["المنزل والديكور", "إكسسوارات"],
     // geography: ["القاهرة ", " مصر"],
     rating: 3.4,
+    about:
+      "هنالك العديد من الأنواع المتوفرة لنصوص لوريم إيبسوم، ولكن الغالبية تم تعديلها بشكل ما عبر",
+    email: "test@example.com",
+    enstablished: "2020",
   },
   {
     supplierId: "2",
@@ -27,6 +36,10 @@ const SUPPLIERS: Supplier[] = [
     categories: ["الصحه والجمال", "حريمى"],
     // geography: ["القاهرة ", " مصر"],
     rating: 5,
+    about:
+      "هنالك العديد من الأنواع المتوفرة لنصوص لوريم إيبسوم، ولكن الغالبية تم تعديلها بشكل ما عبر",
+    email: "test@example.com",
+    enstablished: "2020",
   },
   {
     supplierId: "3",
@@ -35,6 +48,10 @@ const SUPPLIERS: Supplier[] = [
     categories: ["حريمى", "رجال"],
     // geography: ["القاهرة ", " مصر"],
     rating: 4.2,
+    about:
+      "هنالك العديد من الأنواع المتوفرة لنصوص لوريم إيبسوم، ولكن الغالبية تم تعديلها بشكل ما عبر",
+    email: "test@example.com",
+    enstablished: "2020",
   },
 ];
 

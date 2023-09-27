@@ -29,6 +29,9 @@ export const products = {
   getAll: async (): Promise<Product[]> => {
     return PRODUCTS;
   },
+  getBySupplierId: async (supplierId: string) => {
+    return PRODUCTS.filter((product) => product.supplierId === supplierId);
+  },
 };
 
 const PRODUCTS: Product[] = [

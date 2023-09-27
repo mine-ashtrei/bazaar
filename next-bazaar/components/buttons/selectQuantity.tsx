@@ -22,7 +22,7 @@ const SelectQuantity = ({
       >
         {values.map((value, index) => (
           <MenuItem key={index} value={value}>
-            {value}
+            {value} Items (X EGP)
           </MenuItem>
         ))}
       </Select>
