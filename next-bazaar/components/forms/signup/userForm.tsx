@@ -82,7 +82,10 @@ const UserForm = forwardRef<FormHandles, SimpleFormProps>((props, ref) => {
         Let’s get started!
       </Typography>
       <Stack spacing={2}>
-        <Typography variant="h5"> Do you want to buy or sell?</Typography>
+        <Typography variant="h5">
+          {" "}
+          Do you want to buy or sell on Ashtrei?
+        </Typography>
         {accountError && <Alert severity="error"> {accountError}</Alert>}
         <ToggleButtonGroup
           value={accountType}
@@ -97,19 +100,22 @@ const UserForm = forwardRef<FormHandles, SimpleFormProps>((props, ref) => {
             color="secondary"
             sx={{
               border: "none",
+              display: "block",
             }}
             size="large"
             value="supplier"
           >
+            <Typography variant="body1">SELL</Typography>
             <Typography variant="h5"> supplier</Typography>
           </CustomToggleButton>
           <CustomToggleButton
             selected={accountType === "retailer"}
             color="secondary"
-            sx={{ border: "none" }}
+            sx={{ border: "none", display: "block" }}
             size="large"
             value="retailer"
           >
+            <Typography variant="body1">BUY</Typography>
             <Typography variant="h5"> retailer</Typography>
           </CustomToggleButton>
         </ToggleButtonGroup>
