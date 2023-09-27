@@ -11,7 +11,7 @@ import {
   useForm,
   validateForm,
 } from "./common";
-import { isMobileNumber, notEmpty } from "../validations";
+import { isMobileNumber, notEmpty } from "../validations_old";
 import {
   Alert,
   Box,

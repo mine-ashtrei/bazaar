@@ -6,7 +6,7 @@ import {
   useForm,
   validateForm,
 } from "./common";
-import { notEmpty } from "../validations";
+import { notEmpty } from "../validations_old";
 import { Box, Grid, Stack, Typography } from "@mui/material";
 import SimpleInput from "./simpleInput";
 

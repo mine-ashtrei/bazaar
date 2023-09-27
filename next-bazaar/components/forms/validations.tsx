@@ -1,36 +1,26 @@
-export interface ValidationParams {
-  fieldName: string;
-  value: string;
-}
+import { UseFormSetError } from "react-hook-form";
 
-export const notEmpty = ({ fieldName, value }: ValidationParams): string => {
-  if (!value || value.length == 0) {
-    return `${fieldName} is required`;
+// Check if Mobile number is valid
+export const isMobile = (
+  fieldName: string,
+  value: string,
+  setError: UseFormSetError<any>
+): boolean => {
+  if (/^\d{10}$/.test(value)) {
+    return true;
   }
-  return "";
+  setError(fieldName, { message: "Invalid Mobile Number" });
+  return false;
 };
 
-// Check if the value is a valid Mobile Number
-export const isMobileNumber = ({
-  fieldName,
-  value,
-}: ValidationParams): string => {
-  if (/^[0-9]{10}$/.test(value)) {
-    return "";
-  }
-  return "Invalid Mobile Number";
-};
-
-// Check if the value is a valid Email
-export const isEmail = ({ fieldName, value }: ValidationParams): string => {
-  if (/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(value)) {
-    return "";
+export const isEmail = (value: string): boolean | string => {
+  if (/^\S+@\S+\.\S+$/.test(value)) {
+    return true;
   }
   return "Invalid Email";
 };
 
-// Check if the value is a valid Password
-export const isPassword = ({ fieldName, value }: ValidationParams): string => {
+export const isPassword = (value: string): boolean | string => {
   // Has at least one lowercase letter.
   // Has at least one uppercase letter.
   // Has at least one digit.
@@ -42,38 +32,7 @@ export const isPassword = ({ fieldName, value }: ValidationParams): string => {
       value
     )
   ) {
-    return "";
+    return true;
   }
   return "Invalid Password";
-};
-
-export const isUrl = ({ fieldName, value }: ValidationParams): string => {
-  try {
-    const newUrl = new URL(value);
-    const httpType =
-      newUrl.protocol === "http:" || newUrl.protocol === "https:";
-    return "";
-  } catch (err) {
-    return "Invalid URL";
-  }
-};
-
-export const isInstagramUrl = ({
-  fieldName,
-  value,
-}: ValidationParams): string => {
-  if (value.startsWith("https://www.instagram.com/")) {
-    return "";
-  }
-  return "Invalid Instagram URL";
-};
-
-export const isFacebookUrl = ({
-  fieldName,
-  value,
-}: ValidationParams): string => {
-  if (value.startsWith("https://www.facebook.com/")) {
-    return "";
-  }
-  return "Invalid Facebook URL";
 };

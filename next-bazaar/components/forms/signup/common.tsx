@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { ValidationParams } from "../validations";
+import { ValidationParams } from "../validations_old";
 
 export interface FormHandles {
   validate: () => boolean;
