@@ -1,5 +1,5 @@
 import { Button, Stack } from "@mui/material";
-import { ButtonMd } from "../common/buttons";
+import { ButtonMd } from "../buttons";
 
 const SignUpRetailerSupplier = () => {
   return (

@@ -14,8 +14,8 @@ import {
 } from "@mui/material";
 import { Product } from "../../lib/api/products";
 import { Supplier } from "../../lib/api/suppliers";
-import AddToCartButton from "../buttons/addToCartButton";
-import SelectQuantity from "../buttons/selectQuantity";
+import AddToCartButton from "../common/buttons/addToCartButton";
+import SelectQuantity from "../common/buttons/selectQuantity";
 import { useState } from "react";
 import NextLink from "next/link";
 import RaitingOneStar from "../common/raitingOneStar";

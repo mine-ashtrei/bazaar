@@ -11,11 +11,11 @@ import {
   Box,
 } from "@mui/material";
 import NextLink from "next/link";
-import LoginWithGoogle from "../buttons/loginWithGoogle";
+import LoginWithGoogle from "../common/buttons/loginWithGoogle";
 import { SignInResponse, signIn } from "next-auth/react";
 import { useRouter } from "next/router";
 import { useState } from "react";
-import LoginWithFacebook from "../buttons/loginWithFacebook";
+import LoginWithFacebook from "../common/buttons/loginWithFacebook";
 import CloseIcon from "@mui/icons-material/Close";
 
 const SignInForm = () => {

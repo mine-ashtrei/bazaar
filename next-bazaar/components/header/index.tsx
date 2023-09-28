@@ -4,11 +4,11 @@ import React from "react";
 import CategoriesHeader from "./categoriesHeader";
 import { useSession } from "next-auth/react";
 import { useCategories } from "../categories/categoriesContext";
-import SignUpButton from "../buttons/signUpButton";
-import SignInButton from "../buttons/signInButton";
+import SignUpButton from "../common/buttons/signUpButton";
+import SignInButton from "../common/buttons/signInButton";
 import UserIcon from "./userIcon";
 import SearchBar from "./searchBar";
-import SignOutButton from "../buttons/signOutButton";
+import SignOutButton from "../common/buttons/signOutButton";
 
 const Header = () => {
   const { data: session, status } = useSession();
