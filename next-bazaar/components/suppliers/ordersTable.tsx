@@ -9,10 +9,12 @@ import {
   TableHead,
   TableRow,
   Typography,
+  useTheme,
 } from "@mui/material";
 import { Order } from "../../lib/api/orders";
 
 export default function OrdersTable({ orders }: { orders: Order[] }) {
+  const theme = useTheme();
   return (
     <Stack>
       <Stack
@@ -45,8 +47,16 @@ export default function OrdersTable({ orders }: { orders: Order[] }) {
             </TableRow>
           </TableHead>
           <TableBody>
-            {orders.map((order) => (
-              <TableRow key={order.orderId}>
+            {orders.map((order, index) => (
+              <TableRow
+                key={order.orderId}
+                sx={{
+                  backgroundColor:
+                    index % 2
+                      ? theme.palette.grey[200]
+                      : theme.palette.grey[50],
+                }}
+              >
                 <TableCell>{order.orderId}</TableCell>
                 <TableCell>{order.date}</TableCell>
                 <TableCell>{order.retailerId}</TableCell>
