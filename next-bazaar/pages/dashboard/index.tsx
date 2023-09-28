@@ -1,6 +1,6 @@
 import { useSession } from "next-auth/react";
 import UnauthorizedPage from "../../components/pages/unauthorizedPage";
-import Dashboard from "../../components/suppliers/dashboard";
+import Dashboard from "../../components/suppliers/supplierDashboard";
 import { GetServerSideProps, InferGetServerSidePropsType } from "next";
 import API from "../../lib/api";
 
