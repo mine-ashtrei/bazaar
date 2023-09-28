@@ -40,9 +40,38 @@ export default function BusinessForm({ useFormVar }: BusinessFormProps) {
             label="About"
             variant="outlined"
             fullWidth
-            {...register("about", { required: true })}
+            multiline
+            maxRows={4}
+            minRows={4}
+            {...register("about", {
+              required: true,
+            })}
             error={!!formState.errors.about}
             helperText={formState.errors.about?.message?.toString() ?? ""}
+          />
+        </Grid>
+        <Grid item xs={12}>
+          <TextField
+            label="Instagram Page"
+            variant="outlined"
+            fullWidth
+            {...register("instagramPage", { required: false })}
+            error={!!formState.errors.instagramPage}
+            helperText={
+              formState.errors.instagramPage?.message?.toString() ?? ""
+            }
+          />
+        </Grid>
+        <Grid item xs={12}>
+          <TextField
+            label="Facebook Page"
+            variant="outlined"
+            fullWidth
+            {...register("facebookPage", { required: false })}
+            error={!!formState.errors.facebookPage}
+            helperText={
+              formState.errors.facebookPage?.message?.toString() ?? ""
+            }
           />
         </Grid>
         <Grid item xs={6}>
@@ -50,7 +79,7 @@ export default function BusinessForm({ useFormVar }: BusinessFormProps) {
             label="Contact Email"
             variant="outlined"
             fullWidth
-            {...register("constactEmail", { required: true })}
+            {...register("constactEmail", { required: false })}
             error={!!formState.errors.constactEmail}
             helperText={
               formState.errors.constactEmail?.message?.toString() ?? ""
@@ -62,7 +91,7 @@ export default function BusinessForm({ useFormVar }: BusinessFormProps) {
             label="Contact Phone"
             variant="outlined"
             fullWidth
-            {...register("constactNumber", { required: true })}
+            {...register("constactNumber", { required: false })}
             error={!!formState.errors.constactNumber}
             helperText={
               formState.errors.constactNumber?.message?.toString() ?? ""

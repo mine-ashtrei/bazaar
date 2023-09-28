@@ -1,6 +1,7 @@
 import { UseFormReturn } from "react-hook-form";
 import { TextField, Button, Stack, Typography, Grid } from "@mui/material";
 import { SignUpFormData } from ".";
+import { isZipCode } from "../validations";
 
 interface AddressFormProps {
   useFormVar: UseFormReturn<SignUpFormData, any, undefined>;
@@ -47,7 +48,7 @@ export default function AddressForm({ useFormVar }: AddressFormProps) {
             label="Zip Code"
             variant="outlined"
             fullWidth
-            {...register("zipCode", { required: true })}
+            {...register("zipCode", { required: true, validate: isZipCode })}
             error={!!formState.errors.zipCode}
             helperText={formState.errors.zipCode?.message?.toString() ?? ""}
           />

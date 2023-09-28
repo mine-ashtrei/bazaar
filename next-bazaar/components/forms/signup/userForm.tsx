@@ -2,6 +2,7 @@ import { UseFormReturn } from "react-hook-form";
 import { TextField, Typography, Divider, Stack } from "@mui/material";
 import { SignUpFormData } from ".";
 import RoleForm from "./roleForm";
+import { isMobile } from "../validations";
 
 interface UserFormProps {
   useFormVar: UseFormReturn<SignUpFormData, any, undefined>;
@@ -41,7 +42,7 @@ export default function UserForm({ useFormVar }: UserFormProps) {
           variant="outlined"
           fullWidth
           onFocus={() => clearErrors("mobileNumber")}
-          {...register("mobileNumber", { required: true })}
+          {...register("mobileNumber", { required: true, validate: isMobile })}
           error={!!formState.errors.mobileNumber}
           helperText={formState.errors.mobileNumber?.message?.toString() ?? ""}
         />

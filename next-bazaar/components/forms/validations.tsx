@@ -1,16 +1,8 @@
-import { UseFormSetError } from "react-hook-form";
-
-// Check if Mobile number is valid
-export const isMobile = (
-  fieldName: string,
-  value: string,
-  setError: UseFormSetError<any>
-): boolean => {
+export const isMobile = (value: string): boolean | string => {
   if (/^\d{10}$/.test(value)) {
     return true;
   }
-  setError(fieldName, { message: "Invalid Mobile Number" });
-  return false;
+  return "Invalid Mobile Number";
 };
 
 export const isEmail = (value: string): boolean | string => {
@@ -35,4 +27,65 @@ export const isPassword = (value: string): boolean | string => {
     return true;
   }
   return "Invalid Password";
+};
+
+export const isTaxId = (value: string): boolean | string => {
+  if (/^\d{9}$/.test(value)) {
+    return true;
+  }
+  return "Invalid Tax ID";
+};
+
+export const isPasswordMatch = (
+  value: string,
+  formValues: any
+): boolean | string => {
+  const { password } = formValues;
+  if (password !== value) {
+    return "Passwords do not match";
+  }
+  return true;
+};
+
+export const isZipCode = (value: string): boolean | string => {
+  if (/^\d{5}$/.test(value)) {
+    return true;
+  }
+  return "Invalid Zip Code";
+};
+
+export const isNumber = (value: string): boolean | string => {
+  if (/^\d+$/.test(value)) {
+    return true;
+  }
+  return "Invalid Number";
+};
+
+export const isWebsite = (value: string): boolean | string => {
+  if (
+    /^((http|https):\/\/)?(www.)?[a-z0-9]+\.[a-z]+(\/[a-zA-Z0-9#]+\/?)*$/.test(
+      value
+    )
+  ) {
+    return true;
+  }
+  return "Invalid Website";
+};
+
+export const isInstagramPage = (value: string): boolean | string => {
+  if (
+    /^((http|https):\/\/)?(www.)?instagram.com\/[a-zA-Z0-9_]+\/?$/.test(value)
+  ) {
+    return true;
+  }
+  return "Invalid Instagram Page";
+};
+
+export const isFacebookPage = (value: string): boolean | string => {
+  if (
+    /^((http|https):\/\/)?(www.)?facebook.com\/[a-zA-Z0-9_]+\/?$/.test(value)
+  ) {
+    return true;
+  }
+  return "Invalid Facebook Page";
 };

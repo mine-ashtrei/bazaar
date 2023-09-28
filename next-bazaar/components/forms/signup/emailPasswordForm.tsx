@@ -10,7 +10,7 @@ import {
   Typography,
 } from "@mui/material";
 import { useForm } from "react-hook-form";
-import { isEmail, isPassword } from "../validations";
+import { isEmail, isPassword, isPasswordMatch } from "../validations";
 import PasswordRequirementsHelper from "./passwordHelpperPop";
 
 interface FormValues {
@@ -66,7 +66,7 @@ const EmailPasswordSignUpForm = ({ onSubmit }: { onSubmit: VoidFunction }) => {
         fullWidth
         {...register("password", {
           required: true,
-          validate: (value) => isPassword(value),
+          validate: isPassword,
         })}
       />
       <TextField
@@ -86,11 +86,8 @@ const EmailPasswordSignUpForm = ({ onSubmit }: { onSubmit: VoidFunction }) => {
         {...register("confirmPassword", {
           required: true,
           validate: {
-            matchesPreviousPassword: (value, formValues) => {
-              const { password } = formValues;
-              return password === value || "Passwords should match!";
-            },
-            validPassword: (value) => isPassword(value),
+            matchesPreviousPassword: isPasswordMatch,
+            validPassword: isPassword,
           },
         })}
       />

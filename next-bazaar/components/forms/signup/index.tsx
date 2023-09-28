@@ -24,6 +24,8 @@ export interface SignUpFormData {
   businessName: string;
   website: string;
   about: string;
+  instagramPage: string;
+  facebookPage: string;
   constactEmail: string;
   constactNumber: string;
   taxId: string;
@@ -62,8 +64,7 @@ export default function SignUpStepper() {
     mode: "onBlur",
     reValidateMode: "onChange",
   });
-  const { register, handleSubmit, formState, getValues, trigger, clearErrors } =
-    useFormVar;
+  const { getValues, trigger } = useFormVar;
 
   const validateArrayFunctions = [
     async () => {
@@ -74,6 +75,8 @@ export default function SignUpStepper() {
         "businessName",
         "website",
         "about",
+        "facebookPage",
+        "instagramPage",
         "constactEmail",
         "constactNumber",
         "taxId",
@@ -107,11 +110,6 @@ export default function SignUpStepper() {
     newCompletedSteps[activeStep - 1] = false;
     setCompletedSteps(newCompletedSteps);
     setActiveStep((prevActiveStep) => prevActiveStep - 1);
-  };
-
-  const handleFormSubmit = (data: SignUpFormData) => {
-    console.log(data);
-    setIsSubmitted(true);
   };
 
   return (
