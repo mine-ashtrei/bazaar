@@ -10,8 +10,12 @@ const SearchSvg = (props: SvgIconProps) => {
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
       >
-        <circle cx="22" cy="22" r="12" stroke="#333333" />
-        <path d="M40 40L34 34" stroke="#333333" stroke-linecap="round" />
+        <circle cx="22" cy="22" r="12" stroke={props.htmlColor || "#121516"} />
+        <path
+          d="M40 40L34 34"
+          stroke={props.htmlColor || "#121516"}
+          stroke-linecap="round"
+        />
       </svg>
     </SvgIcon>
   );

@@ -1,6 +1,7 @@
 import Image from "next/image";
 import SearchIcon from "../../public/icons/Search_light.svg";
 import { Box, InputBase } from "@mui/material";
+import SearchSvg from "../common/icons/search";
 
 const SearchBar = () => {
   return (
@@ -32,7 +33,8 @@ const SearchBar = () => {
           transform: "translateY(-50%)",
         }}
       >
-        <Image priority src={SearchIcon} alt="" className="w-10" />
+        {/* <Image priority src={SearchIcon} alt="" className="w-10" /> */}
+        <SearchSvg />
       </Box>
     </Box>
   );

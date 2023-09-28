@@ -6,10 +6,10 @@ import {
   ListItemText,
   Typography,
 } from "@mui/material";
-import HomeIcon from "@mui/icons-material/Home";
-import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
-import ReportIcon from "@mui/icons-material/Report";
-import SettingsIcon from "@mui/icons-material/Settings";
+import HomeSvg from "../common/icons/home";
+import OrderSvg from "../common/icons/order";
+import RetailerSvg from "../common/icons/retailer";
+import SettingsSvg from "../common/icons/settings";
 
 export default function SupplierMenu() {
   return (
@@ -18,25 +18,25 @@ export default function SupplierMenu() {
       <List>
         <ListItemButton>
           <ListItemIcon>
-            <HomeIcon />
+            <HomeSvg />
           </ListItemIcon>
           <ListItemText primary="Home" />
         </ListItemButton>
         <ListItemButton>
           <ListItemIcon>
-            <ShoppingCartIcon />
+            <OrderSvg />
           </ListItemIcon>
           <ListItemText primary="Orders" />
         </ListItemButton>
         <ListItemButton>
           <ListItemIcon>
-            <ReportIcon />
+            <RetailerSvg />
           </ListItemIcon>
-          <ListItemText primary="Reports" />
+          <ListItemText primary="Retailers" />
         </ListItemButton>
         <ListItemButton>
           <ListItemIcon>
-            <SettingsIcon />
+            <SettingsSvg />
           </ListItemIcon>
           <ListItemText primary="Settings" />
         </ListItemButton>
