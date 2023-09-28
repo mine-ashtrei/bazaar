@@ -1,5 +1,5 @@
-import { Product } from "../../lib/products";
-import { Supplier } from "../../lib/suppliers";
+import { Product } from "../../lib/api/products";
+import { Supplier } from "../../lib/api/suppliers";
 import { Box, Stack, Typography, styled } from "@mui/material";
 
 const GrayTextTypography = styled(Typography)(({ theme }) => ({

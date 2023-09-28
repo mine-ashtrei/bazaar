@@ -1,5 +1,5 @@
 import { Button } from "@mui/material";
-import { Product } from "../../lib/products";
+import { Product } from "../../lib/api/products";
 
 const AddToCartButton = ({
   product,

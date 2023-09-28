@@ -1,5 +1,5 @@
 import { Box, Rating, Stack, Typography } from "@mui/material";
-import { Supplier } from "../../lib/suppliers";
+import { Supplier } from "../../lib/api/suppliers";
 
 const ContactLabel = ({ label, value }: { label: string; value: string }) => {
   return (

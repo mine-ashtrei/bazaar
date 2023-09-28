@@ -1,9 +1,9 @@
 import StoreFront from "../components/pages/storeFront";
 import type { InferGetStaticPropsType, GetStaticProps } from "next";
-import API from "../lib";
+import API from "../lib/api";
 import { useCategories } from "../components/categories/categoriesContext";
-import { Supplier } from "../lib/suppliers";
-import { Product, products } from "../lib/products";
+import { Supplier } from "../lib/api/suppliers";
+import { Product, products } from "../lib/api/products";
 
 export const getStaticProps = (async () => {
   const suppliers = await API.suppliers.getAll();

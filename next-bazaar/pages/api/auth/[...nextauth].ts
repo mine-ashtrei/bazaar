@@ -5,7 +5,7 @@ import Keycloak from "next-auth/providers/keycloak";
 import { User, Account, Session, Profile } from "next-auth";
 import { JWT } from "next-auth/jwt";
 import { AdapterUser } from "next-auth/adapters";
-import API from "../../../lib";
+import API from "../../../lib/api";
 
 type SignInCallbackProps = {
   user: User | AdapterUser;

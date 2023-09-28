@@ -1,4 +1,4 @@
-import { Category } from "../../lib/categories";
+import { Category } from "../../lib/api/categories";
 import { Box, Link as MUILink, useTheme } from "@mui/material";
 import NextLink from "next/link";
 

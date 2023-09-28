@@ -1,6 +1,6 @@
 import ProductCard from "./card";
 import Carousel from "../structure/carousel";
-import { Product } from "../../lib/products";
+import { Product } from "../../lib/api/products";
 
 export default function ProductCarousel({ products }: { products: Product[] }) {
   return (

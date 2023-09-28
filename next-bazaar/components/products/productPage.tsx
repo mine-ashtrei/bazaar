@@ -1,7 +1,7 @@
 import { Box, Stack, Typography, styled } from "@mui/material";
-import { Product } from "../../lib/products";
+import { Product } from "../../lib/api/products";
 import ProductImage from "./productImage";
-import { Supplier } from "../../lib/suppliers";
+import { Supplier } from "../../lib/api/suppliers";
 import ProductHighlight from "./productHighlight";
 import ProductMain from "./productMain";
 
@@ -13,12 +13,7 @@ const ProductPage = ({
   supplier: Supplier;
 }) => {
   return (
-    <Stack
-      direction={"row"}
-      sx={{ padding: 5 }}
-      spacing={5}
-      justifyContent={"space-between"}
-    >
+    <Stack direction={"row"} spacing={5} justifyContent={"space-between"}>
       <ProductImage images={product.images} />
       <ProductMain product={product} supplier={supplier} />
       <ProductHighlight product={product} supplier={supplier} />

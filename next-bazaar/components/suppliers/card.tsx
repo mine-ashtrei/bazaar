@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { Supplier } from "../../lib/suppliers";
+import { Supplier } from "../../lib/api/suppliers";
 import {
   Card,
   Chip,

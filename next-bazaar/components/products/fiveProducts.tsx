@@ -1,6 +1,6 @@
 import FiveItemGrid from "../structure/fiveItemGrid";
-import { Supplier } from "../../lib/suppliers";
-import { Product } from "../../lib/products";
+import { Supplier } from "../../lib/api/suppliers";
+import { Product } from "../../lib/api/products";
 import ProductCard from "./card";
 
 export default function FiveProducts({ products }: { products: Product[] }) {

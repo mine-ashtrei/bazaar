@@ -5,8 +5,8 @@ import {
   useEffect,
   ReactNode,
 } from "react";
-import { Category } from "../../lib/categories";
-import API from "../../lib";
+import { Category } from "../../lib/api/categories";
+import API from "../../lib/api";
 
 type CategoryContextType = {
   categories: Category[];

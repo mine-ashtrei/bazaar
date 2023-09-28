@@ -12,8 +12,8 @@ import {
   Typography,
   Link as MuiLink,
 } from "@mui/material";
-import { Product } from "../../lib/products";
-import { Supplier } from "../../lib/suppliers";
+import { Product } from "../../lib/api/products";
+import { Supplier } from "../../lib/api/suppliers";
 import AddToCartButton from "../buttons/addToCartButton";
 import SelectQuantity from "../buttons/selectQuantity";
 import { useState } from "react";

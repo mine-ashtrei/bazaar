@@ -15,7 +15,7 @@ export default function DefaultLayout({
       }}
     >
       <Header />
-      <main className="flex-1">{children}</main>
+      <main className="flex-1 p-5">{children}</main>
       <Footer />
     </Stack>
   );

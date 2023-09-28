@@ -6,8 +6,8 @@ import {
   Typography,
   Link as MuiLink,
 } from "@mui/material";
-import { Supplier, suppliers } from "../../lib/suppliers";
-import { Product } from "../../lib/products";
+import { Supplier, suppliers } from "../../lib/api/suppliers";
+import { Product } from "../../lib/api/products";
 import ProductCard from "../products/card";
 import NextLink from "next/link";
 

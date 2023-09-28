@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { Product } from "../../lib/products";
+import { Product } from "../../lib/api/products";
 import { Box, Paper, Stack, Typography, useTheme } from "@mui/material";
 
 export default function ProductCard({ item }: { item: Product }) {

@@ -1,6 +1,6 @@
 import CategoryCard from "./card";
 import FiveItemGrid from "../structure/fiveItemGrid";
-import { Category } from "../../lib/categories";
+import { Category } from "../../lib/api/categories";
 
 export default function FiveCategories({
   categories,

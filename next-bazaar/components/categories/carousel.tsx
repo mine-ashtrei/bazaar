@@ -1,6 +1,6 @@
 import CategoryCard from "./card";
 import Carousel from "../structure/carousel";
-import { Category } from "../../lib/categories";
+import { Category } from "../../lib/api/categories";
 
 export default function CategoriesCarousel({
   categories,

@@ -1,6 +1,6 @@
 import Image from "next/image";
 import NextLink from "next/link";
-import { Category } from "../../lib/categories";
+import { Category } from "../../lib/api/categories";
 import { Box, Typography, Link as MuiLink } from "@mui/material";
 
 export default function CategoryCard({ item }: { item: Category }) {

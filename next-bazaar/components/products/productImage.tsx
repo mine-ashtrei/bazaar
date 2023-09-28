@@ -1,5 +1,5 @@
 import { Box, Stack } from "@mui/material";
-import { ImageT } from "../../lib/products";
+import { ImageT } from "../../lib/api/products";
 import Image from "next/image";
 import { useState } from "react";
 

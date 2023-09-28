@@ -1,6 +1,6 @@
 import { Box, Grid, Stack } from "@mui/material";
-import { Product } from "../../lib/products";
-import { Supplier } from "../../lib/suppliers";
+import { Product } from "../../lib/api/products";
+import { Supplier } from "../../lib/api/suppliers";
 import SupplierAboutCard from "./supplierAboutCard";
 import SupplierProducts from "./supplierProducts";
 
@@ -12,7 +12,7 @@ const SupplierPage = ({
   products: Product[];
 }) => {
   return (
-    <Grid container spacing={5} sx={{ padding: 5 }}>
+    <Grid container spacing={5}>
       <Grid item xs={12} md={5}>
         <SupplierAboutCard supplier={supplier} />
       </Grid>

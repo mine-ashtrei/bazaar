@@ -1,5 +1,5 @@
 import SupplierCard from "./card";
-import { Supplier } from "../../lib/suppliers";
+import { Supplier } from "../../lib/api/suppliers";
 import ThreeItemGrid from "../structure/threeItemGrid";
 
 export default function ThreeSuppliers({

@@ -1,8 +1,8 @@
-import API from "../../../lib";
+import API from "../../../lib/api";
 import { GetServerSideProps, InferGetServerSidePropsType } from "next";
-import { Product } from "../../../lib/products";
+import { Product } from "../../../lib/api/products";
 import ProductPage from "../../../components/products/productPage";
-import { Supplier } from "../../../lib/suppliers";
+import { Supplier } from "../../../lib/api/suppliers";
 
 export const getServerSideProps = (async (context) => {
   const productId = context.params!.productId;
