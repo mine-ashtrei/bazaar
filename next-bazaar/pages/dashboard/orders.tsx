@@ -4,7 +4,7 @@ import Dashboard from "../../components/suppliers/supplierDashboard";
 import { GetServerSideProps, InferGetServerSidePropsType } from "next";
 import API from "../../lib/api";
 import SupplierDashboardLayout from "../../components/layouts/supplierDashboardLayout";
-import SupplierHome from "../../components/suppliers/dashboard.tsx/home";
+import SupplierOrders from "../../components/suppliers/dashboard.tsx/orders";
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
   const ordersData = await API.orders.getOrdersBySupplierId("1");
@@ -18,7 +18,7 @@ const Page = ({
   // if (status !== "authenticated") {
   //   return <UnauthorizedPage />;
   // }
-  return <SupplierHome orders={ordersData} />;
+  return <SupplierOrders orders={ordersData} />;
   // return <p>Signed in as {session.user?.email}</p>;
 };
 

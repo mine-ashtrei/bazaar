@@ -16,25 +16,25 @@ export default function SupplierMenu() {
     <div>
       <Typography variant="h6">Menu</Typography>
       <List>
-        <ListItemButton>
+        <ListItemButton href="/dashboard">
           <ListItemIcon>
             <HomeSvg />
           </ListItemIcon>
           <ListItemText primary="Home" />
         </ListItemButton>
-        <ListItemButton>
+        <ListItemButton href="/dashboard/orders">
           <ListItemIcon>
             <OrderSvg />
           </ListItemIcon>
           <ListItemText primary="Orders" />
         </ListItemButton>
-        <ListItemButton>
+        <ListItemButton href="/dashboard/retailers">
           <ListItemIcon>
             <RetailerSvg />
           </ListItemIcon>
           <ListItemText primary="Retailers" />
         </ListItemButton>
-        <ListItemButton>
+        <ListItemButton href="/dashboard/settings">
           <ListItemIcon>
             <SettingsSvg />
           </ListItemIcon>
