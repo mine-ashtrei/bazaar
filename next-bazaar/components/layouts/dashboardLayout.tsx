@@ -9,7 +9,7 @@ export default function DashboardLayout({
   children: React.ReactNode;
 }) {
   return (
-    <Grid container sx={{ padding: 5 }}>
+    <Grid container spacing={5} sx={{ padding: 5 }}>
       {/* <Grid item xs={12}>
             Header
         </Grid> */}

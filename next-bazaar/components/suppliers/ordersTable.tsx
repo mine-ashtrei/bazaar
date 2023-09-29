@@ -12,6 +12,8 @@ import {
   useTheme,
 } from "@mui/material";
 import { Order } from "../../lib/api/orders";
+import SortButton from "../common/buttons/sortButton";
+import FilterButton from "../common/buttons/filterButton";
 
 export default function OrdersTable({ orders }: { orders: Order[] }) {
   const theme = useTheme();
@@ -30,8 +32,8 @@ export default function OrdersTable({ orders }: { orders: Order[] }) {
           justifyContent={"center"}
         >
           {/* TODO add icon buttons here */}
-          <Typography variant="body2">Sort</Typography>
-          <Typography variant="body2">Filter</Typography>
+          <SortButton />
+          <FilterButton />
         </Stack>
       </Stack>
       <TableContainer component={Paper}>
