@@ -54,7 +54,7 @@ export default function ProductListingGeneralGroup({
           minRows={4}
           maxRows={4}
           onFocus={() => clearErrors("description")}
-          {...register("description", { required: true, minLength: 120 })}
+          {...register("description", { required: true })}
           error={!!formState.errors.description}
           helperText={formState.errors.description?.message?.toString() ?? ""}
         />

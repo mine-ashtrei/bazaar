@@ -74,16 +74,19 @@ export default function ProductListingMediaGroup({
             },
           }}
         >
-          <input {...getInputProps()} accept=".png,.jpg" />
-          <Typography variant="body2">
-            Drop your images here, or{" "}
+          <input {...getInputProps()} accept=".png,.jpg" hidden />
+          <Box component="p">
+            <Typography component={"span"} variant="body2">
+              Drop your images here, or{" "}
+            </Typography>
             <Typography
+              component={"span"}
               variant="body2"
-              sx={{ color: theme.palette.secondary.dark, display: "inline" }}
+              sx={{ color: theme.palette.secondary.dark }}
             >
               click to browse
             </Typography>
-          </Typography>
+          </Box>
         </Box>
       </Grid>
       <Grid item spacing={2} xs={12}>

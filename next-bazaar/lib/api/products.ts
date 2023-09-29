@@ -4,7 +4,7 @@ export type ImageT = {
 };
 
 export type Product = {
-  id: string;
+  id?: string;
   name: string;
   description: string;
   supplierId: string;
@@ -17,8 +17,8 @@ export type Product = {
   }[];
   availableQuantity: number;
   images: ImageT[];
-  createdAt: string;
-  updatedAt: string;
+  createdAt?: string;
+  updatedAt?: string;
   supplierName?: string;
 };
 
