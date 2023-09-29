@@ -11,6 +11,7 @@ export default function MinimalFooter() {
         flexDirection: "column",
         justifyContent: "space-around",
         alignItems: "center",
+        marginTop: 4,
       }}
     >
       <MuiLink component={NextLink} href="/" underline="always">
