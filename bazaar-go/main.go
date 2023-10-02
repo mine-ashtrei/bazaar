@@ -8,6 +8,7 @@ import (
 	"log"
 	"net/http"
 
+	"github.com/gin-contrib/cors"
 	"github.com/gin-gonic/gin"
 )
 
@@ -53,6 +54,12 @@ func main() {
 		log.Fatal("Could not load environment variables", err)
 	}
 
+	corsConfig := cors.DefaultConfig()
+	corsConfig.AllowOrigins = []string{"http://localhost:8000", config.ClientOrigin}
+	corsConfig.AllowCredentials = true
+
+	server.Use(cors.New(corsConfig))
+
 	router := server.Group("/api")
 	router.GET("/healthcheck", func(ctx *gin.Context) {
 		message := "Health check"
@@ -62,5 +69,6 @@ func main() {
 	AuthRouteController.AuthRoute(router)
 	UserRouteController.UserRoute(router)
 	ProductRouteController.ProductRoute(router)
+
 	log.Fatal(server.Run(":" + config.ServerPort))
 }
