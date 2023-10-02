@@ -15,13 +15,15 @@ export default function ProductListingMediaGroup({
 }) {
   const theme = useTheme();
   const [images, setImages] = useState<File[]>([]);
-
+  const { setValue } = useFormVar;
   const onDrop = useCallback(
     async (acceptedFiles: File[]) => {
       // const formData = new FormData();
-      // acceptedFiles.forEach((file) => {
-      //     formData.append("file", file);
-      // });
+      acceptedFiles.forEach((file, index) => {
+        // formData.append("file", file);
+        setValue(`images.${index}.url`, URL.createObjectURL(file));
+        setValue(`images.${index}.alt`, "alt text");
+      });
 
       // try {
       //     const response = await fetch("http://localhost:8080/api/images", {
@@ -38,10 +40,9 @@ export default function ProductListingMediaGroup({
       // } catch (error) {
       //     console.error(error);
       // }
-
       setImages([...images, ...acceptedFiles]);
     },
-    [images]
+    [images, setValue]
   );
 
   const removeImage = (e: MouseEvent<HTMLButtonElement>, image: File) => {

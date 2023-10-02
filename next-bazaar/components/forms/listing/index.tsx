@@ -76,6 +76,7 @@ const CreateListingPage = () => {
         msrpPrice: data.msrpPrice,
         batchPricing: [...data.batchPricing],
         availableQuantity: 100, // need to add
+        // images: [...data.images],
         images: [
           { url: "/products-mock/first.jpg", alt: "خاطئة" },
           { url: "/products-mock/second.png", alt: "خاطئة" },
