@@ -3,6 +3,7 @@ package main
 import (
 	"bazaar-go/controllers"
 	db "bazaar-go/initializers"
+	initializers "bazaar-go/initializers"
 	"bazaar-go/routes"
 	"log"
 	"net/http"
@@ -25,7 +26,12 @@ var (
 
 func init() {
 
-	db.ConnectDB()
+	config, err := initializers.LoadConfig(".")
+	if err != nil {
+		log.Fatal("🚀 Could not load environment variables", err)
+	}
+
+	db.ConnectDB(&config)
 
 	AuthController = controllers.NewAuthController(db.DB)
 	AuthRouteController = routes.NewAuthRouteController(AuthController)
@@ -42,6 +48,11 @@ func init() {
 
 func main() {
 
+	config, err := initializers.LoadConfig(".")
+	if err != nil {
+		log.Fatal("Could not load environment variables", err)
+	}
+
 	router := server.Group("/api")
 	router.GET("/healthcheck", func(ctx *gin.Context) {
 		message := "Health check"
@@ -51,5 +62,5 @@ func main() {
 	AuthRouteController.AuthRoute(router)
 	UserRouteController.UserRoute(router)
 	ProductRouteController.ProductRoute(router)
-	log.Fatal(server.Run(":8080"))
+	log.Fatal(server.Run(":" + config.ServerPort))
 }

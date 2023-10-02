@@ -1,4 +1,4 @@
-package db
+package initializers
 
 import (
 	"fmt"
@@ -10,11 +10,11 @@ import (
 
 var DB *gorm.DB
 
-func ConnectDB() {
+func ConnectDB(config *Config) {
 	var err error
-	dbURL := "postgres://postgresql:postgresql@localhost:5432/bazaar"
+	dsn := fmt.Sprintf("host=%s user=%s password=%s dbname=%s port=%s sslmode=disable", config.DBHost, config.DBUserName, config.DBUserPassword, config.DBName, config.DBPort)
 
-	DB, err = gorm.Open(postgres.Open(dbURL), &gorm.Config{})
+	DB, err = gorm.Open(postgres.Open(dsn), &gorm.Config{})
 	if err != nil {
 		log.Fatalln(err)
 	}
