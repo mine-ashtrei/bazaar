@@ -1,12 +1,20 @@
 package utils
 
 import (
+	"crypto/sha256"
 	"encoding/base64"
+	"encoding/hex"
 	"fmt"
 	"time"
 
 	"github.com/golang-jwt/jwt"
 )
+
+func HashToken(token string) string {
+	hash := sha256.New()
+	hash.Write([]byte(token))
+	return hex.EncodeToString(hash.Sum(nil))
+}
 
 func CreateToken(ttl time.Duration, payload interface{}, privateKey string) (string, error) {
 	decodedPrivateKey, err := base64.StdEncoding.DecodeString(privateKey)

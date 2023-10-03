@@ -93,21 +93,26 @@ func (ac *AuthController) SignInUser(ctx *gin.Context) {
 	config, _ := initializers.LoadConfig(".")
 
 	// Generate Tokens
-	access_token, err := utils.CreateToken(config.AccessTokenExpiresIn, user.ID, config.AccessTokenPrivateKey)
+	access_token, err := utils.CreateToken(config.AccessTokenExpiresIn, models.TokenPayload{UserID: user.ID}, config.AccessTokenPrivateKey)
 	if err != nil {
 		ctx.JSON(http.StatusBadRequest, gin.H{"status": "fail", "message": err.Error()})
 		return
 	}
 
-	refresh_token, err := utils.CreateToken(config.RefreshTokenExpiresIn, user.ID, config.RefreshTokenPrivateKey)
+	refresh_token, err := utils.CreateToken(config.RefreshTokenExpiresIn, models.TokenPayload{UserID: user.ID}, config.RefreshTokenPrivateKey)
 	if err != nil {
 		ctx.JSON(http.StatusBadRequest, gin.H{"status": "fail", "message": err.Error()})
 		return
 	}
 
-	// ctx.SetCookie("access_token", access_token, config.AccessTokenMaxAge*60, "/", "localhost", false, true)
-	// ctx.SetCookie("refresh_token", refresh_token, config.RefreshTokenMaxAge*60, "/", "localhost", false, true)
-	// ctx.SetCookie("logged_in", "true", config.AccessTokenMaxAge*60, "/", "localhost", false, false)
+	now := time.Now()
+	newToken := models.Token{
+		UserID:         user.ID,
+		AccessToken:    access_token,
+		RefreshToken:   refresh_token,
+		ExpirationTime: now.Add(config.RefreshTokenExpiresIn * time.Minute),
+	}
+	ac.DB.Create(&newToken)
 
 	ctx.JSON(http.StatusOK, gin.H{"status": "success", "access_token": access_token, "refresh_token": refresh_token})
 }
@@ -150,9 +155,7 @@ func (ac *AuthController) RefreshAccessToken(ctx *gin.Context) {
 }
 
 func (ac *AuthController) LogoutUser(ctx *gin.Context) {
-	// ctx.SetCookie("access_token", "", -1, "/", "localhost", false, true)
-	// ctx.SetCookie("refresh_token", "", -1, "/", "localhost", false, true)
-	// ctx.SetCookie("logged_in", "", -1, "/", "localhost", false, false)
-
+	currentUser := ctx.MustGet("currentUser").(models.User)
+	ac.DB.Where("user_id = ?", currentUser.ID).Delete(&models.Token{})
 	ctx.JSON(http.StatusOK, gin.H{"status": "success"})
 }

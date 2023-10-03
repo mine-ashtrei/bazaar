@@ -11,6 +11,20 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
+func getUserIdFromSub(sub interface{}) (string, error) {
+	subMap, ok := sub.(map[string]interface{})
+	if !ok {
+		return "", fmt.Errorf("something bad happened")
+	}
+
+	userID, ok := subMap["UserID"].(string)
+	if !ok {
+		return "", fmt.Errorf("something bad happened")
+	}
+
+	return userID, nil
+}
+
 func DeserializeUser() gin.HandlerFunc {
 	return func(ctx *gin.Context) {
 		var access_token string
@@ -37,9 +51,23 @@ func DeserializeUser() gin.HandlerFunc {
 			return
 		}
 
+		var token models.Token
+		if res := initializers.DB.First(&token, "access_token = ?", utils.HashToken(access_token)); res.Error != nil {	
+			ctx.AbortWithStatusJSON(http.StatusForbidden, gin.H{"status": "fail", "message": "fatal"})
+			return
+		}
+		
 		var user models.User
-		result := initializers.DB.First(&user, "id = ?", fmt.Sprint(sub))
-		if result.Error != nil {
+		userId, err := getUserIdFromSub(sub)
+		if err != nil {
+			ctx.AbortWithStatusJSON(http.StatusForbidden, gin.H{"status": "fail", "message": "fatal first"})
+			return
+		}
+		if res := initializers.DB.First(&user, "id = ?", userId); res.Error != nil {
+			ctx.AbortWithStatusJSON(http.StatusForbidden, gin.H{"status": "fail", "message": "fatal second"})
+			return
+		}
+		if token.UserID != user.ID {
 			ctx.AbortWithStatusJSON(http.StatusForbidden, gin.H{"status": "fail", "message": "the user belonging to this token no logger exists"})
 			return
 		}

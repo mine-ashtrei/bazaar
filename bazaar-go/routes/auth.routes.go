@@ -2,6 +2,7 @@ package routes
 
 import (
 	"bazaar-go/controllers"
+	"bazaar-go/middleware"
 
 	"github.com/gin-gonic/gin"
 )
@@ -20,5 +21,5 @@ func (rc *AuthRouteController) AuthRoute(rg *gin.RouterGroup) {
 	router.POST("/register", rc.authController.SignUpUser)
 	router.POST("/login", rc.authController.SignInUser)
 	// router.GET("/refresh", rc.authController.RefreshAccessToken)
-	// router.GET("/logout", middleware.DeserializeUser(), rc.authController.LogoutUser)
+	router.GET("/logout", middleware.DeserializeUser(), rc.authController.LogoutUser)
 }
