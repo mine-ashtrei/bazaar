@@ -1,4 +1,4 @@
-from app.models.product_model import ProductSchema
+from app.models.product_model import Product
 import pytest
 
 
@@ -14,7 +14,7 @@ class TestProducts:
 
     @pytest.fixture(scope="function")
     def create_product(self, db_session):
-        db_session.add(ProductSchema(**self._get_product_create()))
+        db_session.add(Product(**self._get_product_create()))
         db_session.commit()
         yield
         db_session.rollback()
@@ -22,7 +22,7 @@ class TestProducts:
     @pytest.fixture(scope="function")
     def create_ten_products(self, db_session):
         for i in range(self.NB_PRODUCTS):
-            db_session.add(ProductSchema(**self._get_product_create(i)))
+            db_session.add(Product(**self._get_product_create(i)))
         db_session.commit()
         yield
         db_session.rollback()

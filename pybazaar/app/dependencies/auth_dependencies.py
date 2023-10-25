@@ -1,7 +1,7 @@
 import uuid
 from typing import Optional
 
-from fastapi import Depends, Request
+from fastapi import Depends, Request, status, HTTPException
 from fastapi_users import BaseUserManager, FastAPIUsers, UUIDIDMixin
 from fastapi_users.authentication import (
     AuthenticationBackend,
@@ -59,4 +59,20 @@ auth_backend = AuthenticationBackend(
 
 fastapi_users = FastAPIUsers[User, uuid.UUID](get_user_manager, [auth_backend])
 
+def superuser_only(func):
+    def check(*args, **kwargs):
+        # Check if the first argument is an instance of the defining class
+        if not args or not isinstance(args[0], func.__qualname__.split(".")[0]):
+            raise ValueError("Expected method's first argument to be 'self'")
+
+        instance = args[0]
+        if not instance.current_user.is_superuser:
+            raise HTTPException(status_code= status.HTTP_403_FORBIDDEN)
+        func(*args, **kwargs)
+    return check
+
+
+user_manager = fastapi_users.get_user_manager
+current_user = fastapi_users.current_user()
 current_active_user = fastapi_users.current_user(active=True)
+current_superuser = fastapi_users.current_user(superuser=True)

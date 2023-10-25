@@ -2,7 +2,6 @@ package main
 
 import (
 	"bazaar-go/controllers"
-	db "bazaar-go/initializers"
 	initializers "bazaar-go/initializers"
 	"bazaar-go/routes"
 	"log"
@@ -32,15 +31,15 @@ func init() {
 		log.Fatal("🚀 Could not load environment variables", err)
 	}
 
-	db.ConnectDB(&config)
+	initializers.ConnectDB(&config)
 
-	AuthController = controllers.NewAuthController(db.DB)
+	AuthController = controllers.NewAuthController(initializers.DB)
 	AuthRouteController = routes.NewAuthRouteController(AuthController)
 
-	UserController = controllers.NewUserController(db.DB)
+	UserController = controllers.NewUserController(initializers.DB)
 	UserRouteController = routes.NewUserRouteController(UserController)
 
-	ProductController = controllers.NewProductController(db.DB)
+	ProductController = controllers.NewProductController(initializers.DB)
 	ProductRouteController = routes.NewProductRouteController(ProductController)
 
 	server = gin.Default()

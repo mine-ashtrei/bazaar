@@ -1,7 +1,7 @@
 from typing import Annotated
 from fastapi import APIRouter, Depends, HTTPException, status
 
-from app.common.query import SearchQueryParams
+from app.common.query import PaginationQueryParams
 from app.controllers.product_controller import get_product_controller, ProductController
 from app.models.product_model import ProductCreate
 
@@ -16,7 +16,7 @@ async def create_product(productCreate: ProductCreate,
 
 
 @router.get("/")
-async def get_products(searchParams: Annotated[SearchQueryParams, Depends()],
+async def get_products(searchParams: Annotated[PaginationQueryParams, Depends()],
                        product_controller: Annotated[ProductController,
                                                      Depends(get_product_controller)]):
     return await product_controller.get_products(searchParams)
@@ -26,4 +26,4 @@ async def get_products(searchParams: Annotated[SearchQueryParams, Depends()],
 async def get_product(product_id: int,
                       product_controller: Annotated[ProductController,
                                                     Depends(get_product_controller)]):
-    return await product_controller.get_product(product_id)
+    return await product_controller.get_product_by_id(product_id)

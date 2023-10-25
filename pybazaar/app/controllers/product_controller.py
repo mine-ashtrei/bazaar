@@ -2,7 +2,7 @@ from fastapi import Depends, HTTPException, status
 
 from app.services.product_service import ProductService, get_product_service
 from app.models.product_model import ProductCreate, ProductModel
-from app.common.query import SearchQueryParams
+from app.common.query import PaginationQueryParams
 from app.common.messages.product import ProductNotFoundException
 
 
@@ -18,7 +18,7 @@ class ProductController:
                 status_code=status.HTTP_400_BAD_REQUEST, detail="Failed to create product")
         return product
 
-    async def get_products(self, searchParams: SearchQueryParams) -> list[ProductModel]:
+    async def get_products(self, searchParams: PaginationQueryParams) -> list[ProductModel]:
         product = await self.product_service.get_products(searchParams)
         return product
 
