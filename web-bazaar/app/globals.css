@@ -17,17 +17,17 @@
 } */
 
 h1 {
-  font-family: Gill Sans;
+  /* font-family: Gill Sans; */
   font-weight: bold;
   font-size: 16px;
   color: #f2f5f7;
   color: rgb(242, 245, 247);
   opacity: 0.74;
-  transform: translateX(-30%);
+  /* transform: translateX(-30%); */
 }
 
 .input-field {
-  font-family: Gill Sans;
+  /* font-family: Gill Sans; */
   background: #f2f5f7;
   background: rgba(242, 245, 247, 1);
   border-radius: 47px;
@@ -41,7 +41,7 @@ h1 {
   border-radius: 16px;
   -moz-border-radius: 16px;
   -webkit-border-radius: 16px;
-  font-family: Gill Sans;
+  /* font-family: Gill Sans; */
   font-size: 24px;
   color: rgba(42, 56, 67, 0.8);
 }
