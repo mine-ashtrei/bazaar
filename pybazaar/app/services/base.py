@@ -1,6 +1,6 @@
 from typing import Any, Dict, Generic, Optional, Type, TypeVar
 from sqlalchemy.ext.asyncio import AsyncSession
-from sqlalchemy import select
+from sqlalchemy import select, update
 from pydantic import BaseModel
 from fastapi import HTTPException
 
@@ -10,20 +10,6 @@ from app.common.query import PaginationQueryParams, Pagination
 ModelType = TypeVar("ModelType", bound=Base)
 CreateSchemaType = TypeVar("CreateSchemaType", bound=BaseModel)
 UpdateSchemaType = TypeVar("UpdateSchemaType", bound=BaseModel)
-
-class NotFound(HTTPException):
-    def __init__(self, model, id: Any) -> None:
-        super().__init__(status_code=404, detail=f"{model.__name__.lower()} not found with id: {id}")
-
-
-class CreateError(HTTPException):
-    def __init__(self, model) -> None:
-        super().__init__(status_code=500, detail=f"Failed to create {model.__name__.lower()}")
-
-
-class UpdateError(HTTPException):
-    def __init__(self, model, id: Any) -> None:
-        super().__init__(status_code=500, detail=f"Failed to update {model.__name__.lower()} with id: {id}")
 
 
 class ServiceBase(Generic[ModelType, CreateSchemaType, UpdateSchemaType]):
@@ -41,13 +27,13 @@ class ServiceBase(Generic[ModelType, CreateSchemaType, UpdateSchemaType]):
         self.db = db
 
     async def get_by_id(self, id: Any) -> ModelType:
-        obj = await self.db.execute(select(self.model).filter(self.model.id == id)).scalars().first()
-        if not obj:
-            raise NotFound(id)
-        return 
+        obj = await self.db.execute(select(self.model).filter(self.model.id == id, self.model.is_deleted == False))
+        obj = obj.scalars().first()
+        return obj
 
     async def get_multi(self, pagination: PaginationQueryParams, filter: Optional[Dict] = {}) -> list[ModelType]:
-        filtered_objs = select(self.model).filter_by(**filter)
+        filtered_objs = select(self.model).filter(
+            self.model.is_deleted == False, **filter)
         objs = await self.db.execute(Pagination.pagination(filtered_objs, pagination))
         return objs.scalars().all()
 
@@ -56,20 +42,19 @@ class ServiceBase(Generic[ModelType, CreateSchemaType, UpdateSchemaType]):
         self.db.add(obj_db)
         await self.db.commit()
         await self.db.refresh(obj_db)
-        if not obj_db:
-            raise CreateError(self.model)
         return obj_db
 
     async def update(self, id: int, obj: UpdateSchemaType) -> ModelType:
-        obj_db = await self.get_by_id(id)
-        for field, value in obj.model_dump().items():
-            setattr(obj_db, field, value)
+        obj_db = await self.db.execute(update(self.model).filter(
+            self.model.id == id, self.model.is_deleted == False).values(
+                **obj.model_dump()
+        ))
+        obj_db = obj_db.scalars().first()
         await self.db.commit()
         await self.db.refresh(obj_db)
-        if not obj_db:
-            raise UpdateError(self.model, id)
         return obj_db
 
-    async def delete(self, obj: ModelType) -> None:
-        self.db.delete(obj)
+    async def delete(self, id: Any) -> None:
+        obj = await self.get_by_id(id)
+        obj.is_deleted = True
         await self.db.commit()

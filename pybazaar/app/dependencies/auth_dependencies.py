@@ -13,6 +13,7 @@ from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.db import get_async_session
 from app.models.user_model import User
+from app.common.messages.common import AccessForbidden
 
 SECRET = "SECRET"
 
@@ -59,16 +60,17 @@ auth_backend = AuthenticationBackend(
 
 fastapi_users = FastAPIUsers[User, uuid.UUID](get_user_manager, [auth_backend])
 
+
 def superuser_only(func):
-    def check(*args, **kwargs):
-        # Check if the first argument is an instance of the defining class
-        if not args or not isinstance(args[0], func.__qualname__.split(".")[0]):
-            raise ValueError("Expected method's first argument to be 'self'")
+    async def check(*args, **kwargs):
+        # # Check if the first argument is an instance of the defining class
+        # if not args or not isinstance(args[0], func.__qualname__.split(".")[0]):
+        #     raise ValueError("Expected method's first argument to be 'self'")
 
         instance = args[0]
         if not instance.current_user.is_superuser:
-            raise HTTPException(status_code= status.HTTP_403_FORBIDDEN)
-        func(*args, **kwargs)
+            raise AccessForbidden()
+        return await func(*args, **kwargs)
     return check
 
 

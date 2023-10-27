@@ -1,8 +1,10 @@
-from datetime import datetime, time
-from typing import Optional, Union
+from datetime import datetime
+from typing import Optional, Union, Generic
+from typing_extensions import TypedDict
+
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import Mapped, mapped_column, relationship
-from sqlalchemy import String, Time, Float
+from sqlalchemy import String, DateTime, Float
 from pydantic import BaseModel, Field, ConfigDict, field_validator
 
 from app.models import Base
@@ -11,7 +13,7 @@ from app.common.validators import validate_email_field, validate_phone
 MIN_STR_LEN = 5
 MAX_STR_LEN = 50
 ABOUT_STR_LEN = 200
-PHONE_STR_LEN = 15
+PHONE_STR_LEN = 25
 
 
 class Business(Base):
@@ -24,7 +26,7 @@ class Business(Base):
     facebook_url: Mapped[str] = mapped_column(String(MAX_STR_LEN))
     contact_email: Mapped[str] = mapped_column(String(MAX_STR_LEN))
     contact_phone: Mapped[str] = mapped_column(String(PHONE_STR_LEN))
-    established: Mapped[time] = mapped_column(Time())
+    established: Mapped[datetime] = mapped_column(DateTime())
     raiting: Mapped[Optional[float]] = mapped_column(Float())
 
     users: Mapped[list["User"]] = relationship(back_populates="business")
@@ -72,6 +74,7 @@ class BusinessBase(BaseModel):
 
 
 class BusinessCreateReturn(BusinessBase):
+    id: int = Field(example=1)
     pass
 
 
@@ -79,7 +82,7 @@ class BusinessSchema(BusinessBase):
 
     id: int = Field(example=1)
     raiting: float = RaitingType
-    categories: list[str] = CategoriesType
+    # categories: list[str] = CategoriesType
 
 
 class BusinessHighlight(BusinessSchema):
@@ -94,5 +97,11 @@ class BusinessCreate(BusinessBase):
     pass
 
 
-class BusinessUpdate(BusinessBase):
-    pass
+class BusinessUpdate(BaseModel):
+    name: Optional[str] = NameType
+    about: Optional[str] = AboutType
+    instagram_url: Optional[str] = InstagramType
+    facebook_url: Optional[str] = FacebookType
+    contact_email: Optional[str] = ContactEmailType
+    contact_phone: Optional[str] = ContactPhoneType
+    established: Optional[datetime]
