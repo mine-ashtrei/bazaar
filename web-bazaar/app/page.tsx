@@ -14,7 +14,7 @@ export default function Home() {
           className="w-8/12 md:w-3/12 logo py-4"
         />
         <div className=" mt-8 md:mt-12">
-          <h1 className="font-bold text-center uppercase">Comming soon</h1>
+          <h1 className="font-bold text-center uppercase">Coming soon</h1>
         </div>
         <div className="circle-container">
           <div className="circle" style={{ opacity: 0.9 }}></div>
