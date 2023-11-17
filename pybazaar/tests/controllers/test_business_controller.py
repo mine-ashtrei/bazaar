@@ -9,20 +9,12 @@ from app.services.business_service import BusinessService
 from app.services.user_service import UserService
 
 
-from tests.mocks.business_mock import BusinessServiceMock, BusinessCreateFactory, BusinessUpdateFactory, BusinessFactory
+from tests.mocks.business_mock import BusinessServiceMock, BusinessCreateFactory, BusinessFactory
 from tests.mocks.user import UserServiceMock
 
 
 @pytest.mark.business
 class TestBusinessController:
-
-    @pytest.fixture(scope="class", autouse=True)
-    def business_service(self) -> BusinessService:
-        yield BusinessServiceMock()
-
-    @pytest.fixture(scope="class", autouse=True)
-    def user_service(self) -> UserService:
-        yield UserServiceMock()
 
     @pytest.fixture(scope="function")
     def fake_business_create_id(self, request) -> BusinessCreate:
@@ -31,15 +23,10 @@ class TestBusinessController:
         yield BusinessCreateFactory.build(), ID
 
     @pytest.fixture(scope="function")
-    def user(self, request, user_service) -> User:
-        is_superuser = request.param.get('is_superuser', False)
-        has_business = request.param.get('has_business', False)
-        yield user_service.create(is_superuser=is_superuser, has_business=has_business)
-
-    @pytest.fixture(scope="function")
-    def business_controller(self, request, business_service, user_service) -> (BusinessController, User):
-        business_service = request.getfixturevalue("business_service")
-        user_service = request.getfixturevalue("user_service")
+    def business_controller(self, request) -> (BusinessController, User):
+        business_service = request.param.get(
+            'business_service', BusinessServiceMock(BusinessFactory))
+        user_service = UserServiceMock()
         # create user based on the params
         is_superuser = request.param.get('is_superuser', False)
         has_business = request.param.get('has_business', False)
@@ -47,11 +34,19 @@ class TestBusinessController:
             is_superuser=is_superuser, has_business=has_business)
         return BusinessController(business_service, user, user_service), user
 
+    @pytest.mark.parametrize("business_controller", [{"is_superuser": False, "has_business": True}], indirect=True)
     @pytest.mark.asyncio
-    async def test_get_business_controller(self, business_service, user_service):
-        controller = await get_business_controller(business_service, user_service)
-        assert controller
-        assert isinstance(controller, BusinessController)
+    async def test_get_business(self, business_controller):
+        controller, user = business_controller
+        res = await controller.get_business()
+        assert res.id == user.business_id
+
+    @pytest.mark.parametrize("business_controller", [{"is_superuser": False, "has_business": False}], indirect=True)
+    @pytest.mark.asyncio
+    async def test_get_business_fail(self, business_controller):
+        controller, _ = business_controller
+        with pytest.raises(UserDoesNotHaveBusiness):
+            await controller.get_business()
 
     @pytest.mark.parametrize("business_controller", [{"is_superuser": False, "has_business": False},
                                                      {"is_superuser": True, "has_business": False}], indirect=True)
@@ -74,22 +69,6 @@ class TestBusinessController:
         with pytest.raises(UserAlreadyHasBusiness):
             res = await controller.create_business(fake_business_create)
 
-    @pytest.mark.parametrize("business_controller", [{'is_superuser': False, 'has_business': True}], indirect=True)
-    @pytest.mark.asyncio
-    async def test_get_current_user_business(self, business_controller):
-        controller, user = business_controller
-        res = await controller.get_business()
-        assert res.id == user.business_id
-
-    @pytest.mark.parametrize("business_controller",
-                             [{'is_superuser': False, 'has_business': False},
-                              {'is_superuser': True, 'has_business': False}], indirect=True)
-    @pytest.mark.asyncio
-    async def test_get_current_user_business_no_business(self, business_controller):
-        controller, _ = business_controller
-        with pytest.raises(UserDoesNotHaveBusiness):
-            res = await controller.get_business()
-
     @pytest.mark.parametrize("business_controller",
                              [{'is_superuser': False, 'has_business': True},
                               {'is_superuser': True, 'has_business': True}], indirect=True)
@@ -97,7 +76,7 @@ class TestBusinessController:
     async def test_update_business(self, business_controller):
         controller, user = business_controller
         NAME = "tests"
-        business_update = BusinessUpdateFactory.build(name=NAME)
+        business_update = BusinessCreateFactory.build(name=NAME)
         res = await controller.update_business(business_update)
         assert res.name == NAME
         assert res.id == user.business_id
@@ -172,7 +151,7 @@ class TestBusinessController:
         controller, _ = business_controller
         NAME = "tests"
         ID = 1
-        business_update = BusinessUpdateFactory.build(name=NAME)
+        business_update = BusinessCreateFactory.build(name=NAME)
         res = await controller.update_business_id(ID, business_update)
         assert res.name == NAME
         assert res.id == ID
@@ -184,7 +163,7 @@ class TestBusinessController:
         controller, _ = business_controller
         NAME = "tests"
         ID = 1
-        business_update = BusinessUpdateFactory.build(name=NAME)
+        business_update = BusinessCreateFactory.build(name=NAME)
         with pytest.raises(AccessForbidden):
             res = await controller.update_business_id(ID, business_update)
 

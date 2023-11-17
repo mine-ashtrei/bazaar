@@ -1,5 +1,4 @@
 from sqlalchemy.ext.asyncio import AsyncSession
-from sqlalchemy import select
 from fastapi import Depends
 
 from app.models.business_model import BusinessCreate, BusinessSchema, Business

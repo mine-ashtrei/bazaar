@@ -2,6 +2,12 @@ from typing import Any
 from fastapi import HTTPException, status
 
 
+class ServerError(HTTPException):
+    def __init__(self) -> None:
+        super().__init__(status_code=500,
+                         detail=f"Server Error")
+
+
 class NotFound(HTTPException):
     def __init__(self, model, id: Any) -> None:
         super().__init__(status_code=404,

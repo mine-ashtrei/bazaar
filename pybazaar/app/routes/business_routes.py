@@ -3,7 +3,7 @@ from fastapi import APIRouter, Depends, HTTPException, status
 
 from app.common.query import PaginationQueryParams
 from app.controllers.business_controller import get_business_controller, BusinessController
-from app.models.business_model import BusinessCreate, BusinessUpdate
+from app.models.business_model import BusinessCreate
 
 router = APIRouter(prefix="/business", tags=["business"])
 
@@ -22,7 +22,7 @@ async def get_business(business_controller: Annotated[BusinessController,
 
 
 @router.put("/me", status_code=status.HTTP_200_OK)
-async def update_business(business_update: BusinessUpdate,
+async def update_business(business_update: BusinessCreate,
                           business_controller: Annotated[BusinessController,
                                                          Depends(get_business_controller)]):
     return await business_controller.update_business(business_update)
@@ -34,28 +34,31 @@ async def delete_business(business_controller: Annotated[BusinessController,
     return await business_controller.delete_business()
 
 ##################### SUPERUSER ONLY #####################
+
+
 @router.get("/", status_code=status.HTTP_200_OK)
 async def get_businesses(business_controller: Annotated[BusinessController,
-                                                      Depends(get_business_controller)]):
+                                                        Depends(get_business_controller)]):
     return await business_controller.get_businesses()
+
 
 @router.get("/{business_id}", status_code=status.HTTP_200_OK)
 async def get_business_id(business_id: int,
                           business_controller: Annotated[BusinessController,
-                                                      Depends(get_business_controller)]):
+                                                         Depends(get_business_controller)]):
     return await business_controller.get_business_id(business_id)
 
 
 @router.put("/{business_id}", status_code=status.HTTP_200_OK)
 async def update_business_id(business_id: int,
-                             business_update: BusinessUpdate,
+                             business_update: BusinessCreate,
                              business_controller: Annotated[BusinessController,
-                                                         Depends(get_business_controller)]):
+                                                            Depends(get_business_controller)]):
     return await business_controller.update_business_id(business_update)
 
 
 @router.delete("/{business_id}", status_code=status.HTTP_204_NO_CONTENT)
 async def delete_business_id(business_id: int,
                              business_controller: Annotated[BusinessController,
-                                                         Depends(get_business_controller)]):
+                                                            Depends(get_business_controller)]):
     return await business_controller.delete_business_id(business_id)

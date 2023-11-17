@@ -5,7 +5,6 @@ from app.db import create_db_and_tables
 from app.routes.product_routes import router as product_router
 from app.routes.auth_routes import router as auth_router
 from app.routes.user_routes import router as user_router
-from app.routes.test_routes import router as test_router
 from app.routes.business_routes import router as business_router
 from app.logger import init_logger, logger
 from app.config import config
@@ -27,5 +26,4 @@ app = FastAPI(lifespan=lifespan)
 app.include_router(auth_router)
 app.include_router(user_router)
 app.include_router(product_router)
-app.include_router(test_router)
 app.include_router(business_router)

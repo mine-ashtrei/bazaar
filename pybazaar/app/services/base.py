@@ -26,6 +26,13 @@ class ServiceBase(Generic[ModelType, CreateSchemaType, UpdateSchemaType]):
         self.model = model
         self.db = db
 
+    async def _update(self, id, **kwargs):
+        await self.db.execute(update(self.model).filter(
+            self.model.id == id, self.model.is_deleted == False).values(
+                **kwargs
+        ))
+        await self.db.commit()
+
     async def get_by_id(self, id: Any) -> ModelType:
         obj = await self.db.execute(select(self.model).filter(self.model.id == id, self.model.is_deleted == False))
         obj = obj.scalars().first()
@@ -45,16 +52,9 @@ class ServiceBase(Generic[ModelType, CreateSchemaType, UpdateSchemaType]):
         return obj_db
 
     async def update(self, id: int, obj: UpdateSchemaType) -> ModelType:
-        obj_db = await self.db.execute(update(self.model).filter(
-            self.model.id == id, self.model.is_deleted == False).values(
-                **obj.model_dump()
-        ))
-        obj_db = obj_db.scalars().first()
-        await self.db.commit()
-        await self.db.refresh(obj_db)
+        await self._update(id, **obj.model_dump())
+        obj_db = await self.get_by_id(id)
         return obj_db
 
     async def delete(self, id: Any) -> None:
-        obj = await self.get_by_id(id)
-        obj.is_deleted = True
-        await self.db.commit()
+        await self._update(id, is_deleted=True)

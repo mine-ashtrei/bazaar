@@ -95,13 +95,3 @@ class BusinessRead(BusinessSchema):
 
 class BusinessCreate(BusinessBase):
     pass
-
-
-class BusinessUpdate(BaseModel):
-    name: Optional[str] = NameType
-    about: Optional[str] = AboutType
-    instagram_url: Optional[str] = InstagramType
-    facebook_url: Optional[str] = FacebookType
-    contact_email: Optional[str] = ContactEmailType
-    contact_phone: Optional[str] = ContactPhoneType
-    established: Optional[datetime]

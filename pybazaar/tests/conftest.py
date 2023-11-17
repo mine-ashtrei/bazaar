@@ -5,16 +5,19 @@ from app.services.user_service import UserService, get_user_service
 from app.dependencies.auth_dependencies import current_active_user, current_user
 from app.db import get_async_session
 from app.main import app
-from sqlalchemy.ext.asyncio import async_sessionmaker, create_async_engine
+from sqlalchemy.ext.asyncio import async_sessionmaker, create_async_engine, async_scoped_session
 from sqlalchemy.orm import sessionmaker
 from sqlalchemy import create_engine
 from fastapi.testclient import TestClient
 import pytest
+import pytest_asyncio
 import asyncio
 import factory
+from asyncio import current_task
 
 from sqlalchemy.orm import scoped_session
 from app.config import config
+from tests.mocks.business_mock import BusinessFactory
 
 factory.Faker._get_faker().seed_instance(0)
 
@@ -22,45 +25,49 @@ factory.Faker._get_faker().seed_instance(0)
 # SQL = "sqlite:///./test.db"
 
 SQLALCHEMY_DATABASE_URL = f"postgresql+asyncpg://{config.POSTGRES_USER}:{config.POSTGRES_USER}@{config.POSTGRES_HOST}:{config.POSTGRES_PORT}/{config.POSTGRES_DB}"
-SQL = f"postgresql://{config.POSTGRES_USER}:{config.POSTGRES_USER}@{config.POSTGRES_HOST}:{config.POSTGRES_PORT}/{config.POSTGRES_DB}"
-
-SyncSession = scoped_session(sessionmaker())
+# SQL = f"postgresql://{config.POSTGRES_USER}:{config.POSTGRES_USER}@{config.POSTGRES_HOST}:{config.POSTGRES_PORT}/{config.POSTGRES_DB}"
 
 
-@pytest.fixture(scope="session")
-def sync_engine():
-    engine = create_engine(
-        SQL, connect_args={}
+@pytest.fixture(scope="session", autouse=True)
+def event_loop(request):
+    loop = asyncio.new_event_loop()
+    yield loop
+    loop.close()
+
+
+@pytest_asyncio.fixture(scope="session")
+def async_engine():
+    engine = create_async_engine(
+        SQLALCHEMY_DATABASE_URL, connect_args={}
     )
     return engine
 
 
-def get_sync_db():
-    engine = create_engine(
-        SQL, connect_args={}
-    )
-    Session = sessionmaker(autoflush=False, bind=engine)
-    scoped = scoped_session
-    return scoped_session(Session)
-
-
-@pytest.fixture(scope="session")
-def session_async_db():
+@pytest_asyncio.fixture(scope="session")
+async def sessionmaker_async(async_engine):
     from app.models import Base
-    engine = create_async_engine(
-        SQLALCHEMY_DATABASE_URL, connect_args={}
-    )
-
+    global AyncSession
     TestingSessionLocal = async_sessionmaker(
-        engine, expire_on_commit=False)
+        async_engine, expire_on_commit=False)
+    async with async_engine.begin() as conn:
+        await conn.run_sync(Base.metadata.drop_all)
+        await conn.run_sync(Base.metadata.create_all)
 
-    async def init_models():
-        async with engine.begin() as conn:
-            await conn.run_sync(Base.metadata.drop_all)
-            await conn.run_sync(Base.metadata.create_all)
+    BusinessFactory._meta.sqlalchemy_session = TestingSessionLocal
 
-    asyncio.run(init_models())
     return TestingSessionLocal
+
+
+@pytest_asyncio.fixture(scope="class")
+async def async_session_class(sessionmaker_async):
+    async with sessionmaker_async() as session:
+        yield session
+
+
+@pytest_asyncio.fixture(scope="function")
+async def async_session_function(sessionmaker_async):
+    async with sessionmaker_async() as session:
+        yield session
 
 # @pytest.fixture(scope="session")
 # def session_sync_db():
@@ -90,23 +97,23 @@ def session_async_db():
 #     return get_user
 
 
-def override_db(session_async_db, dependency_overrides):
+def override_db(sessionmaker_async, dependency_overrides):
     async def override_get_db():
-        async with session_async_db() as session:
+        async with sessionmaker_async() as session:
             yield session
     dependency_overrides[get_async_session] = override_get_db
 
 
 @pytest.fixture(scope="session", autouse=True)
-def client(session_async_db):
-    override_db(session_async_db, app.dependency_overrides)
+def client(sessionmaker_async):
+    override_db(sessionmaker_async, app.dependency_overrides)
     client = TestClient(app)
     yield client
 
 
 @pytest.fixture(scope="session")
-def auth_client(session_async_db, user):
-    override_db(session_async_db, app.dependency_overrides)
+def auth_client(sessionmaker_async, user):
+    override_db(sessionmaker_async, app.dependency_overrides)
     app.dependency_overrides[current_active_user] = user
     app.dependency_overrides[current_user] = user
     client = TestClient(app)
