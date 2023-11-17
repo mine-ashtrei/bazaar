@@ -9,6 +9,7 @@ import FacebookSvg from "../common/icons/facebook";
 
 export default function Footer() {
   const theme = useTheme();
+  const textColor = "white";
   return (
     <Box
       component="footer"
@@ -25,23 +26,20 @@ export default function Footer() {
       <Grid container spacing={2}>
         {/* First Column */}
         <Grid item xs={3}>
-          <Image
-            width={171}
-            height={87}
-            src="/logo-lg-secondary.svg"
-            alt="Logo"
-          />
-          <Typography variant="body2" sx={{ mt: 4 }}>
+          <Image width={171} height={87} src="/logo-lg-white.svg" alt="Logo" />
+          <Typography variant="body2" color={textColor} sx={{ mt: 4 }}>
             &copy; كل الحقوق محفوظة 2023 Ashtrei.com
           </Typography>
         </Grid>
 
         {/* Second Column Follow Us */}
         <Grid item xs={3}>
-          <Typography variant="h6">تواصل معنا</Typography>
+          <Typography variant="h6" color={textColor}>
+            تواصل معنا
+          </Typography>
           <Stack direction={"row"} spacing={1}>
-            <InstagramSvg />
-            <FacebookSvg />
+            <InstagramSvg stroke="white" fill="black" />
+            <FacebookSvg stroke="white" />
           </Stack>
         </Grid>
 
@@ -53,19 +51,40 @@ export default function Footer() {
               href="/about"
               underline="hover"
               variant="h6"
+              color={textColor}
             >
               من نحن
             </MuiLink>
-            <MuiLink component={NextLink} href="/" underline="hover">
+            <MuiLink
+              color={textColor}
+              component={NextLink}
+              href="/"
+              underline="hover"
+            >
               مركز المساعده
             </MuiLink>
-            <MuiLink component={NextLink} href="/" underline="hover">
+            <MuiLink
+              color={textColor}
+              component={NextLink}
+              href="/"
+              underline="hover"
+            >
               الدعم
             </MuiLink>
-            <MuiLink component={NextLink} href="/" underline="hover">
+            <MuiLink
+              color={textColor}
+              component={NextLink}
+              href="/"
+              underline="hover"
+            >
               الاخبار
             </MuiLink>
-            <MuiLink component={NextLink} href="/" underline="hover">
+            <MuiLink
+              color={textColor}
+              component={NextLink}
+              href="/"
+              underline="hover"
+            >
               المدونه
             </MuiLink>
           </Stack>
@@ -74,17 +93,39 @@ export default function Footer() {
         {/* Fourth Column Legal*/}
         <Grid item xs={3}>
           <Stack>
-            <Typography variant="h6">الشروط والأحكام</Typography>
-            <MuiLink component={NextLink} href="/" underline="hover">
+            <Typography color={textColor} variant="h6">
+              الشروط والأحكام
+            </Typography>
+            <MuiLink
+              color={textColor}
+              component={NextLink}
+              href="/"
+              underline="hover"
+            >
               شروط الاستخدام
             </MuiLink>
-            <MuiLink component={NextLink} href="/" underline="hover">
+            <MuiLink
+              color={textColor}
+              component={NextLink}
+              href="/"
+              underline="hover"
+            >
               سياسة الخصوصية
             </MuiLink>
-            <MuiLink component={NextLink} href="/" underline="hover">
+            <MuiLink
+              color={textColor}
+              component={NextLink}
+              href="/"
+              underline="hover"
+            >
               تراخيص
             </MuiLink>
-            <MuiLink component={NextLink} href="/" underline="hover">
+            <MuiLink
+              color={textColor}
+              component={NextLink}
+              href="/"
+              underline="hover"
+            >
               ملفات تعريف الارتباط
             </MuiLink>
           </Stack>
