@@ -1,28 +1,27 @@
 import { createTheme } from "@mui/material/styles";
 
-const desertColor = "#e7dfc6";
-const desertColorDark = "#E4D6A7";
+const primary = "#2A3843";
 
 export const themeOptions = createTheme({
   palette: {
     mode: "light",
     primary: {
-      main: "#314049",
+      main: primary,
     },
     secondary: {
       main: "#ff5",
     },
-    desertDark: {
-      main: desertColorDark,
+    info_primary: {
+      main: "#D3C5B7",
     },
-    desert: {
-      main: desertColor,
+    info_secondary: {
+      main: "#CFE0E2",
     },
-    vegetation: {
-      main: "#c1d5a4",
+    info_ternary: {
+      main: "#508980",
     },
-    life: {
-      main: "#b86f52",
+    background_secondary: {
+      main: "#F2F5F7",
     },
   },
   direction: "rtl",
@@ -33,7 +32,7 @@ export const themeOptions = createTheme({
       },
       styleOverrides: {
         colorDefault: {
-          backgroundColor: desertColor,
+          backgroundColor: primary,
         },
       },
     },

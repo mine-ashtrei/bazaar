@@ -18,7 +18,7 @@ export default function ProductCard({ item }: { item: Product }) {
           <Box
             sx={{
               padding: 1,
-              backgroundColor: theme.palette.desert.main,
+              backgroundColor: theme.palette.info_primary.main,
             }}
           >
             <Stack>

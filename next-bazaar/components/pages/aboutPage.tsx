@@ -32,7 +32,7 @@ export default function About() {
         </Stack>
       </InformationPanel>
       {/* Second */}
-      <InformationPanel backgroundColor={theme.palette.desertDark}>
+      <InformationPanel backgroundColor={theme.palette.info_secondary}>
         <Stack alignItems={"start"} justifyContent={"center"}>
           <Typography variant="h3">
             انضم إلى مجتمع البائعين والحرفيين المحليين

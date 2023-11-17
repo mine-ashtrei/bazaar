@@ -15,7 +15,7 @@ export default function Footer() {
       sx={{
         paddingX: 6,
         paddingY: 4,
-        backgroundColor: theme.palette.desert.main,
+        backgroundColor: theme.palette.primary.main,
         bottom: 0,
         left: 0,
         // position: "absolute",

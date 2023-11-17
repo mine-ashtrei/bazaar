@@ -16,7 +16,11 @@ export default function SignInButton() {
 
   return (
     <>
-      <Link underline="always" sx={{ cursor: "pointer" }} onClick={handleOpen}>
+      <Link
+        underline="always"
+        sx={{ cursor: "pointer", color: "white" }}
+        onClick={handleOpen}
+      >
         تسجيل الدخول
       </Link>
       <Modal open={modalOpen} onClose={handleClose}>
@@ -27,7 +31,7 @@ export default function SignInButton() {
             top: "50%",
             left: "50%",
             transform: "translate(-50%, -50%)",
-            bgcolor: theme.palette.desert.main,
+            bgcolor: theme.palette.info_primary.main,
             border: "0",
             boxShadow: 24,
             outline: "none",

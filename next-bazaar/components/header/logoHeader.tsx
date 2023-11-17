@@ -9,21 +9,11 @@ export default function LogoHeader() {
       <Link href="/">
         {/* Mobile */}
         <div className="block md:hidden">
-          <Image
-            width={41}
-            height={87}
-            src="/logo-sm-secondary.svg"
-            alt="Logo"
-          />
+          <Image width={41} height={87} src="/logo-sm-white.svg" alt="Logo" />
         </div>
         {/* Web */}
         <div className="hidden md:block">
-          <Image
-            width={151}
-            height={87}
-            src="/logo-lg-secondary.svg"
-            alt="Logo"
-          />
+          <Image width={151} height={87} src="/logo-lg-white.svg" alt="Logo" />
         </div>
       </Link>
     </React.Fragment>

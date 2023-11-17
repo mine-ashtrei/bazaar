@@ -24,7 +24,7 @@ export default function StoreFront({
   return (
     <React.Fragment>
       {/* First */}
-      <InformationPanel backgroundColor={theme.palette.desertDark}>
+      <InformationPanel backgroundColor={theme.palette.info_primary}>
         <Typography variant="h3">
           أشترى! كل اللى عايزة لمشروعك بالجملة
         </Typography>
@@ -42,7 +42,7 @@ export default function StoreFront({
       </InformationPanel>
       <FiveCategories categories={categories.slice(0, 5)} />
       {/* Second */}
-      <InformationPanel backgroundColor={theme.palette.vegetation}>
+      <InformationPanel backgroundColor={theme.palette.info_secondary}>
         <Image
           src="/landing-page/first.jpg"
           width={528}
@@ -64,7 +64,7 @@ export default function StoreFront({
       </InformationPanel>
       <ThreeSuppliers suppliers={suppliers} />
       {/* Third */}
-      <InformationPanel backgroundColor={theme.palette.life}>
+      <InformationPanel backgroundColor={theme.palette.info_ternary}>
         <Stack justifyContent="center" alignItems={"start"} spacing={1}>
           <Typography variant="h5">
             انضم إلى مجتمع البائعين والحرفيين المحليين
@@ -87,7 +87,7 @@ export default function StoreFront({
       {/* Fourth */}
       {/* Maybe put products based on screen size */}
       <ProductCarousel products={products} />
-      <InformationPanel backgroundColor={theme.palette.desertDark}>
+      <InformationPanel backgroundColor={theme.palette.info_primary}>
         <Stack justifyContent="center" alignItems={"start"} spacing={1}>
           <Typography variant="h5">كن جزءً من مجتمع أشتري</Typography>
           <Typography variant="body1">

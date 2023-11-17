@@ -11,16 +11,16 @@ import "@mui/material/styles";
 
 declare module "@mui/material/styles" {
   interface Palette {
-    desert?: PaletteColor;
-    vegetation?: PaletteColor;
-    life?: PaletteColor;
-    desertDark?: PaletteColor;
+    info_primary?: PaletteColor;
+    info_secondary?: PaletteColor;
+    info_ternary?: PaletteColor;
+    background_secondary?: PaletteColor;
   }
 
   interface PaletteOptions {
-    desert?: PaletteColorOptions;
-    vegetation?: PaletteColorOptions;
-    life?: PaletteColorOptions;
-    desertDark?: PaletteColorOptions;
+    info_primary?: PaletteColorOptions;
+    info_secondary?: PaletteColorOptions;
+    info_ternary?: PaletteColorOptions;
+    background_secondary?: PaletteColorOptions;
   }
 }
