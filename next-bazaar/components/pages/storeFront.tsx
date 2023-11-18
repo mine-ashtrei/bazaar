@@ -10,17 +10,21 @@ import { Button, Stack, Typography, useTheme } from "@mui/material";
 import { ButtonLg, ButtonMd } from "../common/buttons";
 import FiveCategories from "../categories/fiveCategories";
 import SignUpRetailerSupplier from "../common/buttons/signUpRetailerSupplier";
+import { StoreFrontData } from "../../lib/strapi/pages";
 
 export default function StoreFront({
   categories,
   suppliers,
   products,
+  storeFront,
 }: {
   categories: Category[];
   suppliers: Supplier[];
   products: Product[];
+  storeFront: StoreFrontData;
 }) {
   const theme = useTheme();
+  console.log(storeFront);
   return (
     <React.Fragment>
       {/* First */}

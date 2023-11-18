@@ -1,22 +1,27 @@
 import StoreFront from "../components/pages/storeFront";
 import type { InferGetStaticPropsType, GetStaticProps } from "next";
 import API from "../lib/api";
+import STRAPI from "../lib/strapi";
 import { useCategories } from "../components/categories/categoriesContext";
 import { Supplier } from "../lib/api/suppliers";
 import { Product, products } from "../lib/api/products";
+import { StoreFrontData } from "../lib/strapi/pages";
 
 export const getStaticProps = (async () => {
   const suppliers = await API.suppliers.getAll();
   const products = await API.products.getAll();
-  return { props: { suppliers, products } };
+  const storeFront = await STRAPI.pages.getSoreFrontPage();
+  return { props: { suppliers, products, storeFront } };
 }) satisfies GetStaticProps<{
   suppliers: Supplier[];
   products: Product[];
+  storeFront: StoreFrontData;
 }>;
 
 export default function Home({
   suppliers,
   products,
+  storeFront,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
   const categoriesContext = useCategories();
   return (
@@ -24,6 +29,7 @@ export default function Home({
       categories={categoriesContext.categories}
       suppliers={suppliers}
       products={products}
+      storeFront={storeFront}
     />
   );
 }
