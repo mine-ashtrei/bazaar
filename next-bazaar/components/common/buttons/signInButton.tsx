@@ -19,7 +19,7 @@ export default function SignInButton() {
       <Link
         underline="always"
         sx={{ cursor: "pointer", color: "white" }}
-        onClick={handleOpen}
+        // onClick={handleOpen}
       >
         تسجيل الدخول
       </Link>

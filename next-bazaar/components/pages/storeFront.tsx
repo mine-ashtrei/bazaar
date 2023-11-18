@@ -16,15 +16,15 @@ export default function StoreFront({
   categories,
   suppliers,
   products,
-  storeFront,
-}: {
+}: // storeFront,
+{
   categories: Category[];
   suppliers: Supplier[];
   products: Product[];
-  storeFront: StoreFrontData;
+  // storeFront: StoreFrontData;
 }) {
   const theme = useTheme();
-  console.log(storeFront);
+  // console.log(storeFront);
   return (
     <React.Fragment>
       {/* First */}
@@ -91,7 +91,7 @@ export default function StoreFront({
       {/* Fourth */}
       {/* Maybe put products based on screen size */}
       <ProductCarousel products={products} />
-      <InformationPanel backgroundColor={theme.palette.info_primary}>
+      <InformationPanel backgroundColor={theme.palette.background_secondary}>
         <Stack justifyContent="center" alignItems={"start"} spacing={1}>
           <Typography variant="h5">كن جزءً من مجتمع أشتري</Typography>
           <Typography variant="body1">

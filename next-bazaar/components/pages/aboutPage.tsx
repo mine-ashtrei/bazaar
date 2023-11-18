@@ -59,7 +59,7 @@ export default function About() {
           </Typography>
         </Stack>
       </InformationPanel>
-      <Panel backgroundColor={theme.palette.vegetation}>
+      <Panel backgroundColor={theme.palette.background_secondary}>
         <Typography variant="h2">سجل الآن لتعرف المزيد عن خدماتنا</Typography>
         <SignUpRetailerSupplier />
       </Panel>
