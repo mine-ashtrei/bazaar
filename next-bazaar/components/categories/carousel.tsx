@@ -9,9 +9,9 @@ export default function CategoriesCarousel({
 }) {
   return (
     <Carousel
-      items={categories}
-      CardComponent={CategoryCard}
-      title="تسوق الأحدث"
+      cards={categories.map((category) => (
+        <CategoryCard item={category} key={category.categoryId} />
+      ))}
     />
   );
 }
