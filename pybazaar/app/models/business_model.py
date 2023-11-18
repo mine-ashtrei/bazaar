@@ -1,8 +1,6 @@
 from datetime import datetime
-from typing import Optional, Union, Generic
-from typing_extensions import TypedDict
+from typing import Optional
 
-from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 from sqlalchemy import String, DateTime, Float
 from pydantic import BaseModel, Field, ConfigDict, field_validator
@@ -30,6 +28,7 @@ class Business(Base):
     raiting: Mapped[Optional[float]] = mapped_column(Float())
 
     users: Mapped[list["User"]] = relationship(back_populates="business")
+    address: Mapped["Address"] = relationship()
 
 
 NameType = Field(min_length=MIN_STR_LEN,

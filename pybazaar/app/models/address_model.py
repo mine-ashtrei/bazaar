@@ -6,6 +6,13 @@ from app.models import Base
 
 MAX_STR_LEN = 50
 
+class AddressAssociation(Base):
+    __tablename__ = "address_association"
+    id: Mapped[int] = mapped_column(primary_key=True)
+    parent_id: Mapped[int] = mapped_column()
+    parent_type: Mapped[str] = mapped_column(String(MAX_STR_LEN))
+    address_id: Mapped[int] = mapped_column()
+
 
 class Address(Base):
     __tablename__ = "address"
@@ -18,11 +25,11 @@ class Address(Base):
     country: Mapped[str] = mapped_column(String(MAX_STR_LEN))
 
 
-StreetType = Field(min_length=1, max_length=MAX_STR_LEN, example="123 Main St")
-CityType = Field(min_length=1, max_length=MAX_STR_LEN, example="New York")
-StateType = Field(min_length=1, max_length=MAX_STR_LEN, example="New York")
-PostalCodeType = Field(min_length=1, max_length=MAX_STR_LEN, example="12345")
-CountryType = Field(min_length=1, max_length=MAX_STR_LEN, example="USA")
+StreetType = Field(min_length=1, max_length=MAX_STR_LEN, examples=["123 Main St"])
+CityType = Field(min_length=1, max_length=MAX_STR_LEN, examples=[ "New York" ])
+StateType = Field(min_length=1, max_length=MAX_STR_LEN, examples=[ "New York" ])
+PostalCodeType = Field(min_length=1, max_length=MAX_STR_LEN, examples=[ "12345" ])
+CountryType = Field(min_length=1, max_length=MAX_STR_LEN, examples=[ "USA" ])
 
 
 class AddressBase(BaseModel):
@@ -36,7 +43,7 @@ class AddressBase(BaseModel):
 
 
 class AddressSchema(AddressBase):
-    id: int = Field(example=1)
+    id: int = Field(examples=[ 1 ])
 
 
 class AddressCreateReturn(AddressBase):
